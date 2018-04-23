@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>TeamworkToDo</title>
+
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/scrollNav.css">
+
+    <!-- Font awesome -->
+    <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
+
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+    <link href="assets/introJS/introjs.css" rel="stylesheet">
+
+
+
+
+
+
+
+</head>
+
+<body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
+    <!-- ***************************************************** Nav div ******************************************************** -->
+    <nav class="navbar navbar-default visible-lg visible-md">
+        <div class="container-fluid nav-container">
+            <div class="navbar-header">
+                <div class="top-brand col-lg-2">
+                    <a class="navbar-brand" href="index.html">TeamworkToDO</a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="hidden-lg">
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left">
+                        <button type="button" class="btn btn-default" onclick="logOut()" id="logOutButton"></button>
+                    </form>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="example-two  navbar-fixed-top visible-sm visible-xs">
+        <header class="example-two-header">
+            <span class="logo" onclick="showCountTasks();">TWTD
+            </span>
+        </header>
+    </div>
+    <div class="icon-bar visible-sm visible-xs navbar-fixed-bottom">
+        <header class="example-two-header">
+            <span class="logo">
+                <i class="fa fa-plus fa-fw fa-lg" onclick="showAddTask()"></i>
+            </span>
+            <nav class="vertical-align-middle scroll">
+                <span class="nav-item tasksCount" onclick="showCountTasks()">Overview</span>
+                <span class="nav-item tasksMenu" onclick="showAllTasks()">Tasks</span>
+                <span class="nav-item todaysMenu" onclick="showTodaysTasks()">Today</span>
+                <span class="nav-item tomorrowsMenu" onclick="showTomorrowsTasks()">Tomorrow</span>
+                <span class="nav-item overdueMenu" onclick="showOverdueTasks()">Overdue</span>
+                <span class="nav-item completedMenu" onclick="showTasksCompleted()">Completed</span>
+                <span class="logo nav-item" onclick="logOut()" id="logOutButton2">
+                    <i class="fa fa-exit fa-fw fa-lg"></i>
+                </span>
+                <!-- <span class="nav-item" onclick="logOut()" id="logOutButton2"></span> -->
+            </nav>
+        </header>
+    </div>
+    <div class="main-container">
+        <div class="container-fluid">
+            <div id="main">
+                <div class="row">
+
+                    <!-- ***************************************************** SideMenu div *************************************************** -->
+                    <div class=" side-menu col-lg-2 col-md-2 col-md-offset-1 col-sm-2 col-xs-3 visible-lg visible-md">
+                        <div class="visible-lg visible-md">
+                            <div>
+                                <h4 class="h4-well-title">
+                                    <i class="fa fa-fw fa-bars"></i> Menu
+                                    <span>
+                                        <h6 id="todaysDate"></h6>
+                                    </span>
+                                </h4>
+                            </div>
+                            <hr>
+                        </div>
+                        <ul class="nav">
+                            <li role="presentation">
+                                <a href="#" class="tasksCount" onclick="showCountTasks()">
+                                    <i class="fa fa-book fa-fw"></i> Overview</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="tasksMenu" onclick="showAllTasks()">
+                                    <i class="fa fa-list fa-fw"></i> Tasks</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="todaysMenu" onclick="showTodaysTasks()">
+                                    <i class="fa fa-clock-o fa-fw"></i> Today</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="tomorrowsMenu" onclick="showTomorrowsTasks()">
+                                    <i class="fa fa-arrow-right fa-fw"></i> Tomorrow</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="overdueMenu" onclick="showOverdueTasks()">
+                                    <i class="fa fa-exclamation-circle fa-fw"></i> Overdue</a>
+                            </li>
+                            <hr>
+                            <li role="presentation">
+                                <a href="#" class="completedMenu" onclick="showTasksCompleted()">
+                                    <i class="fa fa-check-square-o fa-fw"></i> Completed</a>
+                            </li>
+                            <hr>
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-folder-o fa-fw"></i>
+                                    Lists
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-level-up fa-fw"></i>
+                                    Priority
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" id="getTaskListsResult">
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ***************************************************** Middle Div ***************************************************** -->
+                    <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" style="background-color: #fff; min-height: 100vh;">
+                        <div class="hidden-lg" style="padding-bottom: 100px"></div>
+                        <!-- Counts -->
+                        <div class="countTasks">
+                            <div>
+                                <div>
+                                    <h4 class="h4-well-title">
+                                        <i class="fa fa-fw fa-home"></i> Daily stats
+                                        <span>
+                                            <h6 id="todaysDate"></h6>
+                                        </span>
+                                    </h4>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5 col-xs-5">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">All tasks </h3>
+                                        </div>
+                                        <div class="panel-body" id="getTaskCountResult">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"> Due today </h3>
+                                        </div>
+                                        <div class="panel-body" id="getTaskCountTodayResult">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5 col-xs-5">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"> Due tomorrow </h3>
+                                        </div>
+                                        <div class="panel-body" id="getTaskCountTomorrowResult">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"> Overdue</h3>
+                                        </div>
+                                        <div class="panel-body" id="getTaskCountOverdueResult">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2">
+                                                                    <div class="panel panel-default">
+                                                                        <div class="panel-heading">
+                                                                            <h3 class="panel-title"> Overdue</h3>
+                                                                        </div>
+                                                                        <div class="panel-body" id="getAllTasksCompletedCountResult">
+                                                                        </div>
+                                                                    </div>
+                                                                </div> -->
+                            </div>
+                        </div>
+                        <!-- End Counts -->
+
+
+
+                        <!-- All Tasks -->
+                        <div class="allTasks">
+                            <h4 class="h4-well-title">
+                                <i class="fa fa-fw fa-list"></i> Tasks
+                                <span>
+                                    <h6 id="todaysDate"></h6>
+                                </span>
+                            </h4>
+                            <hr>
+                            <div class="panel-body" id="getAllTasksResult">
+                            </div>
+                        </div>
+
+                        <!-- Today's Tasks -->
+                        <div class="todaysTasks">
+                            <h4 class="h4-well-title">
+                                <span>
+                                    <i class="fa fa-fw fa-list"></i> Today
+                                    <h6 id="todaysDate"></h6>
+                                </span>
+                            </h4>
+                            <hr>
+                            <div class="panel-body" id="getAllTasksResultToday"></div>
+                        </div>
+
+                        <!-- Tomorrows's Tasks -->
+                        <div class="tomorrowsTasks">
+                            <h4 class="h4-well-title">
+                                <span>
+                                    <i class="fa fa-fw fa-list"></i> Tomorrow
+                                    <h6 id="todaysDate"></h6>
+                                </span>
+                            </h4>
+                            <hr>
+                            <div class="panel-body" id="getAllTasksResultTomorrow"></div>
+                        </div>
+
+                        <!-- Overdue Tasks -->
+                        <div class="overdueTasks">
+                            <h4 class="h4-well-title">
+                                <span>
+                                    <i class="fa fa-fw fa-exclamation-circle"></i> Overdue
+                                    <h6 id="todaysDate"></h6>
+                                </span>
+                            </h4>
+                            <hr>
+                            <div class="panel-body" id="getAllTasksOverdueResult"></div>
+                            <hr>
+                        </div>
+
+                        <!-- Completed Tasks -->
+                        <div class="completeTasks">
+                            <h4 class="h4-well-title">
+                                <span>
+                                    <i class="fa fa-fw fa-check-square-o"></i> Completed
+                                    <h6 id="todaysDate"></h6>
+                                </span>
+                            </h4>
+                            <hr>
+                            <div class="panel-body" id="getAllTasksCompletedResult"></div>
+                            <hr>
+                        </div>
+
+
+                        <!-- Add task -->
+                        <!-- <div class="addTask hidden-lg">
+                                                            <h4 class="h4-well-title">
+                                                                <i class="fa fa-fw fa-plus"></i> Add Task
+                                                            </h4>
+                                                            <hr>
+                                                            <form class="form-inline" id="todoInputForm">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" id="taskTitle" placeholder="Enter Todo Title ..." required>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary">Send</button>
+                                                                <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div>
+                                                            </form>
+                                                            <br/>
+                                                            <div class="panel-body" id='postTaskResult'>
+                                                            </div>
+                                                        </div> -->
+                    </div>
+
+
+
+                    <!-- ***************************************************** Right div ***************************************************** -->
+                    <div class="visible-lg visible-md col-lg-4 col-md-3" style="background-color: #fff; min-height: 100vh">
+                        <div class="addTaskRight">
+                            <div class="visible-lg visible-md">
+                                <div>
+                                    <h4 class="h4-well-title">
+                                        <i class="fa fa-fw fa-plus"></i> Add task
+                                        <span>
+                                            <h6 id="todaysDate"></h6>
+                                        </span>
+                                    </h4>
+                                </div>
+                                <hr>
+                            </div>
+                            <div>
+                                <form class="form-inline" id="todoInputForm">
+                                    <div>
+                                        <input type="text" class="form-control input-no-border" id="taskTitle" placeholder="Enter Todo Title ..." required>
+                                        <br>
+                                        <br>
+                                        <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="dd-mm-yyyy " />
+                                        <br>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">Send</button>
+                                        <!-- <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div> -->
+                                    </div>
+                                    <!-- <button class="btn btn-warning" onclick="clearOutput()">Clear</button> -->
+                                </form>
+                            </div>
+                            <br/>
+                            <div class="panel-body" id='postTaskResult'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <a href="#" class="float hidden-lg" onclick="showAddTask();">
+                                                <i class="fa fa-plus my-float"></i>
+                                            </a> -->
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
+
+<script>
+    function clearOutput() {
+        var resultElement = document.getElementById('getAllTasksResult');
+        resultElement.innerHTML = '';
+    }
+</script>
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+        if (localStorage.length !== 0) {
+            logOutButton.innerHTML = "<i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>";
+            logOutButton2.innerHTML = "<i class=\"fa fa-sign-out fa-lg\" aria-hidden=\"true\"></i>";
+        } else {
+
+            logOutButton.innerHTML = "Log In";
+            logOutButton2.innerHTML = "Log In";
+        }
+    });
+</script>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        console.log("Will the service worker register?");
+        navigator.serviceWorker.register('service-worker.js')
+            .then(function (reg) {
+                console.log("Yes, it did.");
+            }).catch(function (err) {
+                console.log("No it didn't. This happened:", err)
+            });
+    }
+</script>
+
+<script type="text/javascript">
+    $("#calendar").datepicker({
+        dateFormat: 'dd-mm-yy',
+        beforeShow: function (input, inst) {
+            setTimeout(function () {
+                inst.dpDiv.css({
+                    top: $("#calendar").offset().top +
+                        35,
+                    left: $("#calendar").offset().left
+                });
+            }, 0);
+        }
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip({
+            'placement': 'top'
+        });
+    });
+</script>
+
+
+
+
+</html>
