@@ -3,7 +3,24 @@ This is a one-page task manager application. It utilizes the TeamWork.com API (h
 
 This app is using the technologies learned throughout Interactive Frontend Development module on CodeInstitute.net
 
-## User stories:
+## Technologies:
+- This website uses
+    - HTML & CSS
+    - JavaScript
+    - Twitter bootstrap
+    - [Axios](https://github.com/axios/axios), a Promise-based HTTP client for JS.
+    - [Jasmine](https://jasmine.github.io/), a behavior-driven development framework for testing JS.
+
+## Version control
+- Git and GitHub were utilized for **version control.** As additions and edits were being made, files were committed to branches and merged to the master branch.
+
+## Deployment
+- Development and master/production branches were deployed on the [Netlify](https://netlify.com) platform.
+- This enabled deployments to be triggered from **GitHub** commits to a dev branch.
+    - Dev deployment: https://agitated-noether-613123.netlify.com/
+- Once changes to dev were tested and approved, theses were **merged to the master branch** .
+
+## User stories (functionality):
 
 - [x]
 As first-time user I want to be able to authenticate via my my Teamwork.com credentials.
@@ -81,7 +98,7 @@ Alter priority.
 - Create a Single Page Application that relies heavily on one or more APIs.
 
 ## Credits:
-
+- [Horizontal scrolling nav](https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu) - Used for mobile view.
 
 
 
