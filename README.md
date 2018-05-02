@@ -64,7 +64,7 @@ As an authenticated user, if there are tasks lists present, these should be pres
 
 #### Task options:
 **To alter each task**
-- [ ] #20 
+- [ ]
 Edit task title.
 
 - [ ]
