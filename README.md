@@ -62,7 +62,7 @@ As an authenticated user, I should be able to see a list of all task lists avail
 - [x]
 As an authenticated user, if there are tasks lists present, these should be presented in reverse-chronological order beginning with the oldest available task.
 
-#### Task options:
+#### Task options
 **To alter each task**
 - [ ]
 Edit task title.
