@@ -93,6 +93,8 @@ Alter due date.
 - [ ]
 Alter priority.
 
+#### Other tasks:
+- [ ] Implement Jasmine tests.
 
 ## Project guidelines:
 - Create a Single Page Application that relies heavily on one or more APIs.
