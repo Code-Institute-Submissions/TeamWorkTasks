@@ -3,12 +3,9 @@ This is a one-page task manager application. It utilizes the TeamWork.com API (h
 
 This app is using the technologies learned throughout Interactive Frontend Development module on CodeInstitute.net
 
-## Credits:
-
-
 ## User stories:
 
-[ ] #1
+- [x] #1
 As first-time user I want to be able to authenticate and enter the site via my my Teamwork.com credentials.
 
 #2:
@@ -82,6 +79,7 @@ Alter priority.
 ## Project guidelines:
 - Create a Single Page Application that relies heavily on one or more APIs.
 
+## Credits:
 
 
 
