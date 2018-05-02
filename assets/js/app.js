@@ -60,9 +60,8 @@ function getOverview() {
                 // var priority = this.priority;
                 var task = $(resultElement).append(
                     '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');
-                //console.log('Task Name is: ' + taskTitle);
+                //console.log('Task Name is: ' + taskTitle);        
             });
-
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -72,6 +71,8 @@ function getOverview() {
 function getTaskCount() {
     var resultElement = document.getElementById('getTaskCountResult');
     resultElement.innerHTML = '';
+
+    //var responseReturn;
 
     axios({
             method: 'GET',
@@ -97,14 +98,20 @@ function getTaskCount() {
                 //     var task = $(resultElement).append(
                 //         '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');
                 //     console.log('Task Name is: ' + taskTitle);
-            } else {
-                // console.log(error);
-
             }
+            // console.log("Response status: " + response.statusText);
+            // console.log("Response status: " + response.statusText);
+            // var responseRT = response.statusText;
+            // return responseRT;
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
+}
+
+function testJasmine(x, y) {
+    response = x + y;
+    return response;
 }
 
 
@@ -170,26 +177,21 @@ function getAllTasksCompleted() {
     var resultElement = document.getElementById('getAllTasksCompletedResult');
     resultElement.innerHTML = '';
 
+    var pageSize5 = '&pageSize=5';
+
     axios({
             method: 'GET',
             auth: {
                 username: APIKey,
                 password: ':xxx'
             },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=completed&sort=completedDateDESC',
+            url: 'https://' + SiteName + '.teamwork.com/completedtasks.json?sort=completedOn',
         })
         .then(function (response) {
-            $(response.data['todo-items']).each(function () {
+            $(response.data['tasks']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
-                '<div id="divToHide">' +
-                $(response.data['todo-items']).each(function () {
-                    var taskID = this.id;
-                    var taskTitle = this.content;
-                    var dueDate = this['due-date'];
-                    var project = this['project-name'];
-                    $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');
-                });
+                $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');
             });
         })
         .catch(function (error) {
@@ -516,7 +518,7 @@ function postTask(e) {
 
     var company = "davedodea.eu";
     var key = "twp_YWbJhowpOcZZxp878vS8wcy4IAco_eu";
-    var tasklist_id = "1236401";
+    var tasklist_id = "1235942";
     var content = document.getElementById("taskTitle").value;
     var due_date = date.getFullYear() + (month < 10 ? '0' : '') +
         month + (day < 10 ? '0' : '') + day;
@@ -805,3 +807,7 @@ function showTasksCompleted() {
 //         }
 //     });
 // }
+
+function addition() {
+    return 42;
+}
