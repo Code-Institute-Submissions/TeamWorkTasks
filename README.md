@@ -18,7 +18,7 @@ As a user who provides incorrect authentication information, I should see an err
 As an authenticated user I want to be able to view All Tasks as available across all Task Lists.
 
 - [x]
-As an authenticated user I want to be able to view a dashboard with extensive options (detailed [here](#Task-options)) in order to manipulate and manage my tasks.
+As an authenticated user I want to be able to view a dashboard with extensive options (detailed in next story) in order to manipulate and manage my tasks.
 
 - [x]
 As an authenticated user, if I wish to add a task, I will need a form which will allow me enter the task details such as:
