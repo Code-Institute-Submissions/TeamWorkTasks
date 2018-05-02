@@ -282,22 +282,22 @@
 
 
                         <!-- Add task -->
-                        <!-- <div class="addTask hidden-lg">
-                                                            <h4 class="h4-well-title">
-                                                                <i class="fa fa-fw fa-plus"></i> Add Task
-                                                            </h4>
-                                                            <hr>
-                                                            <form class="form-inline" id="todoInputForm">
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control" id="taskTitle" placeholder="Enter Todo Title ..." required>
-                                                                </div>
-                                                                <button type="submit" class="btn btn-primary">Send</button>
-                                                                <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div>
-                                                            </form>
-                                                            <br/>
-                                                            <div class="panel-body" id='postTaskResult'>
-                                                            </div>
-                                                        </div> -->
+                        <div class="addTask visible-sm visible-xs git">
+                            <h4 class="h4-well-title">
+                                <i class="fa fa-fw fa-plus"></i> Add Task
+                            </h4>
+                            <hr>
+                            <form class="form-inline" id="todoInputForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="taskTitle" placeholder="Enter Todo Title ..." required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send</button>
+                                <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div>
+                            </form>
+                            <br/>
+                            <div class="panel-body" id='postTaskResult'>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -352,17 +352,17 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
         crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="assets/js/app.js"></script>
+
+
 
 </body>
 
@@ -401,19 +401,9 @@
     });
 </script>
 
-<script>
-    if ('serviceWorker' in navigator) {
-        console.log("Will the service worker register?");
-        navigator.serviceWorker.register('service-worker.js')
-            .then(function (reg) {
-                console.log("Yes, it did.");
-            }).catch(function (err) {
-                console.log("No it didn't. This happened:", err)
-            });
-    }
-</script>
 
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
     $("#calendar").datepicker({
         dateFormat: 'dd-mm-yy',
         beforeShow: function (input, inst) {
@@ -426,7 +416,7 @@
             }, 0);
         }
     });
-</script>
+</script> -->
 
 <script>
     $(document).ready(function () {
