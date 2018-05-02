@@ -5,74 +5,75 @@ This app is using the technologies learned throughout Interactive Frontend Devel
 
 ## User stories:
 
-- [x] #1
-As first-time user I want to be able to authenticate and enter the site via my my Teamwork.com credentials.
+- [x]
+As first-time user I want to be able to authenticate via my my Teamwork.com credentials.
 
-#2:
-As a user with a correct Teamwork site-name and API key, I should be able to enter these and gain access.
+- [x]
+As an autheticated user, I should be able redirected to overview page.
 
-#3:
+- [ ] 
 As a user who provides incorrect authentication information, I should see an error with an appropriate message alerting me of the problem.
 
-#4
+- [x]
 As an authenticated user I want to be able to view All Tasks as available across all Task Lists.
 
-#5
-As an authenticated user I want to be able to view a dashboard with extensive options (detailed below) in order to manipulate and manage my tasks.
+- [x]
+As an authenticated user I want to be able to view a dashboard with extensive options (detailed [here](#Task-options)) in order to manipulate and manage my tasks.
 
-#6
-As an authenticated user, if I wish to add a task, I will need a form which will allow me enter the task details such as title, due date and priority.
+- [x]
+As an authenticated user, if I wish to add a task, I will need a form which will allow me enter the task details such as:
+    - [x] title, 
+    - [ ] due date,
+    - [ ] priority.
 
-#7
+- [x]
 As an authenticated user, if I add a task that is successfully submitted, I should see a confirmation message.
 
-#8
+- [ ]
 As an authenticated user, if I attempt to add a task but it fails, then I should receive an alert regarding the error.
 
-#9
-As an authenticated user, if there are tasks present, these should be presented in reverse-chronological order beginning with the oldest available task.
+- [x]
+As an authenticated user, if there are tasks present, these should be presented in reverse order beginning with the newest available task.
 
-#10
+- [x]
 As an authenticated user, if there are no tasks present in my account, I should be alerted to this and prompted to add a task.
 
-#11
+- [x]
 As authenticated user I want to be able to view Today’s Tasks available across all Task Lists.
 
-#12
+- [x]
 As authenticated user I want to be able to view Today’s Tasks, if there are none, then I should see a message alerting me of this.
 
-#13
-As authenticated user I want to be able to view Tomorrow’s Tasks available across all Task Lists.
-
-#14
+- [x]
 As authenticated user I want to be able to view Tomorrow’s Tasks, if there are none, then I should see a message alerting me of this.
 
-#15
-As authenticated user I want to be able to view Overdue Tasks available across all Task Lists.
+- [x]
+As authenticated user I want to be able to view Tomorrow’s Tasks, if there are none, then I should see a message alerting me of this.
 
-#16
+- [x]
 As authenticated user I want to be able to view Overdue Tasks, if there are none, then I should see a message alerting me of this.
 
-#17
+- [x]
+As authenticated user I want to be able to view Overdue Tasks, if there are none, then I should see a message alerting me of this.
+
+- [x]
 As an authenticated user, I should be able to see a list of all task lists available.
 
-#18
-As an authenticated user, if there are no task lists available,  I should be prompted to make a task list.
-
-#19
+- [x]
 As an authenticated user, if there are tasks lists present, these should be presented in reverse-chronological order beginning with the oldest available task.
 
-#### - All tasks items should have the following abilities:
-#20 
+#### Task options:
+**To alter each task**
+- [ ] #20 
 Edit task title.
 
-#21
+- [ ]
 Delete task.
 
-#22
+- [ ]
 Alter due date.
 
-#23
+- [ ]
 Alter priority.
 
 
