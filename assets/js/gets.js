@@ -24,6 +24,8 @@ function getAccount() {
         });
 }
 
+// *************************************************************************************************
+
 // 
 // Get all Tasks and display
 //
@@ -55,6 +57,8 @@ function getOverview() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
+
+// *************************************************************************************************
 
 
 // 
@@ -102,15 +106,7 @@ function getTaskCount() {
         });
 }
 
-function testJasmine(x, y) {
-    response = x + y;
-    return response;
-}
-
-
-
-
-
+// *************************************************************************************************
 
 // 
 // Get all Tasks and display
@@ -167,6 +163,8 @@ function showEditMenu(task_id) {
     // });
 }
 
+// *************************************************************************************************
+
 // 
 // Get all Tasks which have been marked complete
 //
@@ -196,6 +194,8 @@ function getAllTasksCompleted() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
+
+// *************************************************************************************************
 
 // 
 // Get all Tasks due Today
@@ -230,6 +230,8 @@ function getAllTasksToday() {
         });
 }
 
+// *************************************************************************************************
+
 // 
 // Count Tasks due today
 //
@@ -256,6 +258,8 @@ function getTaskCountToday() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
+
+// *************************************************************************************************
 
 // 
 // Get all Tasks due Tomorrow
@@ -289,6 +293,8 @@ function getAllTasksTomorrow() {
             resultElement.innerHTML = getAllTasksOutputError(error);
         });
 }
+
+// *************************************************************************************************
 
 // 
 // Count Tasks due tomorrow
@@ -324,6 +330,9 @@ function getTaskCountTomorrow() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
+
+// *************************************************************************************************
+
 // 
 // Get all Tasks that are overdue
 //
@@ -367,6 +376,8 @@ function getAllTasksOverdue() {
         })
 }
 
+// *************************************************************************************************
+
 // 
 // Count Tasks that are overdue
 //
@@ -403,6 +414,8 @@ function getTaskCountOverdue() {
         });
 }
 
+// *************************************************************************************************
+
 // 
 // Get all Tasks for Study-list
 // 
@@ -437,6 +450,8 @@ function getAllTasksStudy() {
             resultElement.innerHTML = getAllTasksOutputError(error);
         });
 }
+
+// *************************************************************************************************
 
 
 // 
@@ -474,6 +489,8 @@ function getAllTasksWork() {
         });
 }
 
+// *************************************************************************************************
+
 
 // 
 // Get all High priority Tasks
@@ -509,3 +526,5 @@ function getHighPriority() {
             resultElement.innerHTML = getAllTasksOutputError(error);
         });
 }
+
+// *************************************************************************************************

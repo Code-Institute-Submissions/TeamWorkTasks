@@ -1,9 +1,14 @@
+// Create todays's date bject
 function dateToday() {
     var today = new Date();
     var today = today.toDateString();
     document.getElementById("todaysDate").innerHTML = today;
 }
 
+// *************************************************************************************************
+
+
+// Template API call response/errors
 function generateSuccessHTMLOutput(response) {
     return '<h4>Result:</h4>' +
         '<h5>Status:</h5>' +
@@ -25,3 +30,5 @@ function generateErrorHTMLOutput(error) {
         '<h5>Data:</h5>' +
         '<pre>' + JSON.stringify(error.response.data, null, '\t') + '</pre>';
 }
+
+// *************************************************************************************************

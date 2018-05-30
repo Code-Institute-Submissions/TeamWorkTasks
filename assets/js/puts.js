@@ -1,3 +1,7 @@
+// 
+// Pass in task_id and use to make a PUT call to mark that task as completed
+//
+
 function completeTask(task_id) {
 
     console.log(task_id);
@@ -22,3 +26,5 @@ function completeTask(task_id) {
         })
 
 }
+
+// *************************************************************************************************

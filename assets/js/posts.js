@@ -1,5 +1,12 @@
+// 
+// Add event listener for form submit button
+//
+
 document.getElementById('todoInputForm').addEventListener('submit', postTask);
 
+// 
+// Post task with form fields taken from 'todoInputForm'
+//
 
 function postTask(e) {
     var resultElement = document.getElementById('postTaskResult');
@@ -52,3 +59,5 @@ function postTask(e) {
         })
     e.preventDefault();
 }
+
+// *************************************************************************************************

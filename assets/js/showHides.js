@@ -1,6 +1,9 @@
 //
 // ***************************** Show/Hide content ********************************************
 //
+
+// ** TODO: Tidy by removing repetitions **
+
 function showCountTasks() {
     $(".countTasks").show();
     $(".addTask").show();
@@ -67,3 +70,5 @@ function showTasksCompleted() {
     $(".allTasks").hide();
     $(".todaysTasks").hide();
 }
+
+// *************************************************************************************************
