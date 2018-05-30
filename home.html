@@ -87,8 +87,8 @@
 
                     <!-- ***************************************************** SideMenu div *************************************************** -->
                     <div class=" side-menu col-lg-2 col-md-2 col-md-offset-1 col-sm-2 col-xs-3 visible-lg visible-md">
-                        <div class="visible-lg visible-md">
-                            <div>
+                        <div class="visible-lg visible-md" style="padding-top: 50px">
+                            <!-- <div>
                                 <h4 class="h4-well-title">
                                     <i class="fa fa-fw fa-bars"></i> Menu
                                     <span>
@@ -96,7 +96,7 @@
                                     </span>
                                 </h4>
                             </div>
-                            <hr>
+                            <hr> -->
                         </div>
                         <ul class="nav">
                             <li role="presentation">
@@ -149,7 +149,7 @@
 
                     <!-- ***************************************************** Middle Div ***************************************************** -->
                     <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" style="background-color: #fff; min-height: 100vh;">
-                        <div class="hidden-lg" style="padding-bottom: 100px"></div>
+                        <div class="hidden-lg"></div>
                         <!-- Counts -->
                         <div class="countTasks">
                             <div>
@@ -201,16 +201,7 @@
                                         <div class="panel-body" id="getTaskCountOverdueResult">
                                         </div>
                                     </div>
-                                </div>
-                                <!-- <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2">
-                                                                    <div class="panel panel-default">
-                                                                        <div class="panel-heading">
-                                                                            <h3 class="panel-title"> Overdue</h3>
-                                                                        </div>
-                                                                        <div class="panel-body" id="getAllTasksCompletedCountResult">
-                                                                        </div>
-                                                                    </div>
-                                                                </div> -->
+                                </div>                            
                             </div>
                         </div>
                         <!-- End Counts -->
@@ -282,7 +273,7 @@
 
 
                         <!-- Add task -->
-                        <div class="addTask visible-sm visible-xs git">
+                        <!-- <div class="addTask visible-sm visible-xs git">
                             <h4 class="h4-well-title">
                                 <i class="fa fa-fw fa-plus"></i> Add Task
                             </h4>
@@ -297,7 +288,7 @@
                             <br/>
                             <div class="panel-body" id='postTaskResult'>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
 
@@ -319,10 +310,10 @@
                             <div>
                                 <form class="form-inline" id="todoInputForm">
                                     <div>
-                                        <input type="text" class="form-control input-no-border" id="taskTitle" placeholder="Enter Todo Title ..." required>
+                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title - 20 chars max." maxlength="20" required>
                                         <br>
                                         <br>
-                                        <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="dd-mm-yyyy " />
+                                        <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " />
                                         <br>
                                         <br>
                                         <button type="submit" class="btn btn-primary">Send</button>
@@ -349,6 +340,13 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/gets.js"></script>
+    <script src="assets/js/posts.js"></script>
+    <script src="assets/js/puts.js"></script>
+    <script src="assets/js/showHides.js"></script>
+    <script src="assets/js/loginLogic.js"></script>
+    <script src="assets/js/misc.js"></script>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -402,21 +400,6 @@
 </script>
 
 
-
-<!-- <script type="text/javascript">
-    $("#calendar").datepicker({
-        dateFormat: 'dd-mm-yy',
-        beforeShow: function (input, inst) {
-            setTimeout(function () {
-                inst.dpDiv.css({
-                    top: $("#calendar").offset().top +
-                        35,
-                    left: $("#calendar").offset().left
-                });
-            }, 0);
-        }
-    });
-</script> -->
 
 <script>
     $(document).ready(function () {
