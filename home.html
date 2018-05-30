@@ -5,33 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <title>TeamworkToDo</title>
-
-
-
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/scrollNav.css">
-
     <!-- Font awesome -->
     <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
-
     <!-- Chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-
     <link href="assets/introJS/introjs.css" rel="stylesheet">
-
-
-
-
-
-
-
 </head>
 
 <body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
@@ -51,13 +35,12 @@
                         <button type="button" class="btn btn-default" onclick="logOut()" id="logOutButton"></button>
                     </form>
                 </ul>
-
             </div>
         </div>
     </nav>
     <div class="example-two  navbar-fixed-top visible-sm visible-xs">
         <header class="example-two-header">
-            <span class="logo" onclick="showCountTasks();">TWTD
+            <span class="logo" onclick="showCountTasks();">TeamworkToDO
             </span>
         </header>
     </div>
@@ -84,7 +67,6 @@
         <div class="container-fluid">
             <div id="main">
                 <div class="row">
-
                     <!-- ***************************************************** SideMenu div *************************************************** -->
                     <div class=" side-menu col-lg-2 col-md-2 col-md-offset-1 col-sm-2 col-xs-3 visible-lg visible-md">
                         <div class="visible-lg visible-md" style="padding-top: 50px">
@@ -141,12 +123,10 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" id="getTaskListsResult">
-
                                 </ul>
                             </li>
                         </ul>
                     </div>
-
                     <!-- ***************************************************** Middle Div ***************************************************** -->
                     <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" style="background-color: #fff; min-height: 100vh;">
                         <div class="hidden-lg"></div>
@@ -201,13 +181,10 @@
                                         <div class="panel-body" id="getTaskCountOverdueResult">
                                         </div>
                                     </div>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
                         <!-- End Counts -->
-
-
-
                         <!-- All Tasks -->
                         <div class="allTasks">
                             <h4 class="h4-well-title">
@@ -220,7 +197,6 @@
                             <div class="panel-body" id="getAllTasksResult">
                             </div>
                         </div>
-
                         <!-- Today's Tasks -->
                         <div class="todaysTasks">
                             <h4 class="h4-well-title">
@@ -232,7 +208,6 @@
                             <hr>
                             <div class="panel-body" id="getAllTasksResultToday"></div>
                         </div>
-
                         <!-- Tomorrows's Tasks -->
                         <div class="tomorrowsTasks">
                             <h4 class="h4-well-title">
@@ -244,7 +219,6 @@
                             <hr>
                             <div class="panel-body" id="getAllTasksResultTomorrow"></div>
                         </div>
-
                         <!-- Overdue Tasks -->
                         <div class="overdueTasks">
                             <h4 class="h4-well-title">
@@ -257,7 +231,6 @@
                             <div class="panel-body" id="getAllTasksOverdueResult"></div>
                             <hr>
                         </div>
-
                         <!-- Completed Tasks -->
                         <div class="completeTasks">
                             <h4 class="h4-well-title">
@@ -270,8 +243,6 @@
                             <div class="panel-body" id="getAllTasksCompletedResult"></div>
                             <hr>
                         </div>
-
-
                         <!-- Add task -->
                         <!-- <div class="addTask visible-sm visible-xs git">
                             <h4 class="h4-well-title">
@@ -290,9 +261,6 @@
                             </div>
                         </div> -->
                     </div>
-
-
-
                     <!-- ***************************************************** Right div ***************************************************** -->
                     <div class="visible-lg visible-md col-lg-4 col-md-3" style="background-color: #fff; min-height: 100vh">
                         <div class="addTaskRight">
@@ -329,15 +297,11 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- <a href="#" class="float hidden-lg" onclick="showAddTask();">
                                                 <i class="fa fa-plus my-float"></i>
                                             </a> -->
         </div>
     </div>
-
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/gets.js"></script>
@@ -346,70 +310,45 @@
     <script src="assets/js/showHides.js"></script>
     <script src="assets/js/loginLogic.js"></script>
     <script src="assets/js/misc.js"></script>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
         crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-
-
-
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
-
-
-
-
-
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
+$(document).ready(function() {
+    $('#sidebarCollapse').on('click', function() {
+        $('#sidebar').toggleClass('active');
     });
+});
 </script>
-
 <script>
-    function clearOutput() {
-        var resultElement = document.getElementById('getAllTasksResult');
-        resultElement.innerHTML = '';
+function clearOutput() {
+    var resultElement = document.getElementById('getAllTasksResult');
+    resultElement.innerHTML = '';
+}
+</script>
+<script type="text/javascript">
+$(function() {
+    if (localStorage.length !== 0) {
+        logOutButton.innerHTML = "<i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> Log out";
+        logOutButton2.innerHTML = "<i class=\"fa fa-sign-out fa-lg\" aria-hidden=\"true\"></i> Log out";
+    } else {
+
+        logOutButton.innerHTML = "Log In";
+        logOutButton2.innerHTML = "Log In";
     }
+});
 </script>
-
-
-
-
-<script type="text/javascript">
-    $(function () {
-        if (localStorage.length !== 0) {
-            logOutButton.innerHTML = "<i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>";
-            logOutButton2.innerHTML = "<i class=\"fa fa-sign-out fa-lg\" aria-hidden=\"true\"></i>";
-        } else {
-
-            logOutButton.innerHTML = "Log In";
-            logOutButton2.innerHTML = "Log In";
-        }
-    });
-</script>
-
-
-
 <script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip({
-            'placement': 'top'
-        });
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+        'placement': 'top'
     });
+});
 </script>
-
-
-
 
 </html>

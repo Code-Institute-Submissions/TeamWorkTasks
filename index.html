@@ -16,13 +16,12 @@
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
-
 </head>
 
 <body onload="checkIfLoggedIn();">
     <div class="example-two navbar-fixed-top">
         <header class="example-two-header example-two-header-top">
-            <span class="logo" onclick="showCountTasks();">TeamworkToDO
+            <span class="logo" >
                 <!-- <i class="fa fa-arrow-right fa-fw"></i> -->
             </span>
             <!-- <nav class="vertical-align-middle scroll">
@@ -34,7 +33,6 @@
                     <span class="nav-item" onclick="logOut()" id="logOutButton2"></span>
                 </nav> -->
         </header>
-
     </div>
     <div class="example-two navbar-fixed-bottom pull-right">
         <header class="example-two-header">
@@ -56,52 +54,47 @@
             <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="login-form-1">
-                        <form id="login-form">
-                            <div class="main-login-form">
-                                <div class="login-group">
-                                    <h4>Please enter your
+                        <div class="main-login-form">
+                            <div class="login-group">
+                                <h4>Please enter your
                                         <br>
                                         <b>Teamwork.com</b>
                                         credentials
                                     </h4>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                    <form id="login-form">
                                         <span>
                                             <!-- <i class="fa fa-building-o" aria-hidden="true"></i> -->
                                             <label for="lg_username" class="sr-only">Username</label>
-                                            <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="Teamwork site name" required/>
+                                            <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="Teamwork site name" required />
                                         </span>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                        <br>
                                         <span>
                                             <!-- <i class="fa fa-key" aria-hidden="true"></i> -->
                                             <label for="lg_password" class="sr-only">Password</label>
-                                            <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="API key" required/>
+                                            <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="API key" required />
                                         </span>
-                                    </div>
+                                    </form>
                                 </div>
-                                <button type="button" class="btn btn-primary" onclick="loginForm()">
-                                    Log In
-                                </button>
-                                <a class="btn btn-secondary" href="https://www.teamwork.com/signup?from=main-nav_home" target="_blank" >
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="loginForm()">
+                                Log In
+                            </button>
+                            <a class="btn btn-secondary" href="https://www.teamwork.com/signup?from=main-nav_home" target="_blank">
                                     Register
                                 </a>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                     <!-- <div class="col-xs-10 col-xs-offset-2">
                         <img src="assets/img/mrbusy2.png" class="img-responsive">
                     </div> -->
                 </div>
             </div>
-
         </div>
     </div>
-
-<!-- <script src="form.js"></script> -->
-<script src="assets/js/app.js"></script>
-<script src="assets/js/loginLogic.js"></script>
-
+    <!-- <script src="form.js"></script> -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/loginLogic.js"></script>
 </body>
-
 
 </html>
