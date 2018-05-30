@@ -10,7 +10,7 @@ function getAccount() {
     axios({
             method: 'GET',
             auth: {
-                username: 'twp_YWbJhowpOcZZxp878vS8wcy4IAco_eu',
+                username: APIKey,
                 password: ':xxx'
             },
             url: 'https://davedodea.eu.teamwork.com/account.json',
@@ -43,14 +43,10 @@ function getOverview() {
             url: 'https://' + SiteName + '.teamwork.com/tasks.json',
         })
         .then(function (response) {
-            $(response.data['todo-items']).each(function () {
-                //var taskID = this.id;
-                var taskTitle = this.content;
-                // var dueDate = this['due-date'];
-                // var priority = this.priority;
+            $(response.data['todo-items']).each(function () {                
+                var taskTitle = this.content;                                
                 var task = $(resultElement).append(
-                    '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');
-                //console.log('Task Name is: ' + taskTitle);        
+                    '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');                
             });
         })
         .catch(function (error) {
@@ -69,8 +65,6 @@ function getTaskCount() {
     var resultElement = document.getElementById('getTaskCountResult');
     resultElement.innerHTML = '';
 
-    //var responseReturn;
-
     axios({
             method: 'GET',
             auth: {
@@ -80,26 +74,11 @@ function getTaskCount() {
             url: 'https://' + SiteName + '.teamwork.com/tasks.json',
         })
         .then(function (response) {
-            if (response.statusText == 'OK') {
-                // window.location.href = "/index.html";
-                // console.log('Status: ' + response.statusText);
+            if (response.statusText == 'OK') {                
                 var taskCount = response.data['todo-items'].length;
                 var task = $(resultElement).append(
-                    taskCount);
-                // console.log('Task Count is: ' + taskCount);
-                // $(response.data['todo-items']).each(function () {
-                //     //var taskID = this.id;
-                //     var taskTitle = this.content;
-                //     // var dueDate = this['due-date'];
-                //     // var priority = this.priority;
-                //     var task = $(resultElement).append(
-                //         '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');
-                //     console.log('Task Name is: ' + taskTitle);
-            }
-            // console.log("Response status: " + response.statusText);
-            // console.log("Response status: " + response.statusText);
-            // var responseRT = response.statusText;
-            // return responseRT;
+                    taskCount);                
+            }        
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -131,8 +110,7 @@ function getAllTasks() {
                 $(resultElement).append(
                     '<div class="taskDiv">' +
                     '<li style="list-style-type: none">' +
-                    '<p>' + taskTitle + '</p >' +
-                    // '<p  id="taskIDListItem">' + taskID + '</p>' +
+                    '<p>' + taskTitle + '</p >' +                    
                     '<div class="editMenuBtn">' +
                     '<a href="#" data-toggle="tooltip" title="Hooray!">' + 
                     '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
@@ -143,8 +121,7 @@ function getAllTasks() {
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' + '<hr>' +
                     '</div>' +
-                    '</div>');
-                //console.log('Task ID is: ' + taskID);
+                    '</div>');                
             });
         })
         .catch(function (error) {
@@ -153,14 +130,7 @@ function getAllTasks() {
 }
 
 function showEditMenu(task_id) {
-    console.log(task_id);
-    // $(".editMenuBtn").toggle();
-
-    // $(".editMenuDiv").hover(function () {
-    //     $(".editMenuDiv").show();
-    // }, function () {
-    //     $(".editMenuDiv").hide();
-    // });
+    console.log(task_id);    
 }
 
 // *************************************************************************************************
@@ -213,16 +183,13 @@ function getAllTasksToday() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=today&sort=dateadded',
         })
-        .then(function (response) {
-            // var taskCount = response.data['todo-items'].length;
-            // '<p>Task Count is: </p>' + taskCount;
+        .then(function (response) {            
             $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
-                $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');
-                // console.log('Task ID is: ' + taskID);
+                $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');                
             });
         })
         .catch(function (error) {
@@ -277,16 +244,13 @@ function getAllTasksTomorrow() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=tomorrow&?sort=dateadded',
         })
-        .then(function (response) {
-            // var taskCount = response.data['todo-items'].length;
-            // '<p>Task Count is: </p>' + taskCount;
+        .then(function (response) {           
             $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
-                $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');
-                // console.log('Task ID is: ' + taskID);
+                $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');                
             });
         })
         .catch(function (error) {
@@ -314,17 +278,7 @@ function getTaskCountTomorrow() {
         })
         .then(function (response) {
             var taskCount = response.data['todo-items'].length;
-            var task = $(resultElement).append(
-                taskCount);
-            // console.log('Task Count is: ' + taskCount);
-            // $(response.data['todo-items']).each(function () {
-            //     //var taskID = this.id;
-            //     var taskTitle = this.content;
-            //     // var dueDate = this['due-date'];
-            //     // var priority = this.priority;
-            //     var task = $(resultElement).append(
-            //         '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');
-            //     console.log('Task Name is: ' + taskTitle);            
+            var task = $(resultElement).append(taskCount);          
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -357,8 +311,7 @@ function getAllTasksOverdue() {
                 var project = this['project-name'];
                 $(resultElement).append('<div class="taskDiv">' +
                     '<li style="list-style-type: none">' +
-                    '<p>' + taskTitle + '</p >' +
-                    // '<p  id="taskIDListItem">' + taskID + '</p>' +
+                    '<p>' + taskTitle + '</p >' +                    
                     '<div class="editMenuBtn">' +
                     '<a href="#" data-toggle="tooltip" title="Hooray!">' + '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
@@ -397,17 +350,7 @@ function getTaskCountOverdue() {
         })
         .then(function (response) {
             var taskCount = response.data['todo-items'].length;
-            var task = $(resultElement).append(
-                taskCount);
-            // console.log('Task Count is: ' + taskCount);
-            // $(response.data['todo-items']).each(function () {
-            //     //var taskID = this.id;
-            //     var taskTitle = this.content;
-            //     // var dueDate = this['due-date'];
-            //     // var priority = this.priority;
-            //     var task = $(resultElement).append(
-            //         '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');
-            //     console.log('Task Name is: ' + taskTitle);            
+            var task = $(resultElement).append(taskCount);            
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -434,16 +377,14 @@ function getAllTasksStudy() {
         })
         .then(function (response) {
             '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function () {
-                //var taskID = this.id;
+            $(response.data['todo-items']).each(function () {                
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var priority = this.priority;
                 var task = $(resultElement).append(
                     '<b>' + taskTitle + '</b>' + '<br>' +
                     'Due date: ' + dueDate + '<br>' +
-                    'Priority: ' + priority + '<hr>');
-                // console.log('Task ID is: ' + taskID);
+                    'Priority: ' + priority + '<hr>');                
             });
         })
         .catch(function (error) {
@@ -472,16 +413,14 @@ function getAllTasksWork() {
         })
         .then(function (response) {
             '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function () {
-                //var taskID = this.id;
+            $(response.data['todo-items']).each(function () {                
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var priority = this.priority;
                 var task = $(resultElement).append(
                     '<b>' + taskTitle + '</b>' + '<br>' +
                     'Due date: ' + dueDate + '<br>' +
-                    'Priority: ' + priority + '<hr>');
-                // console.log('Task ID is: ' + taskID);
+                    'Priority: ' + priority + '<hr>');                
             });
         })
         .catch(function (error) {
@@ -510,16 +449,14 @@ function getHighPriority() {
         })
         .then(function (response) {
             '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function () {
-                //var taskID = this.id;
+            $(response.data['todo-items']).each(function () {                
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var priority = this.priority;
                 var task = $(resultElement).append(
                     '<b>' + taskTitle + '</b>' + '<br>' +
                     'Due date: ' + dueDate + '<br>' +
-                    'Priority: ' + priority + '<hr>');
-                // console.log('Task ID is: ' + taskID);
+                    'Priority: ' + priority + '<hr>');                
             });
         })
         .catch(function (error) {
