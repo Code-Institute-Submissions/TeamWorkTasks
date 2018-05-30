@@ -517,7 +517,7 @@ function postTask(e) {
     var day = date.getDate();
 
     var company = "davedodea.eu";
-    var key = "twp_YWbJhowpOcZZxp878vS8wcy4IAco_eu";
+    // var key = "twp_YWbJhowpOcZZxp878vS8wcy4IAco_eu";
     var tasklist_id = "1235942";
     var content = document.getElementById("taskTitle").value;
     var due_date = date.getFullYear() + (month < 10 ? '0' : '') +
