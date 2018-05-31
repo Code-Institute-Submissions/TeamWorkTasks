@@ -47,7 +47,7 @@
     <div class="icon-bar visible-sm visible-xs navbar-fixed-bottom">
         <header class="example-two-header">
             <span class="logo">
-                <i class="fa fa-plus fa-fw fa-lg" onclick="showAddTask()"></i>
+                <i class="fa fa-plus fa-fw fa-lg" onclick="showAddTaskMobile()"></i>
             </span>
             <nav class="vertical-align-middle scroll">
                 <span class="nav-item tasksCount" onclick="showCountTasks()">Overview</span>
@@ -243,23 +243,29 @@
                             <div class="panel-body" id="getAllTasksCompletedResult"></div>
                             <hr>
                         </div>
-                        <!-- Add task -->
-                        <!-- <div class="addTask visible-sm visible-xs git">
+                        <!-- Add task Mobile-->
+                        <div class="addTaskMobile">
                             <h4 class="h4-well-title">
                                 <i class="fa fa-fw fa-plus"></i> Add Task
                             </h4>
                             <hr>
-                            <form class="form-inline" id="todoInputForm">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="taskTitle" placeholder="Enter Todo Title ..." required>
+                            <form class="form-inline" id="todoInputFormMobile">
+                                <div>
+                                    <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title - 20 chars max." maxlength="20" required>
+                                    <br>
+                                    <br>
+                                    <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " />
+                                    <br>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                    <!-- <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div> -->
                                 </div>
-                                <button type="submit" class="btn btn-primary">Send</button>
-                                <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div>
+                                <!-- <button class="btn btn-warning" onclick="clearOutput()">Clear</button> -->
                             </form>
                             <br/>
-                            <div class="panel-body" id='postTaskResult'>
+                            <div class="panel-body" id='postTaskResultMobile'>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <!-- ***************************************************** Right div ***************************************************** -->
                     <div class="visible-lg visible-md col-lg-4 col-md-3" style="background-color: #fff; min-height: 100vh">
