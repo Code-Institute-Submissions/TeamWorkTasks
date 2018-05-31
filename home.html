@@ -144,7 +144,8 @@
                                 <hr>
                             </div>
                             <div class="row">
-                                <div class="col-lg-5 col-xs-5">
+                                <a href="#">
+                                    <div class="col-lg-5 col-xs-5" onclick="showAllTasks()">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">All tasks </h3>
@@ -153,35 +154,42 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2">
+                                </a>
+                                <a href="#">
+                                    <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2" onclick="showTodaysTasks()">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"> Due today </h3>
+                                            <h3 class="panel-title"> Today </h3>
                                         </div>
                                         <div class="panel-body" id="getTaskCountTodayResult">
                                         </div>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                             <div class="row">
-                                <div class="col-lg-5 col-xs-5">
+                                <a href="#">
+                                    <div class="col-lg-5 col-xs-5" onclick="showTomorrowsTasks()">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"> Due tomorrow </h3>
+                                            <h3 class="panel-title"> Tomorrow </h3>
                                         </div>
                                         <div class="panel-body" id="getTaskCountTomorrowResult">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title"> Overdue</h3>
-                                        </div>
-                                        <div class="panel-body" id="getTaskCountOverdueResult">
+                                </a>
+                                <a href="#">
+                                    <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2" onclick="showOverdueTasks()">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"> Overdue</h3>
+                                            </div>
+                                            <div class="panel-body" id="getTaskCountOverdueResult">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <!-- End Counts -->
@@ -244,7 +252,7 @@
                             <hr>
                         </div>
                         <!-- Add task Mobile-->
-                        <div class="addTaskMobile">
+                        <div class="addTaskMobile visible-sm visible-xs">
                             <h4 class="h4-well-title">
                                 <i class="fa fa-fw fa-plus"></i> Add Task
                             </h4>
