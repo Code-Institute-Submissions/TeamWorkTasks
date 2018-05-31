@@ -15,10 +15,9 @@ This app is using the technologies learned throughout Interactive Frontend Devel
 - Git and GitHub were utilized for **version control.** As additions and edits were being made, files were committed to branches and merged to the master branch.
 
 ## Deployment
-- Production branch is deployed on the [Netlify](https://netlify.com) platform.
+- Production app is deployed on the [Netlify](https://netlify.com) platform.
 - This enabled deployments to be triggered from **GitHub** commits to a selected branch.
     - Deployment available at: https://agitated-noether-613123.netlify.com/
-- Once changes to master were tested and approved, theses were **merged to the production branch** .
 
 ## User stories (functionality):
 
