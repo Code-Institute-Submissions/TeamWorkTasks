@@ -80,9 +80,9 @@ function postTaskMobile(e) {
     var day = date.getDate();
 
     var tasklist_id = "1235942";
-    var content = document.getElementById("taskTitle").value;
-    var taskDescription = document.getElementById('taskDescription').value;
-    var date_picker = document.getElementById('datePicker').value;
+    var content = document.getElementById("taskTitleMobile").value;
+    var taskDescription = document.getElementById('taskDescriptionMobile').value;
+    var date_picker = document.getElementById('datePickerMobile').value;
     var due_date = date.getFullYear() + (month < 10 ? '0' : '') +
         month + (day < 10 ? '0' : '') + day;
 

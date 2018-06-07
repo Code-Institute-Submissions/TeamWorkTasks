@@ -227,7 +227,7 @@ function getAllTasksCompleted() {
                     '<p><strike>' + taskTitle + '</strike></p >' +
                     '<div class="editMenuBtn">' +
                     '<a href="#" data-tooltip="Complete">' +
-                    '<i class="fa fa-trash-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    '<i class="fa fa-trash-o fa-lg edit-menu-icons" aria-hidden="true" onclick="deleteTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     // '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
