@@ -81,6 +81,8 @@ function postTaskMobile(e) {
 
     var tasklist_id = "1235942";
     var content = document.getElementById("taskTitle").value;
+    var taskDescription = document.getElementById('taskDescription').value;
+    var date_picker = document.getElementById('datePicker').value;
     var due_date = date.getFullYear() + (month < 10 ? '0' : '') +
         month + (day < 10 ? '0' : '') + day;
 
@@ -94,7 +96,8 @@ function postTaskMobile(e) {
             data: {
                 "todo-item": {
                     "content": content,
-                    "due-date": due_date
+                    "due-date": date_picker,
+                    "description": taskDescription
                 }
             },
             processData: false,
