@@ -13,12 +13,19 @@
     <link rel="stylesheet" href="assets/css/scrollNav.css">
     <!-- Font awesome -->
     <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
-    <!-- Chart JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <link href="assets/introJS/introjs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <!-- Popper and Tooltip JS -->
+    <script src="https://unpkg.com/popper.js"></script>
+    <script src="https://unpkg.com/tooltip.js"></script>
 </head>
 
-<body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
+<body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted(); getAllTaskLists(); getTaskListDetails();">
     <!-- ***************************************************** Nav div ******************************************************** -->
     <nav class="navbar navbar-default visible-lg visible-md">
         <div class="container-fluid nav-container">
@@ -122,8 +129,8 @@
                                     Priority
                                     <span class="caret"></span>
                                 </a>
-                                <ul class="dropdown-menu" id="getTaskListsResult">
-                                </ul>
+                                <!-- <ul class="dropdown-menu" id="getAllTaskListResult">
+                                </ul> -->
                             </li>
                         </ul>
                     </div>
@@ -146,38 +153,38 @@
                             <div class="row">
                                 <a href="#">
                                     <div class="col-lg-5 col-xs-5" onclick="showAllTasks()">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">All tasks </h3>
-                                        </div>
-                                        <div class="panel-body" id="getTaskCountResult">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">All tasks </h3>
+                                            </div>
+                                            <div class="panel-body" id="getTaskCountResult">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </a>
                                 <a href="#">
                                     <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2" onclick="showTodaysTasks()">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title"> Today </h3>
-                                        </div>
-                                        <div class="panel-body" id="getTaskCountTodayResult">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"> Today </h3>
+                                            </div>
+                                            <div class="panel-body" id="getTaskCountTodayResult">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </a>
                             </div>
                             <div class="row">
                                 <a href="#">
                                     <div class="col-lg-5 col-xs-5" onclick="showTomorrowsTasks()">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title"> Tomorrow </h3>
-                                        </div>
-                                        <div class="panel-body" id="getTaskCountTomorrowResult">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"> Tomorrow </h3>
+                                            </div>
+                                            <div class="panel-body" id="getTaskCountTomorrowResult">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 </a>
                                 <a href="#">
                                     <div class="col-lg-5 col-xs-5 col-lg-offset-2 col-xs-offset-2" onclick="showOverdueTasks()">
@@ -259,7 +266,7 @@
                             <hr>
                             <form class="form-inline" id="todoInputFormMobile">
                                 <div>
-                                    <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title - 20 chars max." maxlength="20" required>
+                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30" placeholder="Title - 20 chars max." maxlength="20" required>
                                     <br>
                                     <br>
                                     <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " />
@@ -292,12 +299,20 @@
                             <div>
                                 <form class="form-inline" id="todoInputForm">
                                     <div>
-                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title - 20 chars max." maxlength="20" required>
+                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title:    20 chars max." maxlength="20" required>
                                         <br>
                                         <br>
-                                        <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " />
+                                        <textarea name="message" class="form-control input-no-border" id="taskDescription" rows="5" cols="28" placeholder="Add a task description"></textarea>
                                         <br>
                                         <br>
+                                        <!-- Date input -->
+                                        <input class="form-control input-no-border" id="datePicker" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text" />
+                                        <br>
+                                        <!-- <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " /> -->
+                                        <br>
+                                        <!-- <p>Choose a task list: </p> -->
+                                        <!-- <select class="form-control input-no-border select-width" id="getAllTaskListSelectList" required>                                            
+                                        </select> -->                                    
                                         <button type="submit" class="btn btn-primary">Send</button>
                                         <!-- <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div> -->
                                     </div>
@@ -311,9 +326,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <a href="#" class="float hidden-lg" onclick="showAddTask();">
-                                                <i class="fa fa-plus my-float"></i>
-                                            </a> -->
         </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -324,13 +336,6 @@
     <script src="assets/js/showHides.js"></script>
     <script src="assets/js/loginLogic.js"></script>
     <script src="assets/js/misc.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-        crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -345,6 +350,7 @@ function clearOutput() {
     resultElement.innerHTML = '';
 }
 </script>
+<!-- Log In/Out button text conditionals -->
 <script type="text/javascript">
 $(function() {
     if (localStorage.length !== 0) {
@@ -357,12 +363,18 @@ $(function() {
     }
 });
 </script>
+<!-- DatePicker -->
 <script>
 $(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip({
-        'placement': 'top'
-    });
-});
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    date_input.datepicker({
+        format: 'yyyymmdd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+    })
+})
 </script>
 
 </html>

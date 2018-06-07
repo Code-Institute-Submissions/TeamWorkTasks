@@ -1,3 +1,33 @@
+function getTaskListDetails() {
+    var resultElement = document.getElementById('getAllTaskListSelectList');
+    resultElement.innerHTML = '';
+
+    var projectId = '334385';
+
+    axios({
+            method: 'GET',
+            auth: {
+                username: APIKey,
+                password: ':xxx'
+            },
+            url: 'https://' + SiteName + '.teamwork.com/projects/' + projectId + '/tasklists.json',
+        })
+        .then(function(response) {
+            $(response.data['tasklists']).each(function() {
+                // var taskListName = this.name;
+                var taskListId = this.id;
+                return console.log(taskListId);
+                // var taskList = $(resultElement).append(
+                //     '<option>' + taskListName + ' (id: ' + taskListId + ')' + '</option>');
+            });
+        })
+        .catch(function(error) {
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
+        });
+}
+
+
+
 //
 // Get Account details
 // 
@@ -26,7 +56,7 @@ function getAccount() {
 // *************************************************************************************************
 
 // 
-// Get all Tasks and display
+// Get overview
 //
 
 function getOverview() {
@@ -55,6 +85,38 @@ function getOverview() {
 
 // *************************************************************************************************
 
+// 
+// Get all tasklist for a project
+// 
+
+function getAllTaskLists() {
+    var resultElement = document.getElementById('getAllTaskListSelectList');
+    resultElement.innerHTML = '';
+
+    var projectId = '334385';
+
+    axios({
+            method: 'GET',
+            auth: {
+                username: APIKey,
+                password: ':xxx'
+            },
+            url: 'https://' + SiteName + '.teamwork.com/projects/' + projectId + '/tasklists.json',
+        })
+        .then(function(response) {
+            $(response.data['tasklists']).each(function() {
+                var taskListName = this.name;
+                var taskListId = this.id;
+                var taskList = $(resultElement).append(
+                    '<option>' + taskListName + '</option>');
+            });
+            // resultElement.innerHTML = generateSuccessHTMLOutput(response);
+
+        })
+        .catch(function(error) {
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
+        });
+}
 
 // 
 // Count all Tasks
@@ -106,12 +168,14 @@ function getAllTasks() {
             $(response.data['todo-items']).each(function() {
                 var taskID = this.id;
                 var taskTitle = this.content;
+                var taskDescription = this.description;
                 $(resultElement).append(
                     '<div class="taskDiv">' +
                     '<li style="list-style-type: none">' +
-                    '<p>' + taskTitle + '</p >' +
+                    '<p><b>' + taskTitle + '</b></p>' + 
+                    '<p>' + taskDescription + '</p >' +
                     '<div class="editMenuBtn">' +
-                    '<a href="#" data-toggle="tooltip" title="Hooray!">' +
+                    '<a href="#" data-tooltip="Complete">' +
                     '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
@@ -157,7 +221,21 @@ function getAllTasksCompleted() {
             $(response.data['tasks']).each(function() {
                 var taskID = this.id;
                 var taskTitle = this.content;
-                $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');
+                $(resultElement).append(
+                    '<div class="taskDiv">' +
+                    '<li style="list-style-type: none">' +
+                    '<p><strike>' + taskTitle + '</strike></p >' +
+                    '<div class="editMenuBtn">' +
+                    '<a href="#" data-tooltip="Complete">' +
+                    '<i class="fa fa-trash-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    // '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '</div>' +
+                    '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
+                    '</li>' + '<hr>' +
+                    '</div>' +
+                    '</div>');
             });
         })
         .catch(function(error) {
@@ -189,7 +267,23 @@ function getAllTasksToday() {
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
-                $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');
+                var taskDescription = this.description;
+                $(resultElement).append(
+                    '<div class="taskDiv">' +
+                    '<li style="list-style-type: none">' +
+                    '<p><b>' + taskTitle + '</b></p>' + 
+                    '<p>' + taskDescription + '</p >' +
+                    '<div class="editMenuBtn">' +
+                    '<a href="#" data-tooltip="Complete">' +
+                    '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    '</div>' +
+                    '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
+                    '</li>' + '<hr>' +
+                    '</div>' +
+                    '</div>');
             });
         })
         .catch(function(error) {
@@ -250,7 +344,21 @@ function getAllTasksTomorrow() {
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
-                $(resultElement).append('<p>' + taskTitle + '</p>' + ' <br><hr>');
+                $(resultElement).append(
+                    '<div class="taskDiv">' +
+                    '<li style="list-style-type: none">' +
+                    '<p>' + taskTitle + '</p >' +
+                    '<div class="editMenuBtn">' +
+                    '<a href="#" data-tooltip="Complete">' +
+                    '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    '</div>' +
+                    '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
+                    '</li>' + '<hr>' +
+                    '</div>' +
+                    '</div>');
             });
         })
         .catch(function(error) {
@@ -309,17 +417,19 @@ function getAllTasksOverdue() {
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
-                $(resultElement).append('<div class="taskDiv">' +
+                $(resultElement).append(
+                    '<div class="taskDiv">' +
                     '<li style="list-style-type: none">' +
                     '<p>' + taskTitle + '</p >' +
                     '<div class="editMenuBtn">' +
-                    '<a href="#" data-toggle="tooltip" title="Hooray!">' + '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    '<a href="#" data-tooltip="Complete">' +
+                    '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     '</div>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
-                    '</li>' +
+                    '</li>' + '<hr>' +
                     '</div>' +
                     '</div>');
             });
