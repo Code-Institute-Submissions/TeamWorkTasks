@@ -1,30 +1,30 @@
-function getTaskListDetails() {
-    var resultElement = document.getElementById('getAllTaskListSelectList');
-    resultElement.innerHTML = '';
+// function getTaskListDetails() {
+//     var resultElement = document.getElementById('getAllTaskListSelectList');
+//     resultElement.innerHTML = '';
 
-    var projectId = '334385';
+//     var projectId = '334385';
 
-    axios({
-            method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/projects/' + projectId + '/tasklists.json',
-        })
-        .then(function(response) {
-            $(response.data['tasklists']).each(function() {
-                // var taskListName = this.name;
-                var taskListId = this.id;
-                return console.log(taskListId);
-                // var taskList = $(resultElement).append(
-                //     '<option>' + taskListName + ' (id: ' + taskListId + ')' + '</option>');
-            });
-        })
-        .catch(function(error) {
-            resultElement.innerHTML = generateErrorHTMLOutput(error);
-        });
-}
+//     axios({
+//             method: 'GET',
+//             auth: {
+//                 username: APIKey,
+//                 password: ':xxx'
+//             },
+//             url: 'https://' + SiteName + '.teamwork.com/projects/' + projectId + '/tasklists.json',
+//         })
+//         .then(function (response) {
+//             $(response.data['tasklists']).each(function () {
+//                 // var taskListName = this.name;
+//                 var taskListId = this.id;
+//                 return console.log(taskListId);
+//                 // var taskList = $(resultElement).append(
+//                 //     '<option>' + taskListName + ' (id: ' + taskListId + ')' + '</option>');
+//             });
+//         })
+//         .catch(function (error) {
+//             resultElement.innerHTML = generateErrorHTMLOutput(error);
+//         });
+// }
 
 
 
@@ -44,11 +44,11 @@ function getAccount() {
             },
             url: 'https://davedodea.eu.teamwork.com/account.json',
         })
-        .then(function(response) {
+        .then(function (response) {
             resultElement.innerHTML = '<i class="fa fa-user"></i>' + " " +
                 response.data.account.siteOwnerName;
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
@@ -71,14 +71,14 @@ function getOverview() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json',
         })
-        .then(function(response) {
-            $(response.data['todo-items']).each(function() {
+        .then(function (response) {
+            $(response.data['todo-items']).each(function () {
                 var taskTitle = this.content;
                 var task = $(resultElement).append(
                     '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
@@ -89,34 +89,34 @@ function getOverview() {
 // Get all tasklist for a project
 // 
 
-function getAllTaskLists() {
-    var resultElement = document.getElementById('getAllTaskListSelectList');
-    resultElement.innerHTML = '';
+// function getAllTaskLists() {
+//     var resultElement = document.getElementById('getAllTaskListSelectList');
+//     resultElement.innerHTML = '';
 
-    var projectId = '334385';
+//     var projectId = '334385';
 
-    axios({
-            method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/projects/' + projectId + '/tasklists.json',
-        })
-        .then(function(response) {
-            $(response.data['tasklists']).each(function() {
-                var taskListName = this.name;
-                var taskListId = this.id;
-                var taskList = $(resultElement).append(
-                    '<option>' + taskListName + '</option>');
-            });
-            // resultElement.innerHTML = generateSuccessHTMLOutput(response);
+//     axios({
+//             method: 'GET',
+//             auth: {
+//                 username: APIKey,
+//                 password: ':xxx'
+//             },
+//             url: 'https://' + SiteName + '.teamwork.com/projects/' + projectId + '/tasklists.json',
+//         })
+//         .then(function (response) {
+//             $(response.data['tasklists']).each(function () {
+//                 var taskListName = this.name;
+//                 var taskListId = this.id;
+//                 var taskList = $(resultElement).append(
+//                     '<option>' + taskListName + '</option>');
+//             });
+//             // resultElement.innerHTML = generateSuccessHTMLOutput(response);
 
-        })
-        .catch(function(error) {
-            resultElement.innerHTML = generateErrorHTMLOutput(error);
-        });
-}
+//         })
+//         .catch(function (error) {
+//             resultElement.innerHTML = generateErrorHTMLOutput(error);
+//         });
+// }
 
 // 
 // Count all Tasks
@@ -134,14 +134,14 @@ function getTaskCount() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json',
         })
-        .then(function(response) {
+        .then(function (response) {
             if (response.statusText == 'OK') {
                 var taskCount = response.data['todo-items'].length;
                 var task = $(resultElement).append(
                     taskCount);
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
@@ -164,30 +164,32 @@ function getAllTasks() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?sort=dateadded',
         })
-        .then(function(response) {
-            $(response.data['todo-items']).each(function() {
+        .then(function (response) {
+            $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
                 var taskDescription = this.description;
                 $(resultElement).append(
-                    '<div class="taskDiv">' +
+                    '<div class="taskDiv panel panel-default">' +
                     '<li style="list-style-type: none">' +
-                    '<p><b>' + taskTitle + '</b></p>' + 
-                    '<p>' + taskDescription + '</p >' +
-                    '<div class="editMenuBtn">' +
-                    '<a href="#" data-tooltip="Complete">' +
+                    '<div class="panel-body">' +
+                    '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
+                    '<div class="editMenuBtn alignright">' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
                     '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
-                    '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '</div>' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
+                    '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
+                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '</div>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' + '<hr>' +
                     '</div>' +
                     '</div>');
+                    triggerTooltips();
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
@@ -217,28 +219,26 @@ function getAllTasksCompleted() {
             },
             url: 'https://' + SiteName + '.teamwork.com/completedtasks.json?sort=completedOn',
         })
-        .then(function(response) {
-            $(response.data['tasks']).each(function() {
+        .then(function (response) {
+            $(response.data['tasks']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
+                var taskDescription = this.description;
                 $(resultElement).append(
-                    '<div class="taskDiv">' +
+                    '<div class="taskDiv panel panel-default">' +
                     '<li style="list-style-type: none">' +
-                    '<p><strike>' + taskTitle + '</strike></p >' +
-                    '<div class="editMenuBtn">' +
-                    '<a href="#" data-tooltip="Complete">' +
+                    '<div class="panel-body">' +
+                    '<strike><p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</strike></p >' +
+                    '<div class="editMenuBtn alignright">' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Delete">' +
                     '<i class="fa fa-trash-o fa-lg edit-menu-icons" aria-hidden="true" onclick="deleteTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
-                    // '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '</div>' +
-                    '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' + '<hr>' +
                     '</div>' +
                     '</div>');
+                    triggerTooltips();
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
@@ -261,19 +261,19 @@ function getAllTasksToday() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=today&sort=dateadded',
         })
-        .then(function(response) {
-            $(response.data['todo-items']).each(function() {
+        .then(function (response) {
+            $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
                 var taskDescription = this.description;
                 $(resultElement).append(
-                    '<div class="taskDiv">' +
+                    '<div class="taskDiv panel panel-default">' +
                     '<li style="list-style-type: none">' +
-                    '<p><b>' + taskTitle + '</b></p>' + 
-                    '<p>' + taskDescription + '</p >' +
-                    '<div class="editMenuBtn">' +
+                    '<div class="panel-body">' +
+                    '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
+                    '<div class="editMenuBtn alignright">' +
                     '<a href="#" data-tooltip="Complete">' +
                     '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
@@ -286,7 +286,7 @@ function getAllTasksToday() {
                     '</div>');
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = getAllTasksOutputError(error);
         });
 }
@@ -309,13 +309,13 @@ function getTaskCountToday() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=today',
         })
-        .then(function(response) {
+        .then(function (response) {
             var taskCount = response.data['todo-items'].length;
             var task = $(resultElement).append(
                 taskCount);
 
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
@@ -338,17 +338,19 @@ function getAllTasksTomorrow() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=tomorrow&?sort=dateadded',
         })
-        .then(function(response) {
-            $(response.data['todo-items']).each(function() {
+        .then(function (response) {
+            $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
+                var taskDescription = this.description;
                 $(resultElement).append(
-                    '<div class="taskDiv">' +
+                    '<div class="taskDiv panel panel-default">' +
                     '<li style="list-style-type: none">' +
-                    '<p>' + taskTitle + '</p >' +
-                    '<div class="editMenuBtn">' +
+                    '<div class="panel-body">' +
+                    '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
+                    '<div class="editMenuBtn alignright">' +
                     '<a href="#" data-tooltip="Complete">' +
                     '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
@@ -361,7 +363,7 @@ function getAllTasksTomorrow() {
                     '</div>');
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = getAllTasksOutputError(error);
         });
 }
@@ -384,11 +386,11 @@ function getTaskCountTomorrow() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=tomorrow',
         })
-        .then(function(response) {
+        .then(function (response) {
             var taskCount = response.data['todo-items'].length;
             var task = $(resultElement).append(taskCount);
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
@@ -411,17 +413,19 @@ function getAllTasksOverdue() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=overdue&sort=dateadded',
         })
-        .then(function(response) {
-            $(response.data['todo-items']).each(function() {
+        .then(function (response) {
+            $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
+                var taskDescription = this.description;
                 $(resultElement).append(
-                    '<div class="taskDiv">' +
+                    '<div class="taskDiv panel panel-default">' +
                     '<li style="list-style-type: none">' +
-                    '<p>' + taskTitle + '</p >' +
-                    '<div class="editMenuBtn">' +
+                    '<div class="panel-body">' +
+                    '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
+                    '<div class="editMenuBtn alignright">' +
                     '<a href="#" data-tooltip="Complete">' +
                     '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
@@ -434,7 +438,7 @@ function getAllTasksOverdue() {
                     '</div>');
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         })
 }
@@ -458,11 +462,11 @@ function getTaskCountOverdue() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=overdue',
         })
-        .then(function(response) {
+        .then(function (response) {
             var taskCount = response.data['todo-items'].length;
             var task = $(resultElement).append(taskCount);
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
@@ -485,9 +489,9 @@ function getAllTasksStudy() {
             },
             url: 'https://' + SiteName + '.teamwork.com/projects/334288/tasks.json',
         })
-        .then(function(response) {
+        .then(function (response) {
             '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function() {
+            $(response.data['todo-items']).each(function () {
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var priority = this.priority;
@@ -497,7 +501,7 @@ function getAllTasksStudy() {
                     'Priority: ' + priority + '<hr>');
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = getAllTasksOutputError(error);
         });
 }
@@ -521,9 +525,9 @@ function getAllTasksWork() {
             },
             url: 'https://' + SiteName + '.teamwork.com/projects/334385/tasks.json',
         })
-        .then(function(response) {
+        .then(function (response) {
             '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function() {
+            $(response.data['todo-items']).each(function () {
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var priority = this.priority;
@@ -533,7 +537,7 @@ function getAllTasksWork() {
                     'Priority: ' + priority + '<hr>');
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = getAllTasksOutputError(error);
         });
 }
@@ -557,9 +561,9 @@ function getHighPriority() {
             },
             url: 'https://' + SiteName + '.teamwork.com/tasks.json?priority=high',
         })
-        .then(function(response) {
+        .then(function (response) {
             '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function() {
+            $(response.data['todo-items']).each(function () {
                 var taskTitle = this.content;
                 var dueDate = this['due-date'];
                 var priority = this.priority;
@@ -569,9 +573,178 @@ function getHighPriority() {
                     'Priority: ' + priority + '<hr>');
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = getAllTasksOutputError(error);
         });
 }
+
+// *************************************************************************************************
+
+
+function getTaskForEdit(task_id) {
+    var var1 = task_id;
+
+    console.log("Task selected: " + task_id);
+
+    editTaskForm(var1);
+
+    $(".taskEdit").show();
+    $(".addTaskRight").hide();
+    $(".addTaskMobile").hide();
+    $(".allTasks").hide();
+}
+
+function editTaskForm(val) {
+    var resultElement = document.getElementById('getTaskForEditResult');
+    resultElement.innerHTML = '';
+    var task_id = val;
+
+    ThisTaskID.task_id = task_id;
+
+
+    axios({
+            method: 'GET',
+            auth: {
+                username: APIKey,
+                password: ':xxx'
+            },
+            url: 'https://' + SiteName + '.teamwork.com/tasks/' + task_id + '.json',
+        })
+        .then(function (response) {
+            $(response.data['todo-item']).each(function () {
+                var taskID = this.id;
+                var taskTitle = this.content;
+                var dueDate = this['due-date'];
+                var project = this['project-name'];
+                var taskDescription = this.description;
+                console.log(response.statusText);
+                $(resultElement).append(
+                    '<form class="form-inline" id="todoInputFormEdit">' +
+                    '<div>' +
+                    '<input  value="' + taskTitle + '" type="text" class="form-control input-no-border" id="taskTitleEdit" size="50" placeholder="" maxlength="20" required>' +
+                    '<br>' +
+                    '<br>' +
+                    '<textarea name="message" class="form-control input-no-border" id="taskDescriptionEdit" rows="5" cols=48 placeholder="">' + taskDescription + '</textarea>' +
+                    '<br>' +
+                    '<br>' +
+                    '<!-- Date input -->' +
+                    '<br>' +
+                    '<input class="form-control input-no-border" id="datePickerEdit" name="date" size="50" placeholder="Due date: DD/MM/YYY" type="text"/>' +
+                    '<br>' +
+                    '<br>' +
+                    '<button type="submit" class="btn btn-primary">Save</button>' + '</div>' +
+                    '<div class = "panel-body" id ="editTaskResult">' +
+                    '</div>' +
+                    '</form>');
+                var date_input = $('input[name="date"]'); //our date input has the name "date"
+                var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+                date_input.datepicker({
+                    format: 'yyyymmdd',
+                    container: container,
+                    todayHighlight: true,
+                    autoclose: true,
+                })
+                document.getElementById('todoInputFormEdit').addEventListener('submit', editTask);
+            });
+        })
+        .catch(function (error) {
+            console.log(error.statusText);
+        })
+}
+
+
+// 
+// ********************* PUTS *********************
+// 
+
+
+
+
+var ThisTaskID = {};
+
+// 
+// Pass in task_id and use to make a PUT call to mark that task as completed
+//
+
+function completeTask(task_id) {
+
+    console.log(task_id);
+
+    axios({
+            method: 'PUT',
+            url: 'https://' + SiteName + '.teamwork.com/tasks/' + task_id + '/complete.json',
+            auth: {
+                username: APIKey,
+                password: ':xxx'
+            },
+        })
+        .then(function (response) {
+            setTimeout(() => {
+                getAllTasks();
+                getAllTasksCompleted();
+            }, 100);
+            console.log(response.statusText);
+        })
+        .catch(function (error) {
+            console.log(error.statusText);
+        })
+
+}
+
+// *************************************************************************************************
+
+function editTask(task_id) {
+    console.log("Frome the global var, the id is: " + ThisTaskID.task_id);
+
+    var taskDescription = document.getElementById('taskDescriptionEdit').value;
+    var content = document.getElementById("taskTitleEdit").value;
+    var date_picker = document.getElementById('datePickerEdit').value;
+
+    console.log("Set vars, task id is: " + thisTaskID);
+    axios({
+            method: 'PUT',
+            url: 'https://' + SiteName + '.teamwork.com/todo_items/' + task_id + '.json',
+            auth: {
+                username: APIKey,
+                password: ':xxx'
+            },
+            data: {
+                "todo-item": {
+                    "content": content,
+                    "due-date": date_picker,
+                    "description": taskDescription
+                }
+            },
+            processData: false,
+            contentType: "application/json; charset=UTF-8"
+        })
+        .then(function (response) {
+            //resultElement.innerHTML = generateSuccessHTMLOutput(response);
+            $(resultElement).append(
+                '<div class = "alert alert-success task-edit-success" role = "alert" style = "display: none" > Super! Your task was succecssfully edited!</div>');
+            $('.task-edit-success').show();
+            getAllTasks();
+            getTaskCount();
+            setTimeout(() => {
+                $('#todoInputFormEdit')[0].reset();
+                setTimeout(() => {
+                    $('.task-edit-success').hide();
+                }, 5000);
+            }, 50);
+        })
+        .catch(function (error) {
+            console.log("The error is: " + error.statusText);
+        })
+    e.preventDefault();
+
+}
+
+function triggerTooltips() {
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+}
+
+
 
 // *************************************************************************************************

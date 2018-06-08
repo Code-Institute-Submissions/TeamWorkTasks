@@ -6,7 +6,8 @@
 
 function showCountTasks() {
     $(".countTasks").show();
-    $(".addTask").show();
+    $(".taskEdit").hide();
+    $(".addTaskRight").show();
     $(".addTaskMobile").show();
     $(".todaysTasks").hide();
     $(".tomorrowsTasks").hide();
@@ -15,13 +16,26 @@ function showCountTasks() {
     $(".completeTasks").hide();
 }
 
+// function showEditTask() {
+//     $(".taskEdit").show();
+//     $(".countTasks").hide();
+//     $(".addTask").hide();
+//     $(".addTaskMobile").hide();
+//     $(".todaysTasks").hide();
+//     $(".tomorrowsTasks").hide();
+//     $(".allTasks").hide();
+//     $(".overdueTasks").hide();
+//     $(".completeTasks").hide();
+// }
+
 function showAllTasks() {
     $(".allTasks").show();
+    $(".taskEdit").hide();
     $(".addTaskMobile").hide();
     $(".todaysTasks").hide();
     $(".countTasks").hide();
     $(".tomorrowsTasks").hide();
-    $(".addTask").hide();
+    $(".addTaskRight").show();
     $(".overdueTasks").hide();
     $(".completeTasks").hide();
 }
@@ -32,7 +46,7 @@ function showTodaysTasks() {
     $(".countTasks").hide();
     $(".allTasks").hide();
     $(".tomorrowsTasks").hide();
-    $(".addTask").hide();
+    $(".addTaskRight").show();
     $(".overdueTasks").hide();
     $(".completeTasks").hide();
 }
@@ -43,7 +57,7 @@ function showTomorrowsTasks() {
     $(".countTasks").hide();
     $(".allTasks").hide();
     $(".todaysTasks").hide();
-    $(".addTask").hide();
+    $(".addTaskRight").show();
     $(".overdueTasks").hide();
     $(".completeTasks").hide();
 }
@@ -54,17 +68,29 @@ function showOverdueTasks() {
     $(".countTasks").hide();
     $(".allTasks").hide();
     $(".todaysTasks").hide();
-    $(".addTask").hide();
+    $(".addTaskRight").show();
     $(".tomorrowsTasks").hide();
     $(".completeTasks").hide();
 }
 
 function showAddTask() {
-    $(".addTask").show();
+    $(".addTaskRight").show();
     $(".addTaskMobile").hide();
     $(".overdueTasks").hide();
     $(".countTasks").hide();
     $(".tomorrowsTasks").hide();
+}
+
+
+function showTasksCompleted() {
+    $(".completeTasks").show();
+    $(".addTaskMobile").hide();
+    $(".addTaskRight").show();
+    $(".overdueTasks").hide();
+    $(".countTasks").hide();
+    $(".tomorrowsTasks").hide();
+    $(".allTasks").hide();
+    $(".todaysTasks").hide();
 }
 
 function showAddTaskMobile(){
@@ -73,20 +99,8 @@ function showAddTaskMobile(){
     $(".countTasks").hide();
     $(".allTasks").hide();
     $(".todaysTasks").hide();
-    $(".addTask").hide();
+    $(".addTaskRight").hide();
     $(".tomorrowsTasks").hide();
     $(".completeTasks").hide();
 }
-
-function showTasksCompleted() {
-    $(".completeTasks").show();
-    $(".addTaskMobile").hide();
-    $(".addTask").hide();
-    $(".overdueTasks").hide();
-    $(".countTasks").hide();
-    $(".tomorrowsTasks").hide();
-    $(".allTasks").hide();
-    $(".todaysTasks").hide();
-}
-
 // *************************************************************************************************

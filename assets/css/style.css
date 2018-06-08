@@ -7,9 +7,22 @@
 
 /* ************************************************************************ */
 
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
 
 #getAllTaskListSelectList{
 	width: 40%;
+}
+
+.padded{
+	padding: 2px;
+	background-color: rgb(244, 241, 241);
 }
 
 /* Edit icon */
@@ -79,7 +92,7 @@
 }
 
 .input-no-border {
-	border-bottom: 5px solid #D24D57;
+	border-bottom: 2px solid #D24D57;
 	box-shadow: none;
 }
 

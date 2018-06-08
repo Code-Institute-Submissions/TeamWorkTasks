@@ -17,19 +17,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
     />
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap Date-Picker Plugin -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <!-- Popper and Tooltip JS -->
-    <script src="https://unpkg.com/popper.js"></script>
-    <script src="https://unpkg.com/tooltip.js"></script>
+    <!-- <script src="https://unpkg.com/popper.js"></script>
+    <script src="https://unpkg.com/tooltip.js"></script> -->
 </head>
 
-<body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted(); getAllTaskLists(); getTaskListDetails();">
+<body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
     <!-- ***************************************************** Nav div ******************************************************** -->
     <nav class="navbar navbar-default visible-lg visible-md">
         <div class="container-fluid nav-container">
@@ -49,7 +48,7 @@
             </div>
         </div>
     </nav>
-    <div class="example-two navbar-fixed-top visible-sm visible-xs " >
+    <div class="example-two navbar-fixed-top visible-sm visible-xs ">
         <header class="example-two-header">
             <span class="logo" onclick="showCountTasks();">TeamworkToDO
             </span>
@@ -80,7 +79,7 @@
                 <div class="row">
                     <!-- ***************************************************** SideMenu div *************************************************** -->
                     <div class=" side-menu col-lg-2 col-md-2 col-md-offset-1 col-sm-2 col-xs-3 visible-lg visible-md">
-                        <div class="visible-lg visible-md" style="padding-top: 50px">
+                        <div class="visible-lg visible-md">
                             <!-- <div>
                                 <h4 class="h4-well-title">
                                     <i class="fa fa-fw fa-bars"></i> Menu
@@ -139,7 +138,7 @@
                         </ul>
                     </div>
                     <!-- ***************************************************** Middle Div ***************************************************** -->
-                    <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" style="background-color: #fff; min-height: 100vh; padding-top: 25px;">
+                    <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" style="background-color: #fff; min-height: 100vh;">
                         <div class="hidden-lg"></div>
                         <!-- Counts -->
                         <div class="countTasks">
@@ -207,9 +206,8 @@
                         <!-- All Tasks -->
                         <div class="allTasks">
                             <h4 class="h4-well-title">
-                                <i class="fa fa-fw fa-list"></i> Tasks
                                 <span>
-                                    <h6 id="todaysDate"></h6>
+                                    <i class="fa fa-fw fa-list"></i> Tasks
                                 </span>
                             </h4>
                             <hr>
@@ -221,7 +219,6 @@
                             <h4 class="h4-well-title">
                                 <span>
                                     <i class="fa fa-fw fa-list"></i> Today
-                                    <h6 id="todaysDate"></h6>
                                 </span>
                             </h4>
                             <hr>
@@ -232,7 +229,6 @@
                             <h4 class="h4-well-title">
                                 <span>
                                     <i class="fa fa-fw fa-list"></i> Tomorrow
-                                    <h6 id="todaysDate"></h6>
                                 </span>
                             </h4>
                             <hr>
@@ -243,7 +239,6 @@
                             <h4 class="h4-well-title">
                                 <span>
                                     <i class="fa fa-fw fa-exclamation-circle"></i> Overdue
-                                    <h6 id="todaysDate"></h6>
                                 </span>
                             </h4>
                             <hr>
@@ -255,11 +250,21 @@
                             <h4 class="h4-well-title">
                                 <span>
                                     <i class="fa fa-fw fa-check-square-o"></i> Completed
-                                    <h6 id="todaysDate"></h6>
                                 </span>
                             </h4>
                             <hr>
                             <div class="panel-body" id="getAllTasksCompletedResult"></div>
+                            <hr>
+                        </div>
+                        <!-- Get Task for Edit -->
+                        <div class="taskEdit">
+                            <h4 class="h4-well-title">
+                                <span>
+                                    <i class="fa fa-fw fa-pencil-square-o"></i> Edit task
+                                </span>
+                            </h4>
+                            <hr>
+                            <div class="panel-body" id="getTaskForEditResult"></div>
                             <hr>
                         </div>
                         <!-- Add task Mobile-->
@@ -270,16 +275,16 @@
                             <hr>
                             <form class="form-inline" id="todoInputFormMobile">
                                 <div>
-                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30" placeholder="Title:    20 chars max." maxlength="20"
-                                        required>
+                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30" placeholder="Title:    20 chars max."
+                                        maxlength="20" required>
                                     <br>
                                     <br>
                                     <textarea name="message" class="form-control input-no-border" id="taskDescriptionMobile" rows="5" cols="28" placeholder="Add a task description"></textarea>
                                     <br>
                                     <br>
                                     <!-- Date input -->
-                                    <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text"
-                                    />
+                                    <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30" placeholder="Due date: DD/MM/YYY"
+                                        type="text" />
                                     <br>
                                     <!-- <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " /> -->
                                     <br>
@@ -344,6 +349,9 @@
             </div>
         </div>
     </div>
+
+
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/gets.js"></script>
@@ -353,6 +361,12 @@
     <script src="assets/js/showHides.js"></script>
     <script src="assets/js/loginLogic.js"></script>
     <script src="assets/js/misc.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -380,6 +394,7 @@
         }
     });
 </script>
+
 <!-- DatePicker -->
 <script>
     $(document).ready(function () {
@@ -393,5 +408,13 @@
         })
     })
 </script>
+
+<!-- <script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script> -->
+
+
 
 </html>

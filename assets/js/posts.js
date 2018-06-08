@@ -5,28 +5,26 @@
 document.getElementById('todoInputForm').addEventListener('submit', postTask);
 document.getElementById('todoInputFormMobile').addEventListener('submit', postTaskMobile);
 
+
 // 
 // Post task with form fields taken from 'todoInputForm'
 //
 
 function postTask(e) {
     var resultElement = document.getElementById('postTaskResult');
-    // var taskTitle = document.getElementById("taskTitle").value;
     resultElement.innerHTML = '';
 
-    var date = new Date();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-
-    var company = "davedodea.eu";
-    // var key = "twp_YWbJhowpOcZZxp878vS8wcy4IAco_eu";
     var tasklist_id = "1235942";
-    //var tasklist_id = getAllTaskLists.taskListId;
     var taskDescription = document.getElementById('taskDescription').value;
     var content = document.getElementById("taskTitle").value;
     var date_picker = document.getElementById('datePicker').value;
-    var due_date = date.getFullYear() + (month < 10 ? '0' : '') +
-        month + (day < 10 ? '0' : '') + day;
+
+    // var date = new Date();
+    // var month = date.getMonth() + 1;
+    // var day = date.getDate();
+    // var due_date = date.getFullYear() + (month < 10 ? '0' : '') +
+    //     month + (day < 10 ? '0' : '') + day;
+
 
     console.log("Task listid is: " + tasklist_id);
 
@@ -108,11 +106,9 @@ function postTaskMobile(e) {
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
             //<div class="alert alert-success" role="alert">...</div>
             $('.task-success').show();
-            getAllTasks();
-            getTaskCount();
+            refreshAllTasks();
             setTimeout(() => {
                 $('#todoInputFormMobile')[0].reset();
-                $('#todoInputForm')[0].reset();
                 setTimeout(() => {
                     $('.task-success').hide();
                 }, 5000);
@@ -124,4 +120,15 @@ function postTaskMobile(e) {
     e.preventDefault();
 }
 
+
+function refreshAllTasks() {
+    getAllTasks();
+    getAllTasksCompleted();
+    getAllTasksToday();
+    getAllTasksTomorrow();
+    getAllTasksOverdue();
+    getTaskCount();
+}
 // *************************************************************************************************
+
+
