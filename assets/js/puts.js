@@ -1,5 +1,3 @@
-// var ThisTaskID = {};
-
 // 
 // Pass in task_id and use to make a PUT call to mark that task as completed
 //

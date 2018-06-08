@@ -15,6 +15,15 @@
 	float: right;
 }
 
+.align-right-margin {
+	margin-left: 10px;
+}
+
+.btn-cancel{
+	border-color: #D24D57;
+	color: #000;
+}
+
 
 #getAllTaskListSelectList{
 	width: 40%;
@@ -216,7 +225,7 @@ input[type="submit"] {
 .side-menu {
 	/* background-color: lightgrey; */
 	min-height: 100vh;
-	margin-left: 0px;
+	margin-left: 100px;
 }
 
 .top-brand {

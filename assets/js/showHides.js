@@ -11,7 +11,7 @@ function showCountTasks() {
     $(".addTaskMobile").show();
     $(".todaysTasks").hide();
     $(".tomorrowsTasks").hide();
-    $(".allTasks").hide();
+    $(".allTasks").show();
     $(".overdueTasks").hide();
     $(".completeTasks").hide();
 }
@@ -100,6 +100,18 @@ function showAddTaskMobile(){
     $(".allTasks").hide();
     $(".todaysTasks").hide();
     $(".addTaskRight").hide();
+    $(".tomorrowsTasks").hide();
+    $(".completeTasks").hide();
+}
+
+function hideEditForm(){
+    $(".allTasks").show();
+    $(".countTasks").show();
+    $(".addTaskRight").show();
+    $(".taskEdit").hide();
+    $(".addTaskMobile").hide();
+    $(".overdueTasks").hide();
+    $(".todaysTasks").hide();
     $(".tomorrowsTasks").hide();
     $(".completeTasks").hide();
 }

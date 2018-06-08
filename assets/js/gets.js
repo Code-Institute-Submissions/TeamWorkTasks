@@ -183,7 +183,7 @@ function getAllTasks() {
                     // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     // '</div>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
-                    '</li>' + '<hr>' +
+                    '</li>' +
                     '</div>' +
                     '</div>');
                     triggerTooltips();
@@ -592,6 +592,7 @@ function getTaskForEdit(task_id) {
     $(".addTaskRight").hide();
     $(".addTaskMobile").hide();
     $(".allTasks").hide();
+    $(".countTasks").hide();
 }
 
 function editTaskForm(val) {
@@ -621,18 +622,19 @@ function editTaskForm(val) {
                 $(resultElement).append(
                     '<form class="form-inline" id="todoInputFormEdit">' +
                     '<div>' +
-                    '<input  value="' + taskTitle + '" type="text" class="form-control input-no-border" id="taskTitleEdit" size="50" placeholder="" maxlength="20" required>' +
+                    '<input  value="' + taskTitle + '" type="text" class="form-control input-no-border" id="taskTitleEdit" size="100%" placeholder="" maxlength="20" required>' +
                     '<br>' +
                     '<br>' +
-                    '<textarea name="message" class="form-control input-no-border" id="taskDescriptionEdit" rows="5" cols=48 placeholder="">' + taskDescription + '</textarea>' +
+                    '<textarea name="message" class="form-control input-no-border" id="taskDescriptionEdit" rows="5" cols=100 placeholder="">' + taskDescription + '</textarea>' +
                     '<br>' +
                     '<br>' +
                     '<!-- Date input -->' +
                     '<br>' +
-                    '<input class="form-control input-no-border" id="datePickerEdit" name="date" size="50" placeholder="Due date: DD/MM/YYY" type="text"/>' +
+                    '<input class="form-control input-no-border" id="datePickerEdit" name="date" size="100%" placeholder="Due date: DD/MM/YYY" type="text"/>' +
                     '<br>' +
                     '<br>' +
-                    '<button type="submit" class="btn btn-primary">Save</button>' + '</div>' +
+                    '<div>' + 
+                    '<button type="submit" class="btn btn-primary">Save</button>' + '<p class="btn btn-cancel align-right-margin" onclick="hideEditForm()" >Cancel</p>' + '</div>' +
                     '<div class = "panel-body" id ="editTaskResult">' +
                     '</div>' +
                     '</form>');
@@ -659,7 +661,7 @@ function editTaskForm(val) {
 
 
 
-
+// Set global var to hold task_id
 var ThisTaskID = {};
 
 // 
