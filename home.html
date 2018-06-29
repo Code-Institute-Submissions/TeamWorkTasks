@@ -7,13 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TeamworkToDo</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/scrollNav.css">
     <!-- Font awesome -->
     <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
+    />
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -23,108 +25,108 @@
     <!-- Popper and Tooltip JS -->
     <!-- <script src="https://unpkg.com/popper.js"></script>
         <script src="https://unpkg.com/tooltip.js"></script> -->
-    </head>
+</head>
 
-    <body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
-        <!-- ***************************************************** Nav div ******************************************************** -->
-        <nav class="navbar navbar-default visible-lg visible-md">
-            <div class="container-fluid nav-container">
-                <div class="navbar-header">
-                    <div class="top-brand col-lg-2">
-                        <a class="navbar-brand" href="index.html">TeamworkToDO</a>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <div class="hidden-lg">
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <form class="navbar-form navbar-left">
-                            <button type="button" class="btn btn-default" onclick="logOut()" id="logOutButton"></button>
-                        </form>
-                    </ul>
+<body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
+    <!-- ***************************************************** Nav div ******************************************************** -->
+    <nav class="navbar navbar-default visible-lg visible-md">
+        <div class="container-fluid nav-container">
+            <div class="navbar-header">
+                <div class="top-brand col-lg-2">
+                    <a class="navbar-brand" href="index.html">TeamworkToDO</a>
                 </div>
             </div>
-        </nav>
-        <div class="example-two navbar-fixed-top visible-sm visible-xs ">
-            <header class="example-two-header">
-                <span class="logo" onclick="showCountTasks();">TeamworkToDO
-                </span>
-            </header>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="hidden-lg">
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left">
+                        <button type="button" class="btn btn-default" onclick="logOut()" id="logOutButton"></button>
+                    </form>
+                </ul>
+            </div>
         </div>
-        <div class="icon-bar visible-sm visible-xs navbar-fixed-bottom">
-            <header class="example-two-header">
-                <span class="logo">
-                    <i class="fa fa-plus fa-fw fa-lg" onclick="showAddTaskMobile()"></i>
+    </nav>
+    <div class="example-two navbar-fixed-top visible-sm visible-xs ">
+        <header class="example-two-header">
+            <span class="logo" onclick="showCountTasks();">TeamworkToDO
+            </span>
+        </header>
+    </div>
+    <div class="icon-bar visible-sm visible-xs navbar-fixed-bottom">
+        <header class="example-two-header">
+            <span class="logo">
+                <i class="fa fa-plus fa-fw fa-lg" onclick="showAddTaskMobile()"></i>
+            </span>
+            <nav class="vertical-align-middle scroll">
+                <span class="nav-item tasksCount" onclick="showCountTasks()">Overview</span>
+                <span class="nav-item tasksMenu" onclick="showAllTasks()">Tasks</span>
+                <span class="nav-item todaysMenu" onclick="showTodaysTasks()">Today</span>
+                <span class="nav-item tomorrowsMenu" onclick="showTomorrowsTasks()">Tomorrow</span>
+                <span class="nav-item overdueMenu" onclick="showOverdueTasks()">Overdue</span>
+                <span class="nav-item completedMenu" onclick="showTasksCompleted()">Completed</span>
+                <span class="logo nav-item" onclick="logOut()" id="logOutButton2">
+                    <i class="fa fa-exit fa-fw fa-lg"></i>
                 </span>
-                <nav class="vertical-align-middle scroll">
-                    <span class="nav-item tasksCount" onclick="showCountTasks()">Overview</span>
-                    <span class="nav-item tasksMenu" onclick="showAllTasks()">Tasks</span>
-                    <span class="nav-item todaysMenu" onclick="showTodaysTasks()">Today</span>
-                    <span class="nav-item tomorrowsMenu" onclick="showTomorrowsTasks()">Tomorrow</span>
-                    <span class="nav-item overdueMenu" onclick="showOverdueTasks()">Overdue</span>
-                    <span class="nav-item completedMenu" onclick="showTasksCompleted()">Completed</span>
-                    <span class="logo nav-item" onclick="logOut()" id="logOutButton2">
-                        <i class="fa fa-exit fa-fw fa-lg"></i>
-                    </span>
-                    <!-- <span class="nav-item" onclick="logOut()" id="logOutButton2"></span> -->
-                </nav>
-            </header>
-        </div>
-        <div class="main-container">
-            <div class="container-fluid">
-                <div id="main">
-                    <div class="row">
-                        <!-- ***************************************************** SideMenu div *************************************************** -->
-                        <div class=" side-menu col-lg-2 col-md-2 col-md-offset-1 col-sm-2 col-xs-3 visible-lg visible-md">
-                            <div class="visible-lg visible-md">
-                                <div>
-                                    <h4 class="h4-well-title" id="todaysDate"></h4>
-                                    <!-- <h6 id="todaysDate"><i class="fa fa-fw fa-clock-o"></i> Todays date: </h6> -->
-                                </div>
-                                <hr>
+                <!-- <span class="nav-item" onclick="logOut()" id="logOutButton2"></span> -->
+            </nav>
+        </header>
+    </div>
+    <div class="main-container">
+        <div class="container-fluid">
+            <div id="main">
+                <div class="row">
+                    <!-- ***************************************************** SideMenu div *************************************************** -->
+                    <div class=" side-menu col-lg-2 col-md-2 col-md-offset-1 col-sm-2 col-xs-3 visible-lg visible-md">
+                        <div class="visible-lg visible-md">
+                            <div>
+                                <h4 class="h4-well-title" id="todaysDate"></h4>
+                                <!-- <h6 id="todaysDate"><i class="fa fa-fw fa-clock-o"></i> Todays date: </h6> -->
                             </div>
-                            <ul class="nav">
-                                <li role="presentation">
-                                    <a href="#" class="tasksCount" onclick="showCountTasks()">
-                                        <i class="fa fa-book fa-fw"></i> Overview</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#" class="tasksMenu" onclick="showAllTasks()">
-                                            <i class="fa fa-list fa-fw"></i> Tasks</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a href="#" class="todaysMenu" onclick="showTodaysTasks()">
-                                                <i class="fa fa-clock-o fa-fw"></i> Today</a>
-                                            </li>
-                                            <li role="presentation">
-                                                <a href="#" class="tomorrowsMenu" onclick="showTomorrowsTasks()">
-                                                    <i class="fa fa-arrow-right fa-fw"></i> Tomorrow</a>
-                                                </li>
-                                                <li role="presentation">
-                                                    <a href="#" class="overdueMenu" onclick="showOverdueTasks()">
-                                                        <i class="fa fa-exclamation-circle fa-fw"></i> Overdue</a>
-                                                    </li>
-                                                    <hr>
-                                                    <li role="presentation">
-                                                        <a href="#" class="completedMenu" onclick="showTasksCompleted()">
-                                                            <i class="fa fa-check-square-o fa-fw"></i> Completed</a>
-                                                        </li>
-                                                        <hr>
-                                                        <li>
-                                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                                                <i class="fa fa-folder-o fa-fw"></i>
-                                                                Lists
-                                                                <span class="caret"></span>
-                                                            </a>
-                                                            <ul class="dropdown-menu">
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                                                <i class="fa fa-level-up fa-fw"></i>
-                                                                Priority
-                                                                <span class="caret"></span>
-                                                            </a>
+                            <hr>
+                        </div>
+                        <ul class="nav">
+                            <li role="presentation">
+                                <a href="#" class="tasksCount" onclick="showCountTasks()">
+                                    <i class="fa fa-book fa-fw"></i> Overview</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="tasksMenu" onclick="showAllTasks()">
+                                    <i class="fa fa-list fa-fw"></i> Tasks</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="todaysMenu" onclick="showTodaysTasks()">
+                                    <i class="fa fa-clock-o fa-fw"></i> Today</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="tomorrowsMenu" onclick="showTomorrowsTasks()">
+                                    <i class="fa fa-arrow-right fa-fw"></i> Tomorrow</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="overdueMenu" onclick="showOverdueTasks()">
+                                    <i class="fa fa-exclamation-circle fa-fw"></i> Overdue</a>
+                            </li>
+                            <hr>
+                            <li role="presentation">
+                                <a href="#" class="completedMenu" onclick="showTasksCompleted()">
+                                    <i class="fa fa-check-square-o fa-fw"></i> Completed</a>
+                            </li>
+                            <hr>
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-folder-o fa-fw"></i>
+                                    Lists
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-level-up fa-fw"></i>
+                                    Priority
+                                    <span class="caret"></span>
+                                </a>
                                 <!-- <ul class="dropdown-menu" id="getAllTaskListResult">
                                 </ul> -->
                             </li>
@@ -266,14 +268,16 @@
                             <hr>
                             <form class="form-inline" id="todoInputFormMobile">
                                 <div>
-                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30" placeholder="Title:    20 chars max." maxlength="20" required>
+                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30" placeholder="Title:    20 chars max."
+                                        maxlength="20" required>
                                     <br>
                                     <br>
                                     <textarea name="message" class="form-control input-no-border" id="taskDescriptionMobile" rows="5" cols="28" placeholder="Add a task description"></textarea>
                                     <br>
                                     <br>
                                     <!-- Date input -->
-                                    <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text" />
+                                    <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30" placeholder="Due date: DD/MM/YYY"
+                                        type="text" />
                                     <br>
                                     <!-- <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " /> -->
                                     <br>
@@ -307,14 +311,16 @@
                             <div>
                                 <form class="form-inline" id="todoInputForm">
                                     <div>
-                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title:    20 chars max." maxlength="20" required>
+                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title:    20 chars max." maxlength="20"
+                                            required>
                                         <br>
                                         <br>
                                         <textarea name="message" class="form-control input-no-border" id="taskDescription" rows="5" cols="28" placeholder="Add a task description"></textarea>
                                         <br>
                                         <br>
                                         <!-- Date input -->
-                                        <input class="form-control input-no-border" id="datePicker" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text" />
+                                        <input class="form-control input-no-border" id="datePicker" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text"
+                                        />
                                         <br>
                                         <!-- <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " /> -->
                                         <br>
@@ -346,14 +352,14 @@
     <script src="assets/js/loginLogic.js"></script>
     <script src="assets/js/misc.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 </body>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#sidebarCollapse').on('click', function() {
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });
     });
@@ -366,7 +372,7 @@
 </script>
 <!-- Log In/Out button text conditionals -->
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         if (localStorage.length !== 0) {
             logOutButton.innerHTML = "<i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> Log out";
             logOutButton2.innerHTML = "<i class=\"fa fa-sign-out fa-lg\" aria-hidden=\"true\"></i> Log out";
@@ -379,28 +385,31 @@
 </script>
 <!-- DatePicker -->
 <script>
-    $(document).ready(function() {
-    var date_input = $('input[name="date"]'); //our date input has the name "date"
-    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-        format: 'yyyymmdd',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'yyyymmdd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
     })
-})
 </script>
+
 <script>
-        var d = new Date();
-                    var n = d.toString();
-
-document.getElementById("todaysDate").innerHTML = ('<i class="fa fa-fw fa-calendar"></i>' + n);
-// (day + "/" + month + "/" + year)
-</script>
-<!-- <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
+    // var d = new Date();
+    var objDate = new Date(),
+        locale = "en-us",
+        month = objDate.toLocaleString(locale, {
+            month: "long"
         });
-    </script> -->
+    var curr_date = objDate.getDate();
+    var curr_month = objDate.getMonth() + 1; //Months are zero based
+    var curr_year = objDate.getFullYear();
+    document.getElementById("todaysDate").innerHTML = (('<i class="fa fa-fw fa-calendar"></i> ') + curr_date + " " +
+        month + " " + curr_year);
+</script>
 
-    </html>
+
+</html>
