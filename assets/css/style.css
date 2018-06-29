@@ -7,6 +7,12 @@
 
 /* ************************************************************************ */
 
+@media all and (max-width: 499px)  {
+	.middle-div {
+		padding-top: 15%;
+	}
+}
+
 .alignleft {
 	float: left;
 }
@@ -19,17 +25,16 @@
 	margin-left: 10px;
 }
 
-.btn-cancel{
+.btn-cancel {
 	border-color: #D24D57;
 	color: #000;
 }
 
-
-#getAllTaskListSelectList{
+#getAllTaskListSelectList {
 	width: 40%;
 }
 
-.padded{
+.padded {
 	padding: 2px;
 	background-color: rgb(244, 241, 241);
 }
@@ -40,11 +45,11 @@
 	display: none;
 } */
 
-.edit-menu-icons{
+.edit-menu-icons {
 	padding-right: 20px;
 }
 
-.nav>li>a{
+.nav>li>a {
 	border-radius: 50px;
 }
 
@@ -196,7 +201,7 @@ input[type="submit"] {
 	color: #D24D57;
 }
 
-.login-form-1>.login-group>.btn>.btn-primary{
+.login-form-1>.login-group>.btn>.btn-primary {
 	color: #fff;
 	background-color: #D24D57;
 	border-color: #666;
@@ -225,7 +230,7 @@ input[type="submit"] {
 .side-menu {
 	/* background-color: lightgrey; */
 	min-height: 100vh;
-	margin-left: 100px;
+	/* margin-left: 100px; */
 }
 
 .top-brand {

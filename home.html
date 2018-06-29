@@ -27,7 +27,7 @@
         <script src="https://unpkg.com/tooltip.js"></script> -->
 </head>
 
-<body onload=" showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
+<body onload="showCountTasks(); getAccountName(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
     <!-- ***************************************************** Nav div ******************************************************** -->
     <nav class="navbar navbar-default visible-lg visible-md">
         <div class="container-fluid nav-container">
@@ -77,13 +77,12 @@
             <div id="main">
                 <div class="row">
                     <!-- ***************************************************** SideMenu div *************************************************** -->
-                    <div class=" side-menu col-lg-2 col-md-2 col-md-offset-1 col-sm-2 col-xs-3 visible-lg visible-md">
+                    <div class=" side-menu col-lg-2 col-lg-offset-1 col-md-1 col-md-offset-4 col-sm-2 col-xs-3 visible-lg visible-md">
                         <div class="visible-lg visible-md">
                             <div>
                                 <h4 class="h4-well-title" id="todaysDate"></h4>
                                 <!-- <h6 id="todaysDate"><i class="fa fa-fw fa-clock-o"></i> Todays date: </h6> -->
                             </div>
-                            <hr>
                         </div>
                         <ul class="nav">
                             <li role="presentation">
@@ -106,34 +105,15 @@
                                 <a href="#" class="overdueMenu" onclick="showOverdueTasks()">
                                     <i class="fa fa-exclamation-circle fa-fw"></i> Overdue</a>
                             </li>
-                            <hr>
                             <li role="presentation">
                                 <a href="#" class="completedMenu" onclick="showTasksCompleted()">
                                     <i class="fa fa-check-square-o fa-fw"></i> Completed</a>
                             </li>
-                            <hr>
-                            <li>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-folder-o fa-fw"></i>
-                                    Lists
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-level-up fa-fw"></i>
-                                    Priority
-                                    <span class="caret"></span>
-                                </a>
-                                <!-- <ul class="dropdown-menu" id="getAllTaskListResult">
-                                </ul> -->
-                            </li>
+
                         </ul>
                     </div>
                     <!-- ***************************************************** Middle Div ***************************************************** -->
-                    <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12" style="background-color: #fff; min-height: 100vh;">
+                    <div class="middle-div col-lg-5 col-md-3 col-sm-12 col-xs-12" style="background-color: #fff; min-height: 100vh;">
                         <div class="hidden-lg"></div>
                         <!-- Counts -->
                         <div class="countTasks">
@@ -144,7 +124,6 @@
 
                                     </h4>
                                 </div>
-                                <hr>
                             </div>
                             <div class="row">
                                 <a href="#">
@@ -203,7 +182,6 @@
                                     <i class="fa fa-fw fa-list"></i> Tasks
                                 </span>
                             </h4>
-                            <hr>
                             <div class="panel-body" id="getAllTasksResult">
                             </div>
                         </div>
@@ -214,7 +192,6 @@
                                     <i class="fa fa-fw fa-list"></i> Today
                                 </span>
                             </h4>
-                            <hr>
                             <div class="panel-body" id="getAllTasksResultToday"></div>
                         </div>
                         <!-- Tomorrows's Tasks -->
@@ -224,7 +201,6 @@
                                     <i class="fa fa-fw fa-list"></i> Tomorrow
                                 </span>
                             </h4>
-                            <hr>
                             <div class="panel-body" id="getAllTasksResultTomorrow"></div>
                         </div>
                         <!-- Overdue Tasks -->
@@ -234,9 +210,7 @@
                                     <i class="fa fa-fw fa-exclamation-circle"></i> Overdue
                                 </span>
                             </h4>
-                            <hr>
                             <div class="panel-body" id="getAllTasksOverdueResult"></div>
-                            <hr>
                         </div>
                         <!-- Completed Tasks -->
                         <div class="completeTasks">
@@ -245,9 +219,7 @@
                                     <i class="fa fa-fw fa-check-square-o"></i> Completed
                                 </span>
                             </h4>
-                            <hr>
                             <div class="panel-body" id="getAllTasksCompletedResult"></div>
-                            <hr>
                         </div>
                         <!-- Get Task for Edit -->
                         <div class="taskEdit">
@@ -256,16 +228,13 @@
                                     <i class="fa fa-fw fa-pencil-square-o"></i> Edit task
                                 </span>
                             </h4>
-                            <hr>
                             <div class="panel-body" id="getTaskForEditResult"></div>
-                            <hr>
                         </div>
                         <!-- Add task Mobile-->
-                        <div class="addTaskMobile visible-sm visible-xs" style="padding-top: 25px;">
+                        <div class="addTaskMobile" style="padding-top: 25px; display: none;">
                             <h4 class="h4-well-title">
                                 <i class="fa fa-fw fa-plus"></i> Add Task
                             </h4>
-                            <hr>
                             <form class="form-inline" id="todoInputFormMobile">
                                 <div>
                                     <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30" placeholder="Title:    20 chars max."
@@ -295,7 +264,7 @@
                         </div>
                     </div>
                     <!-- ***************************************************** Right div ***************************************************** -->
-                    <div class="visible-lg visible-md col-lg-3 col-md-2" style="background-color: #fff; min-height: 100vh">
+                    <div class="visible-lg visible-md col-lg-1 col-lg-offset-1 col-md-2" style="background-color: #fff; min-height: 100vh">
                         <div class="addTaskRight">
                             <div class="visible-lg visible-md">
                                 <div>
@@ -306,7 +275,6 @@
                                         </span>
                                     </h4>
                                 </div>
-                                <hr>
                             </div>
                             <div>
                                 <form class="form-inline" id="todoInputForm">
@@ -407,7 +375,8 @@
     var curr_date = objDate.getDate();
     var curr_month = objDate.getMonth() + 1; //Months are zero based
     var curr_year = objDate.getFullYear();
-    document.getElementById("todaysDate").innerHTML = (('<i class="fa fa-fw fa-calendar"></i> ') + curr_date + " " +
+    document.getElementById("todaysDate").innerHTML = (('<div id="getAccountResult">Welcome,' + '<br>' + '</div>') +
+        curr_date + " " +
         month + " " + curr_year);
 </script>
 

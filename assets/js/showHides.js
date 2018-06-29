@@ -8,7 +8,6 @@ function showCountTasks() {
     $(".countTasks").show();
     $(".taskEdit").hide();
     $(".addTaskRight").show();
-    $(".addTaskMobile").show();
     $(".todaysTasks").hide();
     $(".tomorrowsTasks").hide();
     $(".allTasks").show();
