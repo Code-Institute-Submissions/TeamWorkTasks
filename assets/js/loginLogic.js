@@ -7,17 +7,8 @@ function loginForm() {
     localStorage.setItem("apiKey", inputApiKey.value);
 
     setTimeout(function () {
-        // $('#lg_password').css('border', '3px solid green;');
-        // window.location.href = "/home.html";
+        window.location.href = "/home.html";
     }, 1000);
-
-
-    // var inputSiteName = document.getElementById("lg_username");
-    // localStorage.setItem("siteName", inputSiteName.value);
-
-    // var inputApiKey = document.getElementById("lg_password");
-    // localStorage.setItem("apiKey", inputApiKey.value);
-    // window.location.href = "/home.html";
 }
 
 function getAccountDetails() {
