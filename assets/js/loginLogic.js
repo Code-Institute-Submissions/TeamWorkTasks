@@ -47,7 +47,7 @@ function getAccountDetails() {
                 });
             });
     } else if (document.getElementById('lg_password').value.length == 0) {
-        alert("Please enter credentials !")
+        alert("Please enter credentials!")
     }
 }
 
