@@ -32,26 +32,28 @@
 // Get Account details
 // 
 
-function getAccount() {
-    var resultElement = document.getElementById('getAccountResult');
-    resultElement.innerHTML = '';
+// function getAccountDetails() {
+//     var resultElement = document.getElementById('getAccountResult');
+//     resultElement.innerHTML = '';
 
-    axios({
-            method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://davedodea.eu.teamwork.com/account.json',
-        })
-        .then(function (response) {
-            resultElement.innerHTML = '<i class="fa fa-user"></i>' + " " +
-                response.data.account.siteOwnerName;
-        })
-        .catch(function (error) {
-            resultElement.innerHTML = generateErrorHTMLOutput(error);
-        });
-}
+//     axios({
+//             method: 'GET',
+//             auth: {
+//                 username: APIKey,
+//                 password: ':xxx'
+//             },
+//             url: 'https://' + SiteName + '.teamwork.com' + '/people.json',
+//         })
+//         .then(function (response) {
+//             var nameOfOwner = response.siteOwnerName;
+//             // $(resultElement).append("Hi, " + nameOfOwner);
+//             console.log("Status is: " + statusText);
+
+//         })
+//         .catch(function (error) {
+//             resultElement.innerHTML = generateErrorHTMLOutput(error);
+//         });
+// }
 
 // *************************************************************************************************
 
@@ -139,6 +141,7 @@ function getTaskCount() {
                 var taskCount = response.data['todo-items'].length;
                 var task = $(resultElement).append(
                     taskCount);
+                console.log("Task count is: " + taskCount);
             }
         })
         .catch(function (error) {
@@ -176,9 +179,9 @@ function getAllTasks() {
                     '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
                     '<div class="editMenuBtn alignright">' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
-                    '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
-                    '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
+                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
                     // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
                     // '</div>' +
@@ -186,7 +189,7 @@ function getAllTasks() {
                     '</li>' +
                     '</div>' +
                     '</div>');
-                    triggerTooltips();
+                triggerTooltips();
             });
         })
         .catch(function (error) {
@@ -235,7 +238,7 @@ function getAllTasksCompleted() {
                     '</li>' + '<hr>' +
                     '</div>' +
                     '</div>');
-                    triggerTooltips();
+                triggerTooltips();
             });
         })
         .catch(function (error) {
@@ -633,7 +636,7 @@ function editTaskForm(val) {
                     '<input class="form-control input-no-border" id="datePickerEdit" name="date" size="100%" placeholder="Due date: DD/MM/YYY" type="text"/>' +
                     '<br>' +
                     '<br>' +
-                    '<div>' + 
+                    '<div>' +
                     '<button type="submit" class="btn btn-primary">Save</button>' + '<p class="btn btn-cancel align-right-margin" onclick="hideEditForm()" >Cancel</p>' + '</div>' +
                     '<div class = "panel-body" id ="editTaskResult">' +
                     '</div>' +
@@ -655,91 +658,7 @@ function editTaskForm(val) {
 }
 
 
-// 
-// ********************* PUTS *********************
-// 
 
-
-
-// Set global var to hold task_id
-var ThisTaskID = {};
-
-// 
-// Pass in task_id and use to make a PUT call to mark that task as completed
-//
-
-function completeTask(task_id) {
-
-    console.log(task_id);
-
-    axios({
-            method: 'PUT',
-            url: 'https://' + SiteName + '.teamwork.com/tasks/' + task_id + '/complete.json',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-        })
-        .then(function (response) {
-            setTimeout(() => {
-                getAllTasks();
-                getAllTasksCompleted();
-            }, 100);
-            console.log(response.statusText);
-        })
-        .catch(function (error) {
-            console.log(error.statusText);
-        })
-
-}
-
-// *************************************************************************************************
-
-function editTask(task_id) {
-    console.log("Frome the global var, the id is: " + ThisTaskID.task_id);
-
-    var taskDescription = document.getElementById('taskDescriptionEdit').value;
-    var content = document.getElementById("taskTitleEdit").value;
-    var date_picker = document.getElementById('datePickerEdit').value;
-
-    console.log("Set vars, task id is: " + thisTaskID);
-    axios({
-            method: 'PUT',
-            url: 'https://' + SiteName + '.teamwork.com/todo_items/' + task_id + '.json',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            data: {
-                "todo-item": {
-                    "content": content,
-                    "due-date": date_picker,
-                    "description": taskDescription
-                }
-            },
-            processData: false,
-            contentType: "application/json; charset=UTF-8"
-        })
-        .then(function (response) {
-            //resultElement.innerHTML = generateSuccessHTMLOutput(response);
-            $(resultElement).append(
-                '<div class = "alert alert-success task-edit-success" role = "alert" style = "display: none" > Super! Your task was succecssfully edited!</div>');
-            $('.task-edit-success').show();
-            getAllTasks();
-            getTaskCount();
-            setTimeout(() => {
-                $('#todoInputFormEdit')[0].reset();
-                setTimeout(() => {
-                    $('.task-edit-success').hide();
-                }, 5000);
-            }, 50);
-        })
-        .catch(function (error) {
-            console.log("The error is: " + error.statusText);
-        })
-    e.preventDefault();
-
-}
 
 function triggerTooltips() {
     $(document).ready(function () {

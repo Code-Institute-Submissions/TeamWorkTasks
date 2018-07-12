@@ -6,10 +6,49 @@ function loginForm() {
     var inputApiKey = document.getElementById("lg_password");
     localStorage.setItem("apiKey", inputApiKey.value);
 
-    console.log("Auth Success!");
-    console.log("Site name is: " + localStorage.getItem("siteName"));
-    console.log("API Key is : " + localStorage.getItem("apiKey"));
-    window.location.href = "/home.html";
+    setTimeout(function () {
+        // $('#lg_password').css('border', '3px solid green;');
+        // window.location.href = "/home.html";
+    }, 1000);
+
+
+    // var inputSiteName = document.getElementById("lg_username");
+    // localStorage.setItem("siteName", inputSiteName.value);
+
+    // var inputApiKey = document.getElementById("lg_password");
+    // localStorage.setItem("apiKey", inputApiKey.value);
+    // window.location.href = "/home.html";
+}
+
+function getAccountDetails() {
+    if (document.getElementById('lg_password').value.length > 0) {
+        axios({
+                method: 'GET',
+                auth: {
+                    username: document.getElementById("lg_password").value,
+                    password: ':xxx'
+                },
+                url: 'https://' + document.getElementById("lg_username").value + '.teamwork.com' + '/account.json',
+            })
+            .then(function (response) {
+                if (response.statusText == "OK") {
+                    $('#checkCredsUser, #checkCredsUserPass').css('visibility', 'visible');
+                    $('#lg_username, #lg_password').css('border', '1px solid green');
+
+                    loginForm();
+                }
+            })
+            .catch(function (error) {
+                $('#lg_username, #lg_password').css('border', '1px solid red');
+                alert("Log In failed - please check your credentials!");
+                $('#login-form')[0].reset();
+                $('#lg_username, #lg_password').click(function () {
+                    $(this).css('border', '1px solid #ccc');
+                });
+            });
+    } else if (document.getElementById('lg_password').value.length == 0) {
+        alert("Please enter credentials !")
+    }
 }
 
 function logOut() {
@@ -43,6 +82,3 @@ function clearLocalStorage() {
     localStorage.removeItem("siteName");
 }
 // *************************************************************************************************
-
-
-    

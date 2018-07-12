@@ -7,10 +7,29 @@
 
 /* ************************************************************************ */
 
-@media all and (max-width: 499px)  {
+@media all and (max-width: 991px) {
 	.middle-div {
 		padding-top: 15%;
 	}
+}
+
+
+#checkCredsUser	 {
+	position: absolute;
+	right: 50px;
+	top: 6px;
+}
+
+#checkCredsUserPass	 {
+	position: absolute;
+	right: 50px;
+	bottom: 6px;
+}
+
+
+
+.fa-check {
+	color: green;
 }
 
 .alignleft {

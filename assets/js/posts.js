@@ -47,7 +47,7 @@ function postTask(e) {
         })
         .then(function(response) {
             //resultElement.innerHTML = generateSuccessHTMLOutput(response);
-            $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
+            $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay! Your new task was added!</div>');
             //<div class="alert alert-success" role="alert">...</div>
             $('.task-success').show();
             getAllTasks();

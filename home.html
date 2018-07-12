@@ -77,7 +77,7 @@
             <div id="main">
                 <div class="row">
                     <!-- ***************************************************** SideMenu div *************************************************** -->
-                    <div class=" side-menu col-lg-2 col-lg-offset-1 col-md-1 col-md-offset-4 col-sm-2 col-xs-3 visible-lg visible-md">
+                    <div class=" side-menu col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-2 col-xs-3 visible-lg visible-md">
                         <div class="visible-lg visible-md">
                             <div>
                                 <h4 class="h4-well-title" id="todaysDate"></h4>
@@ -113,7 +113,7 @@
                         </ul>
                     </div>
                     <!-- ***************************************************** Middle Div ***************************************************** -->
-                    <div class="middle-div col-lg-5 col-md-3 col-sm-12 col-xs-12" style="background-color: #fff; min-height: 100vh;">
+                    <div class="middle-div col-lg-5 col-md-4" style="background-color: #fff;">
                         <div class="hidden-lg"></div>
                         <!-- Counts -->
                         <div class="countTasks">
@@ -264,7 +264,7 @@
                         </div>
                     </div>
                     <!-- ***************************************************** Right div ***************************************************** -->
-                    <div class="visible-lg visible-md col-lg-1 col-lg-offset-1 col-md-2" style="background-color: #fff; min-height: 100vh">
+                    <div class="visible-lg visible-md col-lg-3 col-md-3" style="background-color: #fff; min-height: 100vh">
                         <div class="addTaskRight">
                             <div class="visible-lg visible-md">
                                 <div>
@@ -375,7 +375,7 @@
     var curr_date = objDate.getDate();
     var curr_month = objDate.getMonth() + 1; //Months are zero based
     var curr_year = objDate.getFullYear();
-    document.getElementById("todaysDate").innerHTML = (('<div id="getAccountResult">Welcome,' + '<br>' + '</div>') +
+    document.getElementById("todaysDate").innerHTML = (('<div id="getAccountResult">' + '<br>' + '</div>') +
         curr_date + " " +
         month + " " + curr_year);
 </script>
