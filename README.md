@@ -27,70 +27,62 @@ As first-time user I want to be able to authenticate via my my Teamwork.com cred
 - [x]
 As an autheticated user, I should be able redirected to overview page.
 
-- [ ] 
+- [x] 
 As a user who provides incorrect authentication information, I should see an error with an appropriate message alerting me of the problem.
 
 - [x]
 As an authenticated user I want to be able to view All Tasks as available across all Task Lists.
 
 - [x]
-As an authenticated user I want to be able to view a dashboard with extensive options (detailed in next story) in order to manipulate and manage my tasks.
+As an authenticated user I want to be able to view a dashboard displaying an overview of my tasks.
 
 - [x]
-As an authenticated user, if I wish to add a task, I will need a form which will allow me enter the task details such as:
-    - [x] title, 
-    - [ ] due date,
-    - [ ] priority.
+As an authenticated user, if I wish to add a task, I will need to fill out a form which will allow me enter task details such as:
+    - [x] title,
+    - [x] description, 
+    - [x] due date
 
 - [x]
 As an authenticated user, if I add a task that is successfully submitted, I should see a confirmation message.
 
+- [x]
+As an authenticated user, if there are tasks present, these should be presented in reverse-chronological order, beginning with the newest available task.
+
 - [ ]
-As an authenticated user, if I attempt to add a task but it fails, then I should receive an alert regarding the error.
-
-- [x]
-As an authenticated user, if there are tasks present, these should be presented in reverse order beginning with the newest available task.
-
-- [x]
 As an authenticated user, if there are no tasks present in my account, I should be alerted to this and prompted to add a task.
 
 - [x]
 As authenticated user I want to be able to view Today’s Tasks available across all Task Lists.
 
-- [x]
+- [ ]
 As authenticated user I want to be able to view Today’s Tasks, if there are none, then I should see a message alerting me of this.
 
-- [x]
+- [ ]
 As authenticated user I want to be able to view Tomorrow’s Tasks, if there are none, then I should see a message alerting me of this.
 
-- [x]
+- [ ]
 As authenticated user I want to be able to view Tomorrow’s Tasks, if there are none, then I should see a message alerting me of this.
 
-- [x]
+- [ ]
 As authenticated user I want to be able to view Overdue Tasks, if there are none, then I should see a message alerting me of this.
 
-- [x]
+- [ ]
 As authenticated user I want to be able to view Overdue Tasks, if there are none, then I should see a message alerting me of this.
 
 - [x]
 As an authenticated user, I should be able to see a list of all task lists available.
 
-- [x]
-As an authenticated user, if there are tasks lists present, these should be presented in reverse-chronological order beginning with the oldest available task.
-
 #### Task options
 **To alter each task**
-- [ ]
+- [x]
 Edit task title.
 
-- [ ]
+- [x]
 Delete task.
 
-- [ ]
+- [x]
 Alter due date.
 
-- [ ]
-Alter priority.
 
 #### Other tasks:
 - [ ] Implement Jasmine tests.
