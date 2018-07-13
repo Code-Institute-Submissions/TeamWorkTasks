@@ -1,3 +1,6 @@
+/* TODO: fix CSS naming cenvention */
+
+
 /* Fonts */
 
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
@@ -26,6 +29,17 @@
 	bottom: 6px;
 }
 
+#wrongCredsUser	 {
+	position: absolute;
+	right: 50px;
+	top: 6px;
+}
+
+#wrongCredsUserPass	 {
+	position: absolute;
+	right: 50px;
+	bottom: 6px;
+}
 
 
 .fa-check {

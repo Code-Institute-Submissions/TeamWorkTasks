@@ -7,7 +7,7 @@ function loginForm() {
     localStorage.setItem("apiKey", inputApiKey.value);
 
     setTimeout(function () {
-        window.location.href = "/home.html";
+        // window.location.href = "/home.html";
     }, 1000);
 }
 
@@ -22,17 +22,20 @@ function getAccountDetails() {
                 url: 'https://' + document.getElementById("lg_username").value + '.teamwork.com' + '/account.json',
             })
             .then(function (response) {
-                if (response.statusText == "OK") {
+                if (response.statusText == "OK") {                
                     $('#checkCredsUser, #checkCredsUserPass').css('visibility', 'visible');
+                    $('#wrongCredsUser, #wrongCredsUserPass').css('visibility', 'hidden');
                     $('#lg_username, #lg_password').css('border', '1px solid green');
 
                     loginForm();
                 }
             })
             .catch(function (error) {
+                $('#checkCredsUser, #checkCredsUserPass').css('visibility', 'hidden');
+                $('#wrongCredsUser, #wrongCredsUserPass').css('visibility', 'visible');
                 $('#lg_username, #lg_password').css('border', '1px solid red');
-                alert("Log In failed - please check your credentials!");
-                $('#login-form')[0].reset();
+                // alert("Log In failed - please check your credentials!");
+                //$('#login-form')[0].reset();
                 $('#lg_username, #lg_password').click(function () {
                     $(this).css('border', '1px solid #ccc');
                 });
