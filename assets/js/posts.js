@@ -51,6 +51,10 @@ function postTask(e) {
             //<div class="alert alert-success" role="alert">...</div>
             $('.task-success').show();
             getAllTasks();
+            getAllTasksToday();
+            getAllTasksTomorrow();
+            getTaskCountOverdue();
+            getAllTasksCompleted();
             getTaskCount();
             setTimeout(() => {
                 $('#todoInputForm')[0].reset();

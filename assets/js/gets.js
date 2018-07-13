@@ -235,7 +235,7 @@ function getAllTasksCompleted() {
                     '<div class="editMenuBtn alignright">' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Delete">' +
                     '<i class="fa fa-trash-o fa-lg edit-menu-icons" aria-hidden="true" onclick="deleteTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
-                    '</li>' + '<hr>' +
+                    '</li>' +
                     '</div>' +
                     '</div>');
                 triggerTooltips();
@@ -277,14 +277,15 @@ function getAllTasksToday() {
                     '<div class="panel-body">' +
                     '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
                     '<div class="editMenuBtn alignright">' +
-                    '<a href="#" data-tooltip="Complete">' +
-                    '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
-                    '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '</div>' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
+                    '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
+                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
+                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '</div>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
-                    '</li>' + '<hr>' +
+                    '</li>' +
                     '</div>' +
                     '</div>');
             });
@@ -354,14 +355,15 @@ function getAllTasksTomorrow() {
                     '<div class="panel-body">' +
                     '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
                     '<div class="editMenuBtn alignright">' +
-                    '<a href="#" data-tooltip="Complete">' +
-                    '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
-                    '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '</div>' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
+                    '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
+                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
+                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '</div>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
-                    '</li>' + '<hr>' +
+                    '</li>' +
                     '</div>' +
                     '</div>');
             });
@@ -429,14 +431,15 @@ function getAllTasksOverdue() {
                     '<div class="panel-body">' +
                     '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
                     '<div class="editMenuBtn alignright">' +
-                    '<a href="#" data-tooltip="Complete">' +
-                    '<i class="fa fa-check-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
-                    '<i class="fa fa-pencil-square-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    '</div>' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
+                    '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
+                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
+                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
+                    // '</div>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
-                    '</li>' + '<hr>' +
+                    '</li>' +
                     '</div>' +
                     '</div>');
             });
