@@ -7,8 +7,8 @@ function loginForm() {
     localStorage.setItem("apiKey", inputApiKey.value);
 
     setTimeout(function () {
-        // window.location.href = "/home.html";
-    }, 1000);
+        window.location.href = "/home.html";
+    }, 500);
 }
 
 function getAccountDetails() {
