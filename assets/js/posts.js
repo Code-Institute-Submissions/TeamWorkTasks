@@ -53,7 +53,7 @@ function postTask(e) {
             getAllTasks();
             getAllTasksToday();
             getAllTasksTomorrow();
-            getTaskCountOverdue();
+            getAllTasksOverdue();
             getAllTasksCompleted();
             getTaskCount();
             setTimeout(() => {

@@ -20,6 +20,9 @@ function completeTask(task_id) {
             function (response) {
                 setTimeout(() => {
                     getAllTasks();
+                    getAllTasksToday();
+                    getAllTasksTomorrow();
+                    getAllTasksOverdue();
                     getAllTasksCompleted();
                 }, 100);
                 console.log(response.statusText);
