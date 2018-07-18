@@ -72,6 +72,10 @@ function editTask(e) {
             //<div class="alert alert-success" role="alert">...</div>
             $('.task-success-edit').show();
             getAllTasks();
+            getAllTasksToday();
+            getAllTasksTomorrow();
+            getAllTasksOverdue();
+            getAllTasksCompleted();
             getTaskCount();
             setTimeout(() => {
                 // $('#todoInputFormEdit')[0].reset();
