@@ -14,7 +14,7 @@ function postTask(e) {
     var resultElement = document.getElementById('postTaskResult');
     resultElement.innerHTML = '';
 
-    var tasklist_id = "1235942";
+    var tasklist_id = "964161";
     var taskDescription = document.getElementById('taskDescription').value;
     var content = document.getElementById("taskTitle").value;
     var date_picker = document.getElementById('datePicker').value;
@@ -81,7 +81,7 @@ function postTaskMobile(e) {
     var month = date.getMonth() + 1;
     var day = date.getDate();
 
-    var tasklist_id = "1235942";
+    var tasklist_id = "964161";
     var content = document.getElementById("taskTitleMobile").value;
     var taskDescription = document.getElementById('taskDescriptionMobile').value;
     var date_picker = document.getElementById('datePickerMobile').value;

@@ -1,30 +1,29 @@
-// function getTaskListDetails() {
-//     var resultElement = document.getElementById('getAllTaskListSelectList');
-//     resultElement.innerHTML = '';
+function getTaskListDetails() {
+    var resultElement = document.getElementById('getAllTaskListSelectList');
+    resultElement.innerHTML = '<option value="List" disabled>List</option>';
 
-//     var projectId = '334385';
 
-//     axios({
-//             method: 'GET',
-//             auth: {
-//                 username: APIKey,
-//                 password: ':xxx'
-//             },
-//             url: 'https://' + SiteName + '.teamwork.com/projects/' + projectId + '/tasklists.json',
-//         })
-//         .then(function (response) {
-//             $(response.data['tasklists']).each(function () {
-//                 // var taskListName = this.name;
-//                 var taskListId = this.id;
-//                 return console.log(taskListId);
-//                 // var taskList = $(resultElement).append(
-//                 //     '<option>' + taskListName + ' (id: ' + taskListId + ')' + '</option>');
-//             });
-//         })
-//         .catch(function (error) {
-//             resultElement.innerHTML = generateErrorHTMLOutput(error);
-//         });
-// }
+    axios({
+            method: 'GET',
+            auth: {
+                username: APIKey,
+                password: ':xxx'
+            },
+            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasklists.json',
+        })
+        .then(function (response) {
+            $(response.data['tasklists']).each(function () {
+                var taskListName = this.name;
+                var taskListId = this.id;
+                $(resultElement).append(
+                    '<option>' + taskListName + '</option>');
+                    return console.log('TaskList ID:' + taskListId);
+            });
+        })
+        .catch(function (error) {
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
+        });
+}
 
 
 
@@ -32,28 +31,30 @@
 // Get Account details
 // 
 
-// function getAccountDetails() {
-//     var resultElement = document.getElementById('getAccountResult');
-//     resultElement.innerHTML = '';
+function getAccount() {
+    var resultElement = document.getElementById('getAccountResult');
+    resultElement.innerHTML = '';
 
-//     axios({
-//             method: 'GET',
-//             auth: {
-//                 username: APIKey,
-//                 password: ':xxx'
-//             },
-//             url: 'https://' + SiteName + '.teamwork.com' + '/people.json',
-//         })
-//         .then(function (response) {
-//             var nameOfOwner = response.siteOwnerName;
-//             // $(resultElement).append("Hi, " + nameOfOwner);
-//             console.log("Status is: " + statusText);
+    axios({
+            method: 'GET',
+            auth: {
+                username: APIKey,
+                password: ':xxx'
+            },
+            url: 'https://' + SiteName + '.teamwork.com' + '/people.json',
+        })
+        .then(function (response) {
+            var companyName = response.data['company-name'];
+            //var nameOfOwner = response.siteOwnerName;
+            $(resultElement).append("Hi, " + companyName);
+            console.log("Company name is: " + companyName);
 
-//         })
-//         .catch(function (error) {
-//             resultElement.innerHTML = generateErrorHTMLOutput(error);
-//         });
-// }
+        })
+        .catch(function (error) {
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
+            console.log(error);
+        });
+}
 
 // *************************************************************************************************
 
@@ -71,7 +72,7 @@ function getOverview() {
                 username: APIKey,
                 password: ':xxx'
             },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json',
+            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID +'/tasks.json',
         })
         .then(function (response) {
             $(response.data['todo-items']).each(function () {
@@ -134,7 +135,7 @@ function getTaskCount() {
                 username: APIKey,
                 password: ':xxx'
             },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json',
+            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasks.json',
         })
         .then(function (response) {
             if (response.statusText == 'OK') {
@@ -165,9 +166,10 @@ function getAllTasks() {
                 username: APIKey,
                 password: ':xxx'
             },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?sort=dateadded',
+            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID +'/tasks.json?sort=dateadded',
         })
         .then(function (response) {
+            console.log("Current project ID is: " + PROJECTID)
             $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
@@ -315,9 +317,7 @@ function getTaskCountToday() {
         })
         .then(function (response) {
             var taskCount = response.data['todo-items'].length;
-            var task = $(resultElement).append(
-                taskCount);
-
+            var task = $(resultElement).append(taskCount);
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -358,10 +358,7 @@ function getAllTasksTomorrow() {
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
                     '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
-                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
-                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '</div>' +
+                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +                    
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' +
                     '</div>' +
@@ -434,10 +431,7 @@ function getAllTasksOverdue() {
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
                     '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
-                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
-                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '</div>' +
+                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +                    
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' +
                     '</div>' +
@@ -483,34 +477,34 @@ function getTaskCountOverdue() {
 // Get all Tasks for Study-list
 // 
 
-function getAllTasksStudy() {
-    var resultElement = document.getElementById('getAllTasksStudyResult');
-    resultElement.innerHTML = '';
+// function getAllTasksStudy() {
+//     var resultElement = document.getElementById('getAllTasksStudyResult');
+//     resultElement.innerHTML = '';
 
-    axios({
-            method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/projects/334288/tasks.json',
-        })
-        .then(function (response) {
-            '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function () {
-                var taskTitle = this.content;
-                var dueDate = this['due-date'];
-                var priority = this.priority;
-                var task = $(resultElement).append(
-                    '<b>' + taskTitle + '</b>' + '<br>' +
-                    'Due date: ' + dueDate + '<br>' +
-                    'Priority: ' + priority + '<hr>');
-            });
-        })
-        .catch(function (error) {
-            resultElement.innerHTML = getAllTasksOutputError(error);
-        });
-}
+//     axios({
+//             method: 'GET',
+//             auth: {
+//                 username: APIKey,
+//                 password: ':xxx'
+//             },
+//             url: 'https://' + SiteName + '.teamwork.com/projects/334288/tasks.json',
+//         })
+//         .then(function (response) {
+//             '<h4>Tasks: </h4>' +
+//             $(response.data['todo-items']).each(function () {
+//                 var taskTitle = this.content;
+//                 var dueDate = this['due-date'];
+//                 var priority = this.priority;
+//                 var task = $(resultElement).append(
+//                     '<b>' + taskTitle + '</b>' + '<br>' +
+//                     'Due date: ' + dueDate + '<br>' +
+//                     'Priority: ' + priority + '<hr>');
+//             });
+//         })
+//         .catch(function (error) {
+//             resultElement.innerHTML = getAllTasksOutputError(error);
+//         });
+// }
 
 // *************************************************************************************************
 
@@ -519,34 +513,34 @@ function getAllTasksStudy() {
 // Get all Tasks for Work-list
 // 
 
-function getAllTasksWork() {
-    var resultElement = document.getElementById('getAllTasksWorkResult');
-    resultElement.innerHTML = '';
+// function getAllTasksWork() {
+//     var resultElement = document.getElementById('getAllTasksWorkResult');
+//     resultElement.innerHTML = '';
 
-    axios({
-            method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/projects/334385/tasks.json',
-        })
-        .then(function (response) {
-            '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function () {
-                var taskTitle = this.content;
-                var dueDate = this['due-date'];
-                var priority = this.priority;
-                var task = $(resultElement).append(
-                    '<b>' + taskTitle + '</b>' + '<br>' +
-                    'Due date: ' + dueDate + '<br>' +
-                    'Priority: ' + priority + '<hr>');
-            });
-        })
-        .catch(function (error) {
-            resultElement.innerHTML = getAllTasksOutputError(error);
-        });
-}
+//     axios({
+//             method: 'GET',
+//             auth: {
+//                 username: APIKey,
+//                 password: ':xxx'
+//             },
+//             url: 'https://' + SiteName + '.teamwork.com/projects/334385/tasks.json',
+//         })
+//         .then(function (response) {
+//             '<h4>Tasks: </h4>' +
+//             $(response.data['todo-items']).each(function () {
+//                 var taskTitle = this.content;
+//                 var dueDate = this['due-date'];
+//                 var priority = this.priority;
+//                 var task = $(resultElement).append(
+//                     '<b>' + taskTitle + '</b>' + '<br>' +
+//                     'Due date: ' + dueDate + '<br>' +
+//                     'Priority: ' + priority + '<hr>');
+//             });
+//         })
+//         .catch(function (error) {
+//             resultElement.innerHTML = getAllTasksOutputError(error);
+//         });
+// }
 
 // *************************************************************************************************
 

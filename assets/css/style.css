@@ -12,7 +12,7 @@
 
 @media all and (max-width: 991px) {
 	.middle-div {
-		padding-top: 15%;
+		padding-top: 10%;
 	}
 }
 
@@ -172,8 +172,12 @@
 	border-color: #ddd;
 }
 
-.panel-body {
+/* .panel-body {
 	min-height: 100%;
+} */
+
+.panel-body-no-border{
+	border: 0;
 }
 
 h4 {
@@ -190,7 +194,7 @@ h4 {
 }
 
 a {
-	color: #D24D57;
+	color: #7c7171;
 }
 
 .dropdown-menu>li>a {
@@ -202,6 +206,10 @@ a {
 	border-color: transparent;
 	background-color: #D24D57;
 	/* border: solid 10px black; */
+}
+
+.navbar-brand:hover{
+	color: rgb(231, 230, 230) !important;
 }
 
 .nav-container {

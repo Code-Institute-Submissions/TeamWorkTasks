@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TeamworkTodo</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/scrollNav.css">
+    <!-- Font awesome -->
+    <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <!-- Popper and Tooltip JS -->
+    <!-- <script src="https://unpkg.com/popper.js"></script>
+        <script src="https://unpkg.com/tooltip.js"></script> -->
+</head>
+
+<body onload="getProjects();">
+    <!-- ***************************************************** Nav div ******************************************************** -->
+    <nav class="navbar navbar-default visible-lg visible-md">
+        <div class="container-fluid nav-container">
+            <div class="navbar-header">
+                <div class="top-brand col-lg-2">
+                    <a class="navbar-brand" href="home.html">TeamworkToDO</a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="hidden-lg">
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left">
+                        <button type="button" class="btn btn-default" onclick="logOut()" id="logOutButton"></button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+    <div id="getProjectsResult" style="top: 30%; left: 50%; position: fixed; transform: translate(-50%, -50%);">
+
+    </div>
+    </div>
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/loginLogic.js"></script>
+</body>
+
+<!-- Log In/Out button text conditionals -->
+<script type="text/javascript">
+    $(function () {
+        if (localStorage.length !== 0) {
+            logOutButton.innerHTML = "<i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> Log out";
+
+        } else {
+
+            logOutButton.innerHTML = "Log In";
+
+        }
+    });
+</script>
+
+</html>

@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="assets/css/scrollNav.css">
     <!-- Font awesome -->
     <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -27,7 +26,7 @@
         <script src="https://unpkg.com/tooltip.js"></script> -->
 </head>
 
-<body onload="checkIfLoggedOut(); showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted();">
+<body onload="checkIfLoggedOut(); showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted(); getTaskListDetails(); getAccount();">
     <!-- ***************************************************** Nav div ******************************************************** -->
     <nav class="navbar navbar-default visible-lg visible-md">
         <div class="container-fluid nav-container">
@@ -113,8 +112,8 @@
                         </ul>
                     </div>
                     <!-- ***************************************************** Middle Div ***************************************************** -->
-                    <div class="middle-div col-lg-5 col-md-4" style="background-color: #fff;">
-                        <div class="hidden-lg"></div>
+                    <div class="col-lg-5 col-md-4 middle-div" style="background-color: #fff;">
+                        
                         <!-- Counts -->
                         <div class="countTasks">
                             <div>
@@ -237,28 +236,29 @@
                             </h4>
                             <form class="form-inline" id="todoInputFormMobile">
                                 <div>
-                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30" placeholder="Title:    20 chars max."
-                                        maxlength="20" required>
+                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30"
+                                        placeholder="Title:    20 chars max." maxlength="20" required>
                                     <br>
                                     <br>
-                                    <textarea name="message" class="form-control input-no-border" id="taskDescriptionMobile" rows="5" cols="28" placeholder="Add a task description"></textarea>
+                                    <textarea name="message" class="form-control input-no-border" id="taskDescriptionMobile"
+                                        rows="5" cols="28" placeholder="Add a task description"></textarea>
                                     <br>
                                     <br>
                                     <!-- Date input -->
-                                    <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30" placeholder="Due date: DD/MM/YYY"
-                                        type="text" />
+                                    <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30"
+                                        placeholder="Due date: DD/MM/YYY" type="text" />
                                     <br>
                                     <!-- <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " /> -->
                                     <br>
-                                    <!-- <p>Choose a task list: </p> -->
-                                    <!-- <select class="form-control input-no-border select-width" id="getAllTaskListSelectList" required>                                            
+                                    <!-- <p>Task list: </p>
+                                    <select class="form-control input-no-border select-width" id="getAllTaskListSelectList" required>                                            
                                     </select> -->
                                     <button type="submit" class="btn btn-primary">Send</button>
                                     <!-- <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div> -->
                                 </div>
                                 <!-- <button class="btn btn-warning" onclick="clearOutput()">Clear</button> -->
                             </form>
-                            <br/>
+                            <br />
                             <div class="panel-body" id='postTaskResultMobile'>
                             </div>
                         </div>
@@ -279,29 +279,32 @@
                             <div>
                                 <form class="form-inline" id="todoInputForm">
                                     <div>
-                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title:    20 chars max." maxlength="20"
-                                            required>
+                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30"
+                                            placeholder="Title:    20 chars max." maxlength="20" required>
                                         <br>
                                         <br>
-                                        <textarea name="message" class="form-control input-no-border" id="taskDescription" rows="5" cols="28" placeholder="Add a task description"></textarea>
+                                        <textarea name="message" class="form-control input-no-border" id="taskDescription"
+                                            rows="5" cols="28" placeholder="Add a task description"></textarea>
                                         <br>
                                         <br>
                                         <!-- Date input -->
-                                        <input class="form-control input-no-border" id="datePicker" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text"
-                                        />
+                                        <input class="form-control input-no-border" id="datePicker" name="date" size="30"
+                                            placeholder="Due date: DD/MM/YYY" type="text" />
                                         <br>
                                         <!-- <input type="text" class="form-control input-no-border" id="calendar" size="30" placeholder="Due date - default today " /> -->
                                         <br>
-                                        <!-- <p>Choose a task list: </p> -->
-                                        <!-- <select class="form-control input-no-border select-width" id="getAllTaskListSelectList" required>                                            
-                                        </select> -->
-                                        <button type="submit" class="btn btn-primary">Send</button>
+                                        <!-- <p>Task list: </p> -->
+                                        <select class="form-control input-no-border select-width" id="getAllTaskListSelectList"
+                                            required>
+                                        </select>
+                                        <br><br>
+                                        <button type="submit" class="btn btn-primary" align="center">Send</button>
                                         <!-- <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div> -->
                                     </div>
                                     <!-- <button class="btn btn-warning" onclick="clearOutput()">Clear</button> -->
                                 </form>
                             </div>
-                            <br/>
+                            <br />
                             <div class="panel-body" id='postTaskResult'>
                             </div>
                         </div>
