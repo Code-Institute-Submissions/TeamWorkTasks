@@ -1,3 +1,13 @@
+function getSelectListID() {
+    // $(document).ready(function () {
+    //     $("select#getAllTaskListSelectList").change(function () {
+    //         var selectedTaskListID = $(".#getAllTaskListSelectList option:selected").val();
+    //         localStorage.setItem("selectedTaskListID", selectedTaskListID);
+    //     });
+    // });
+}
+
+
 function getTaskListDetails() {
     var resultElement = document.getElementById('getAllTaskListSelectList');
     resultElement.innerHTML = '<option value="List" disabled>List</option>';
@@ -16,8 +26,8 @@ function getTaskListDetails() {
                 var taskListName = this.name;
                 var taskListId = this.id;
                 $(resultElement).append(
-                    '<option>' + taskListName + '</option>');
-                    return console.log('TaskList ID:' + taskListId);
+                    '<option value="' + taskListId + '">' + taskListName + '</option>');
+                return console.log('TaskList ID:' + taskListId);
             });
         })
         .catch(function (error) {
@@ -72,7 +82,7 @@ function getOverview() {
                 username: APIKey,
                 password: ':xxx'
             },
-            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID +'/tasks.json',
+            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasks.json',
         })
         .then(function (response) {
             $(response.data['todo-items']).each(function () {
@@ -166,7 +176,7 @@ function getAllTasks() {
                 username: APIKey,
                 password: ':xxx'
             },
-            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID +'/tasks.json?sort=dateadded',
+            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasks.json?sort=dateadded',
         })
         .then(function (response) {
             console.log("Current project ID is: " + PROJECTID)
@@ -358,7 +368,7 @@ function getAllTasksTomorrow() {
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
                     '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
-                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +                    
+                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' +
                     '</div>' +
@@ -431,7 +441,7 @@ function getAllTasksOverdue() {
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
                     '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
-                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +                    
+                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' +
                     '</div>' +
