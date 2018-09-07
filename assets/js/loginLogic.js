@@ -1,5 +1,5 @@
 
-function getAccountDetails() {
+function authenticate() {
     if (document.getElementById('lg_password').value.length > 0) {
         axios({
                 method: 'GET',
@@ -103,6 +103,7 @@ function logOut() {
     localStorage.removeItem("apiKey");
     localStorage.removeItem("siteName");
     localStorage.removeItem("currentProjectID");
+    localStorage.removeItem("selectedTaskListID");
     // localStorage.removeItem("currentProjectName");
     
     
@@ -117,13 +118,13 @@ function logOut() {
 
 // Check whether user is logged in and route accordingly
 function checkIfLoggedIn() {
-    if (localStorage.length > 1) {
-        window.location.href = "/home.html";
+    if (localStorage.apiKey && localStorage.siteName) {
+        window.location.href = "/projects.html";
     }
 }
 
 function checkIfLoggedOut() {
-    if (localStorage.length == 0) {
+    if (!localStorage.apiKey && !localStorage.siteName) {
         window.location.href = "/index.html";
     }
 }
