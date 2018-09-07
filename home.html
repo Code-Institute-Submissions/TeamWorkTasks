@@ -32,10 +32,10 @@
         <div class="container-fluid nav-container">
             <div class="navbar-header">
                 <div class="top-brand col-lg-2">
-                    <a class="navbar-brand" href="home.html">TeamworkToDO</a>                    
+                    <a class="navbar-brand" href="home.html">TeamworkToDO</a>
                 </div>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-left">
                         <button type="button" class="btn btn-default" onclick="logOut()" id="logOutButton"></button>
@@ -251,6 +251,10 @@
                                     <!-- <p>Task list: </p>
                                     <select class="form-control input-no-border select-width" id="getAllTaskListSelectList" required>                                            
                                     </select> -->
+                                    <select class="form-control input-no-border select-width" id="getAllTaskListSelectListMobile"
+                                        required>
+                                    </select>
+                                    <br><br>
                                     <button type="submit" class="btn btn-primary">Send</button>
                                     <!-- <div class="alert alert-success task-success" role="alert" style="display: none">Yay! Your new task was added !</div> -->
                                 </div>
@@ -392,6 +396,12 @@
         // Set selectedTaskListID on dropdown select change
         $("select#getAllTaskListSelectList").change(function () {
             var selectedTaskListID = $("#getAllTaskListSelectList option:selected").val();
+            localStorage.setItem("selectedTaskListID", selectedTaskListID);
+        });
+
+        // Set selectedTaskListID on dropdown select change -> on mobile form
+        $("select#getAllTaskListSelectListMobile").change(function () {
+            var selectedTaskListID = $("#getAllTaskListSelectListMobile option:selected").val();
             localStorage.setItem("selectedTaskListID", selectedTaskListID);
         });
     });

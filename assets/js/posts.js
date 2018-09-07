@@ -49,12 +49,7 @@ function postTask(e) {
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay! Your new task was added!</div>');
             //<div class="alert alert-success" role="alert">...</div>
             $('.task-success').show();
-            getAllTasks();
-            getAllTasksToday();
-            getAllTasksTomorrow();
-            getAllTasksOverdue();
-            getAllTasksCompleted();
-            getTaskCount();
+            refreshAllTasks();
             setTimeout(() => {
                 $('#todoInputForm')[0].reset();
                 setTimeout(() => {
@@ -76,16 +71,11 @@ function postTaskMobile(e) {
     // var taskTitle = document.getElementById("taskTitle").value;
     resultElement.innerHTML = '';
 
-    var date = new Date();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-
-    var tasklist_id = "964161";
+    var tasklist_id = SELECTEDTASKLISTID;
     var content = document.getElementById("taskTitleMobile").value;
     var taskDescription = document.getElementById('taskDescriptionMobile').value;
     var date_picker = document.getElementById('datePickerMobile').value;
-    var due_date = date.getFullYear() + (month < 10 ? '0' : '') +
-        month + (day < 10 ? '0' : '') + day;
+    var due_date = date_picker.split('/').reverse().join('')
 
     axios({
             method: 'POST',
@@ -97,7 +87,7 @@ function postTaskMobile(e) {
             data: {
                 "todo-item": {
                     "content": content,
-                    "due-date": date_picker,
+                    "due-date": due_date,
                     "description": taskDescription
                 }
             },

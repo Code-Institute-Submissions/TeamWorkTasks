@@ -10,6 +10,7 @@ function getSelectListID() {
 
 function getTaskListDetails() {
     var resultElement = document.getElementById('getAllTaskListSelectList');
+    var resultElementMobile = document.getElementById('getAllTaskListSelectListMobile');
     resultElement.innerHTML = '<option value="List" disabled>List</option>';
 
 
@@ -26,6 +27,8 @@ function getTaskListDetails() {
                 var taskListName = this.name;
                 var taskListId = this.id;
                 $(resultElement).append(
+                    '<option value="' + taskListId + '">' + taskListName + '</option>');
+                $(resultElementMobile).append(
                     '<option value="' + taskListId + '">' + taskListName + '</option>');
                 return console.log('TaskList ID:' + taskListId);
             });
