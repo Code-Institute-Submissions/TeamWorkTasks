@@ -14,7 +14,7 @@ function postTask(e) {
     var resultElement = document.getElementById('postTaskResult');
     resultElement.innerHTML = '';
 
-    var tasklist_id = "964161";
+    var tasklist_id = SELECTEDTASKLISTID;
     var taskDescription = document.getElementById('taskDescription').value;
     var content = document.getElementById("taskTitle").value;
     var date_picker = document.getElementById('datePicker').value;
