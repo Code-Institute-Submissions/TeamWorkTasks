@@ -26,18 +26,16 @@
         <script src="https://unpkg.com/tooltip.js"></script> -->
 </head>
 
-<body onload="checkIfLoggedOut(); showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted(); getTaskListDetails(); getAccount();">
+<body onload="checkIfLoggedOut(); showCountTasks(); getAllTasks(); getAllTasksTomorrow(); getAllTasksToday(); getAllTasksOverdue(); getTaskCount(); getTaskCountToday(); getTaskCountTomorrow(); getTaskCountOverdue(); getAllTasksCompleted(); getTaskListDetails(); getAccount(); getSelectListID();">
     <!-- ***************************************************** Nav div ******************************************************** -->
     <nav class="navbar navbar-default visible-lg visible-md">
         <div class="container-fluid nav-container">
             <div class="navbar-header">
                 <div class="top-brand col-lg-2">
-                    <a class="navbar-brand" href="home.html">TeamworkToDO</a>
+                    <a class="navbar-brand" href="home.html">TeamworkToDO</a>                    
                 </div>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <div class="hidden-lg">
-                </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                
                 <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-left">
                         <button type="button" class="btn btn-default" onclick="logOut()" id="logOutButton"></button>
@@ -113,7 +111,7 @@
                     </div>
                     <!-- ***************************************************** Middle Div ***************************************************** -->
                     <div class="col-lg-5 col-md-4 middle-div" style="background-color: #fff;">
-                        
+
                         <!-- Counts -->
                         <div class="countTasks">
                             <div>
@@ -381,6 +379,22 @@
     document.getElementById("todaysDate").innerHTML = (('<div id="getAccountResult">' + '<br>' + '</div>') +
         curr_date + " " +
         month + " " + curr_year);
+</script>
+<script>
+    $(document).ready(function () {
+        // This function is needed to grab initial select dropdown value on page load
+        // May not have response from API getTaskListDetails() yet so cal a timeout, then, set selectedTaskListID
+        setTimeout(() => {
+            var selectedTaskListID = $("#getAllTaskListSelectList option:selected").val();
+            localStorage.setItem("selectedTaskListID", selectedTaskListID);
+        }, 1500);
+
+        // Set selectedTaskListID on dropdown select change
+        $("select#getAllTaskListSelectList").change(function () {
+            var selectedTaskListID = $("#getAllTaskListSelectList option:selected").val();
+            localStorage.setItem("selectedTaskListID", selectedTaskListID);
+        });
+    });
 </script>
 
 
