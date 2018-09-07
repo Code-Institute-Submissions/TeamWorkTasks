@@ -18,12 +18,11 @@ function postTask(e) {
     var taskDescription = document.getElementById('taskDescription').value;
     var content = document.getElementById("taskTitle").value;
     var date_picker = document.getElementById('datePicker').value;
+    var due_date = date_picker.split('/').reverse().join('')
+    console.log("Split date is: " + due_date)
+    // var due_date = date_picker.replace(/\//ig, '')
+    console.log("Passed date is: " + due_date)
 
-    // var date = new Date();
-    // var month = date.getMonth() + 1;
-    // var day = date.getDate();
-    // var due_date = date.getFullYear() + (month < 10 ? '0' : '') +
-    //     month + (day < 10 ? '0' : '') + day;
 
 
     console.log("Task listid is: " + tasklist_id);
@@ -38,7 +37,7 @@ function postTask(e) {
             data: {
                 "todo-item": {
                     "content": content,
-                    "due-date": date_picker,
+                    "due-date": due_date,
                     "description": taskDescription
                 }
             },
