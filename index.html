@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>TeamWork ToDo</title>
     <!-- Custom CSS -->
     <!-- <link rel="stylesheet" href="assets/css/form.css"> -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -57,7 +57,7 @@
                         <div class="main-login-form">
                             <div class="login-group">
                                 <h4>Please enter your
-                                    
+
                                     <b>Teamwork.com</b>
                                     credentials.
                                 </h4>
@@ -66,8 +66,13 @@
                                     <form id="login-form">
                                         <span>
                                             <!-- <i class="fa fa-building-o" aria-hidden="true"></i> -->
+                                            <input type="text" class="form-control" id="lg_username" name="lg_username"
+                                                placeholder="Teamwork site name" required />
+                                            <a class="btn btn-secondary" href="http://support.teamwork.com/projects/using-teamwork-projects/locating-your-api-key"
+                                                target="_blank">
+                                                Find my API key ?
+                                            </a>
                                             <label for="lg_username" class="sr-only">Username</label>
-                                            <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="Teamwork site name" required/>
                                             <i id="checkCredsUser" class="fa fa-check" aria-hidden="true" style="visibility: hidden;"></i>
                                             <i id="wrongCredsUser" class="fa fa-exclamation" aria-hidden="true" style="visibility: hidden;"></i>
                                         </span>
@@ -75,17 +80,20 @@
                                         <span>
                                             <!-- <i class="fa fa-key" aria-hidden="true"></i> -->
                                             <label for="lg_password" class="sr-only">Password</label>
-                                            <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="API key" required/>
+                                            <input type="password" class="form-control" id="lg_password" name="lg_password"
+                                                placeholder="API key" required />
                                             <i id="checkCredsUserPass" class="fa fa-check" aria-hidden="true" style="visibility: hidden;"></i>
-                                            <i id="wrongCredsUserPass" class="fa fa-exclamation" aria-hidden="true" style="visibility: hidden;"></i>
+                                            <i id="wrongCredsUserPass" class="fa fa-exclamation" aria-hidden="true"
+                                                style="visibility: hidden;"></i>
                                         </span>
                                     </form>
                                 </div>
-                            </div>                        
+                            </div>
                             <button type="button" class="btn btn-primary" onclick="authenticate()">
                                 Log In
                             </button>
-                            <a class="btn btn-secondary" href="https://www.teamwork.com/signup?from=main-nav_home" target="_blank">
+                            <a class="btn btn-secondary" href="https://www.teamwork.com/signup?from=main-nav_home"
+                                target="_blank">
                                 Register
                             </a>
                         </div>
