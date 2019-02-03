@@ -16,7 +16,7 @@ function getSelectListID() {
 
 
 //
-// Get Account details
+// Get Task List details
 //
 function getTaskListDetails() {
     var resultElement = document.getElementById('taskListRadio');
@@ -63,11 +63,11 @@ function getAccount() {
                 username: APIKey,
                 password: ':xxx'
             },
-            url: 'https://' + SiteName + '.teamwork.com' + '/people.json',
+            url: 'https://' + SiteName + '.teamwork.com' + '/account.json',
         })
         .then(function (response) {
-            var companyName = response.data['company-name'];
-            $(resultElement).append("Hi, " + response.textFormat);
+            var companyName = response.data.account['siteOwnerName'];
+            $(resultElement).append("Hi, " + companyName + ' !');
             console.log("Company name is: " + companyName);
 
         })
