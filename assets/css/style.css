@@ -16,6 +16,9 @@
 	}
 }
 
+.row{
+	padding-top: 1vh;
+}
 
 #checkCredsUser	 {
 	position: absolute;
