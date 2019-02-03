@@ -1,4 +1,3 @@
-
 function authenticate() {
     if (document.getElementById('lg_password').value.length > 0) {
         axios({
@@ -58,7 +57,7 @@ function getProjects() {
                 username: localStorage.getItem("apiKey"),
                 password: ':xxx'
             },
-        url: 'https://' + SiteName + '.teamwork.com/projects.json',
+            url: 'https://' + SiteName + '.teamwork.com/projects.json',
         })
         .then(function (response) {
             $(response.data['projects']).each(function () {
@@ -66,15 +65,15 @@ function getProjects() {
                 var projectID = this.id;
 
                 $(resultElement).append(
-                    '<div class="col-lg-12">' +
-                    '<div class="panel panel-default">' +
+                    '<div class="col-lg-6">' +
+                    '<div class="panel panel-default" onclick="setProjectID(' + projectID + ')">' +
                     '<div class="panel-heading">' + projectName +
-                    '<div class="panel-body panel-body-no-border">' +  projectID +
-                    '<hr>' +                     
-                    '<i class="fa fa-arrow-right fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="setProjectID(' + projectID + ')" id="completeBtn" align="center"></i>' + '</a>' +
+                    '<div class="panel-body panel-body-no-border">' + projectID +
+                    '<hr>' +
+                    '<i class="fa fa-arrow-right fa-fw fa-lg edit-menu-icons" aria-hidden="true" id="completeBtn" align="center"></i>' +
                     '</div>' +
-                    '</div>' +                      
-                    '</div>' +      
+                    '</div>' +
+                    '</div>' +
                     '</div>' +
                     '</div>'
                 )
@@ -89,14 +88,14 @@ function getProjects() {
 function setProjectID(projectID) {
     console.log("Project ID:" + projectID);
     // console.log("Project ID:" + projectName);
-    
+
     localStorage.setItem("currentProjectID", projectID);
     // localStorage.setItem("currentProjectName", projectName);
 
     setTimeout(() => {
         window.location.href = "/home.html";
-    }, 500);    
-    
+    }, 500);
+
 }
 
 function logOut() {
@@ -105,8 +104,8 @@ function logOut() {
     localStorage.removeItem("currentProjectID");
     localStorage.removeItem("selectedTaskListID");
     // localStorage.removeItem("currentProjectName");
-    
-    
+
+
 
     setTimeout(() => {
         window.location.href = "/index.html";
