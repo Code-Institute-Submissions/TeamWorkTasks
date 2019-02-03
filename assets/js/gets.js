@@ -1,3 +1,7 @@
+//
+// Set TaskList ID from radio button
+//
+
 function getSelectListID() {
     $(document).ready(function () {
         $("#taskListRadio").click(function () {
@@ -8,12 +12,15 @@ function getSelectListID() {
     });
 }
 
+// *************************************************************************************************
 
+
+//
+// Get Account details
+//
 function getTaskListDetails() {
     var resultElement = document.getElementById('taskListRadio');
     var resultElementMobile = document.getElementById('getAllTaskListSelectListMobile');
-    // resultElement.innerHTML = '<option value="List" disabled>List</option>';
-
 
     axios({
             method: 'GET',
@@ -27,8 +34,6 @@ function getTaskListDetails() {
             $(response.data['tasklists']).each(function () {
                 var taskListName = this.name;
                 var taskListId = this.id;
-                // $(resultElement).append(
-                //     '<option value="' + taskListId + '">' + 'Banana' + taskListName + '</option>');
                 $(resultElement).append(
                     '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" checked="checked">' +
                     '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
@@ -41,6 +46,7 @@ function getTaskListDetails() {
         });
 }
 
+// *************************************************************************************************
 
 
 //
@@ -61,8 +67,7 @@ function getAccount() {
         })
         .then(function (response) {
             var companyName = response.data['company-name'];
-            //var nameOfOwner = response.siteOwnerName;
-            $(resultElement).append("Hi, " + companyName);
+            $(resultElement).append("Hi, " + response.textFormat);
             console.log("Company name is: " + companyName);
 
         })
@@ -103,39 +108,6 @@ function getOverview() {
 }
 
 // *************************************************************************************************
-
-// 
-// Get all tasklist for a project
-// 
-
-// function getAllTaskLists() {
-//     var resultElement = document.getElementById('getAllTaskListSelectList');
-//     resultElement.innerHTML = '';
-
-//     var projectId = '334385';
-
-//     axios({
-//             method: 'GET',
-//             auth: {
-//                 username: APIKey,
-//                 password: ':xxx'
-//             },
-//             url: 'https://' + SiteName + '.teamwork.com/projects/' + projectId + '/tasklists.json',
-//         })
-//         .then(function (response) {
-//             $(response.data['tasklists']).each(function () {
-//                 var taskListName = this.name;
-//                 var taskListId = this.id;
-//                 var taskList = $(resultElement).append(
-//                     '<option>' + taskListName + '</option>');
-//             });
-//             // resultElement.innerHTML = generateSuccessHTMLOutput(response);
-
-//         })
-//         .catch(function (error) {
-//             resultElement.innerHTML = generateErrorHTMLOutput(error);
-//         });
-// }
 
 // 
 // Count all Tasks
@@ -200,9 +172,6 @@ function getAllTasks() {
                     '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
                     '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
-                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '</div>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' +
                     '</div>' +
@@ -299,9 +268,6 @@ function getAllTasksToday() {
                     '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
                     '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
                     '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
-                    // '<i class="fa fa-calendar fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '<i class="fa fa-comment-o fa-lg edit-menu-icons" aria-hidden="true" onclick="showEditMenu(' + taskID + ')"></i>' +
-                    // '</div>' +
                     '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
                     '</li>' +
                     '</div>' +
@@ -488,78 +454,6 @@ function getTaskCountOverdue() {
 }
 
 // *************************************************************************************************
-
-// 
-// Get all Tasks for Study-list
-// 
-
-// function getAllTasksStudy() {
-//     var resultElement = document.getElementById('getAllTasksStudyResult');
-//     resultElement.innerHTML = '';
-
-//     axios({
-//             method: 'GET',
-//             auth: {
-//                 username: APIKey,
-//                 password: ':xxx'
-//             },
-//             url: 'https://' + SiteName + '.teamwork.com/projects/334288/tasks.json',
-//         })
-//         .then(function (response) {
-//             '<h4>Tasks: </h4>' +
-//             $(response.data['todo-items']).each(function () {
-//                 var taskTitle = this.content;
-//                 var dueDate = this['due-date'];
-//                 var priority = this.priority;
-//                 var task = $(resultElement).append(
-//                     '<b>' + taskTitle + '</b>' + '<br>' +
-//                     'Due date: ' + dueDate + '<br>' +
-//                     'Priority: ' + priority + '<hr>');
-//             });
-//         })
-//         .catch(function (error) {
-//             resultElement.innerHTML = getAllTasksOutputError(error);
-//         });
-// }
-
-// *************************************************************************************************
-
-
-// 
-// Get all Tasks for Work-list
-// 
-
-// function getAllTasksWork() {
-//     var resultElement = document.getElementById('getAllTasksWorkResult');
-//     resultElement.innerHTML = '';
-
-//     axios({
-//             method: 'GET',
-//             auth: {
-//                 username: APIKey,
-//                 password: ':xxx'
-//             },
-//             url: 'https://' + SiteName + '.teamwork.com/projects/334385/tasks.json',
-//         })
-//         .then(function (response) {
-//             '<h4>Tasks: </h4>' +
-//             $(response.data['todo-items']).each(function () {
-//                 var taskTitle = this.content;
-//                 var dueDate = this['due-date'];
-//                 var priority = this.priority;
-//                 var task = $(resultElement).append(
-//                     '<b>' + taskTitle + '</b>' + '<br>' +
-//                     'Due date: ' + dueDate + '<br>' +
-//                     'Priority: ' + priority + '<hr>');
-//             });
-//         })
-//         .catch(function (error) {
-//             resultElement.innerHTML = getAllTasksOutputError(error);
-//         });
-// }
-
-// *************************************************************************************************
-
 
 // 
 // Get all High priority Tasks
