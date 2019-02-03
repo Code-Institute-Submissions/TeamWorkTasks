@@ -1,17 +1,18 @@
 function getSelectListID() {
-    // $(document).ready(function () {
-    //     $("select#getAllTaskListSelectList").change(function () {
-    //         var selectedTaskListID = $(".#getAllTaskListSelectList option:selected").val();
-    //         localStorage.setItem("selectedTaskListID", selectedTaskListID);
-    //     });
-    // });
+    $(document).ready(function () {
+        $("#taskListRadio").click(function () {
+            var selectedTaskListID = $("input[type='radio'][name='taskListRadioButtons']:checked + label span").text();
+            localStorage.setItem("selectedTaskListID", selectedTaskListID);
+            console.log('Task list selected is: ' + localStorage.getItem(selectedTaskListID));
+        });
+    });
 }
 
 
 function getTaskListDetails() {
-    var resultElement = document.getElementById('getAllTaskListSelectList');
+    var resultElement = document.getElementById('taskListRadio');
     var resultElementMobile = document.getElementById('getAllTaskListSelectListMobile');
-    resultElement.innerHTML = '<option value="List" disabled>List</option>';
+    // resultElement.innerHTML = '<option value="List" disabled>List</option>';
 
 
     axios({
@@ -26,10 +27,12 @@ function getTaskListDetails() {
             $(response.data['tasklists']).each(function () {
                 var taskListName = this.name;
                 var taskListId = this.id;
+                // $(resultElement).append(
+                //     '<option value="' + taskListId + '">' + 'Banana' + taskListName + '</option>');
                 $(resultElement).append(
-                    '<option value="' + taskListId + '">' + taskListName + '</option>');
-                $(resultElementMobile).append(
-                    '<option value="' + taskListId + '">' + taskListName + '</option>');
+                    '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" checked="checked">' +
+                    '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
+                )
                 return console.log('TaskList ID:' + taskListId);
             });
         })

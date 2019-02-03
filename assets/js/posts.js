@@ -49,6 +49,7 @@ function postTask(e) {
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay! Your new task was added!</div>');
             //<div class="alert alert-success" role="alert">...</div>
             $('.task-success').show();
+            location.reload();
             refreshAllTasks();
             setTimeout(() => {
                 $('#todoInputForm')[0].reset();
