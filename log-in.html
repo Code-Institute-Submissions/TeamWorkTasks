@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>TeamWork Login Flow</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Custom styless -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col s4 offset-s4">
+                <div class="home-form-div center-align">
+                    <!-- <img src="assets/img/Spinner-1s-200px.svg" alt=""> -->
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- jQuery and Popper -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <!-- Materialize CSS JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/assets/js/posts.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                let code = {
+                    code: window.location.search.substr(6)
+                };
+                console.log("Auth code is: ", code);
+
+                axios({
+                        method: 'POST',
+                        url: 'https://hi-21ca23a1-eval-prod.apigee.net/teamworktoken',
+                        data: code,
+                        processData: false,
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                    .then(function (response) {
+                        var authToken = response.data['access_token'];
+                        localStorage.setItem('authToken', authToken);
+
+                        console.log("Local storage token: ", localStorage.getItem('auth token'));
+                        console.log("Response is: ", authToken);
+                        console.log(response);
+
+                        window.location.href = "/home.html";
+                    })
+                    .catch(function (error) {
+                        console.log("Error: ", error);
+                    })
+            })
+        </script>
+</body>
+
+</html>
