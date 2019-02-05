@@ -117,13 +117,13 @@ function logOut() {
 
 // Check whether user is logged in and route accordingly
 function checkIfLoggedIn() {
-    if (localStorage.apiKey && localStorage.siteName) {
+    if (localStorage.autToken) {
         window.location.href = "/projects.html";
     }
 }
 
 function checkIfLoggedOut() {
-    if (!localStorage.apiKey && !localStorage.siteName) {
+    if (!localStorage.authToken) {
         window.location.href = "/index.html";
     }
 }
