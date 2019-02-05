@@ -54,16 +54,16 @@ function getTaskListDetails() {
 // 
 
 function getAccount() {
+    var localAuthKey = localStorage.getItem('authToken');
     var resultElement = document.getElementById('getAccountResult');
     resultElement.innerHTML = '';
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com' + '/account.json',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/account',
+            headers: {
+                'Authorization': "Bearer " + localAuthKey
+            }
         })
         .then(function (response) {
             var companyName = response.data.account['siteOwnerName'];
@@ -119,11 +119,10 @@ function getTaskCount() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasks.json',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             if (response.statusText == 'OK') {
@@ -145,16 +144,22 @@ function getTaskCount() {
 // 
 
 function getAllTasks() {
+    var localAuthKey = localStorage.getItem('authToken');
     var resultElement = document.getElementById('getAllTasksResult');
     resultElement.innerHTML = '';
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasks.json?sort=dateadded',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + localAuthKey
+            }
+
+            // auth: {
+            //     username: APIKey,
+            //     password: ':xxx'
+            // },
+            // url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasks.json?sort=dateadded',
         })
         .then(function (response) {
             console.log("Current project ID is: " + PROJECTID)
@@ -203,11 +208,10 @@ function getAllTasksCompleted() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/completedtasks.json?sort=completedOn',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             $(response.data['tasks']).each(function () {
@@ -245,11 +249,10 @@ function getAllTasksToday() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=today&sort=dateadded',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             $(response.data['todo-items']).each(function () {
@@ -291,11 +294,10 @@ function getTaskCountToday() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=today',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             var taskCount = response.data['todo-items'].length;
@@ -318,11 +320,10 @@ function getAllTasksTomorrow() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=tomorrow&?sort=dateadded',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             $(response.data['todo-items']).each(function () {
@@ -364,11 +365,10 @@ function getTaskCountTomorrow() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=tomorrow',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             var taskCount = response.data['todo-items'].length;
@@ -391,11 +391,10 @@ function getAllTasksOverdue() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=overdue&sort=dateadded',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             $(response.data['todo-items']).each(function () {
@@ -438,11 +437,10 @@ function getTaskCountOverdue() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?filter=overdue',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             var taskCount = response.data['todo-items'].length;
