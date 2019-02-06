@@ -29,7 +29,7 @@ function postTask(e) {
 
     axios({
             method: 'POST',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/addtask/' + tasklist_id + '/tasks.json',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/addtask/' + localStorage.getItem("selectedTaskListID") + '/tasks.json',
             headers: {
                 'Authorization': "Bearer " + APIKey
             },
@@ -80,7 +80,7 @@ function postTaskMobile(e) {
 
     axios({
             method: 'POST',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/addtask/' + '1236265' + '/tasks.json',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/addtask/' + localStorage.getItem("selectedTaskListID") + '/tasks.json',
             headers: {
                 'Authorization': "Bearer " + APIKey
             },
