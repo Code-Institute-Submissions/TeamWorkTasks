@@ -28,8 +28,8 @@ function postTask(e) {
     console.log("Task listid is: " + tasklist_id);
 
     axios({
-            type: "POST",
-            url: "https://hi-21ca23a1-eval-prod.apigee.net/addtask/" + '1236265' + "/todo_items.json",
+            method: 'POST',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/addtask/' + tasklist_id + '/tasks.json',
             headers: {
                 'Authorization': "Bearer " + APIKey
             },
@@ -42,7 +42,7 @@ function postTask(e) {
             },
 
             processData: false,
-            // contentType: "application/json; charset=UTF-8"
+            contentType: "application/json; charset=UTF-8"
         })
         .then(function (response) {
             //resultElement.innerHTML = generateSuccessHTMLOutput(response);
@@ -80,10 +80,9 @@ function postTaskMobile(e) {
 
     axios({
             method: 'POST',
-            url: 'https://' + SiteName + '.teamwork.com/tasklists/' + tasklist_id + '/tasks.json',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/addtask/' + '1236265' + '/tasks.json',
+            headers: {
+                'Authorization': "Bearer " + APIKey
             },
             data: {
                 "todo-item": {
@@ -92,6 +91,7 @@ function postTaskMobile(e) {
                     "description": taskDescription
                 }
             },
+
             processData: false,
             contentType: "application/json; charset=UTF-8"
         })
