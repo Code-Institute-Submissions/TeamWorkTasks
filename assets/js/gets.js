@@ -24,11 +24,10 @@ function getTaskListDetails() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasklists.json',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/tasklists',
+            headers: {
+                'Authorization': "Bearer " + APIKey,
+            }
         })
         .then(function (response) {
             $(response.data['tasklists']).each(function () {
@@ -54,7 +53,6 @@ function getTaskListDetails() {
 // 
 
 function getAccount() {
-    var localAuthKey = localStorage.getItem('authToken');
     var resultElement = document.getElementById('getAccountResult');
     resultElement.innerHTML = '';
 
@@ -62,7 +60,7 @@ function getAccount() {
             method: 'GET',
             url: 'https://hi-21ca23a1-eval-prod.apigee.net/account',
             headers: {
-                'Authorization': "Bearer " + localAuthKey
+                'Authorization': "Bearer " + APIKey
             }
         })
         .then(function (response) {
@@ -89,11 +87,10 @@ function getOverview() {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasks.json',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             $(response.data['todo-items']).each(function () {
@@ -152,14 +149,8 @@ function getAllTasks() {
             method: 'GET',
             url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
             headers: {
-                'Authorization': "Bearer " + localAuthKey
+                'Authorization': "Bearer " + APIKey
             }
-
-            // auth: {
-            //     username: APIKey,
-            //     password: ':xxx'
-            // },
-            // url: 'https://' + SiteName + '.teamwork.com/projects/' + PROJECTID + '/tasks.json?sort=dateadded',
         })
         .then(function (response) {
             console.log("Current project ID is: " + PROJECTID)
@@ -208,13 +199,13 @@ function getAllTasksCompleted() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?complete',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
         })
         .then(function (response) {
-            $(response.data['tasks']).each(function () {
+            $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
                 var taskDescription = this.description;
@@ -249,7 +240,7 @@ function getAllTasksToday() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=today',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -294,7 +285,7 @@ function getTaskCountToday() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=today',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -320,7 +311,7 @@ function getAllTasksTomorrow() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=tomorrow',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -365,7 +356,7 @@ function getTaskCountTomorrow() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=tomorrow',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -391,7 +382,7 @@ function getAllTasksOverdue() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=overdue',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -437,7 +428,7 @@ function getTaskCountOverdue() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=overdue',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -457,34 +448,34 @@ function getTaskCountOverdue() {
 // Get all High priority Tasks
 // 
 
-function getHighPriority() {
-    var resultElement = document.getElementById('getHighPriorityResult');
-    resultElement.innerHTML = '';
+// function getHighPriority() {
+//     var resultElement = document.getElementById('getHighPriorityResult');
+//     resultElement.innerHTML = '';
 
-    axios({
-            method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/tasks.json?priority=high',
-        })
-        .then(function (response) {
-            '<h4>Tasks: </h4>' +
-            $(response.data['todo-items']).each(function () {
-                var taskTitle = this.content;
-                var dueDate = this['due-date'];
-                var priority = this.priority;
-                var task = $(resultElement).append(
-                    '<b>' + taskTitle + '</b>' + '<br>' +
-                    'Due date: ' + dueDate + '<br>' +
-                    'Priority: ' + priority + '<hr>');
-            });
-        })
-        .catch(function (error) {
-            resultElement.innerHTML = getAllTasksOutputError(error);
-        });
-}
+//     axios({
+//             method: 'GET',
+//             auth: {
+//                 username: APIKey,
+//                 password: ':xxx'
+//             },
+//             url: 'https://' + SiteName + '.teamwork.com/tasks.json?priority=high',
+//         })
+//         .then(function (response) {
+//             '<h4>Tasks: </h4>' +
+//             $(response.data['todo-items']).each(function () {
+//                 var taskTitle = this.content;
+//                 var dueDate = this['due-date'];
+//                 var priority = this.priority;
+//                 var task = $(resultElement).append(
+//                     '<b>' + taskTitle + '</b>' + '<br>' +
+//                     'Due date: ' + dueDate + '<br>' +
+//                     'Priority: ' + priority + '<hr>');
+//             });
+//         })
+//         .catch(function (error) {
+//             resultElement.innerHTML = getAllTasksOutputError(error);
+//         });
+// }
 
 // *************************************************************************************************
 
@@ -513,11 +504,10 @@ function editTaskForm(val) {
 
     axios({
             method: 'GET',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
-            },
-            url: 'https://' + SiteName + '.teamwork.com/tasks/' + task_id + '.json',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/singletask/' + task_id + '.json',
+            headers: {
+                'Authorization': "Bearer " + APIKey
+            }
         })
         .then(function (response) {
             $(response.data['todo-item']).each(function () {
