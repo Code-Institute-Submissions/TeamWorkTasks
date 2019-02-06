@@ -50,7 +50,7 @@ function getTaskListDetails() {
 
 //
 // Get Account details
-// 
+//
 
 function getAccount() {
     var resultElement = document.getElementById('getAccountResult');
@@ -77,7 +77,7 @@ function getAccount() {
 
 // *************************************************************************************************
 
-// 
+//
 // Get overview
 //
 
@@ -106,7 +106,7 @@ function getOverview() {
 
 // *************************************************************************************************
 
-// 
+//
 // Count all Tasks
 //
 
@@ -136,9 +136,9 @@ function getTaskCount() {
 
 // *************************************************************************************************
 
-// 
+//
 // Get all Tasks and display
-// 
+//
 
 function getAllTasks() {
     var localAuthKey = localStorage.getItem('authToken');
@@ -187,7 +187,7 @@ function showEditMenu(task_id) {
 
 // *************************************************************************************************
 
-// 
+//
 // Get all Tasks which have been marked complete
 //
 
@@ -199,13 +199,13 @@ function getAllTasksCompleted() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?complete',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/completedtask',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
         })
         .then(function (response) {
-            $(response.data['todo-items']).each(function () {
+            $(response.data['tasks']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
                 var taskDescription = this.description;
@@ -222,6 +222,7 @@ function getAllTasksCompleted() {
                     '</div>');
                 triggerTooltips();
             });
+            console.log('Response is: ' + response)
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -230,9 +231,9 @@ function getAllTasksCompleted() {
 
 // *************************************************************************************************
 
-// 
+//
 // Get all Tasks due Today
-// 
+//
 
 function getAllTasksToday() {
     var resultElement = document.getElementById('getAllTasksResultToday');
@@ -275,7 +276,7 @@ function getAllTasksToday() {
 
 // *************************************************************************************************
 
-// 
+//
 // Count Tasks due today
 //
 
@@ -301,9 +302,9 @@ function getTaskCountToday() {
 
 // *************************************************************************************************
 
-// 
+//
 // Get all Tasks due Tomorrow
-// 
+//
 
 function getAllTasksTomorrow() {
     var resultElement = document.getElementById('getAllTasksResultTomorrow');
@@ -346,7 +347,7 @@ function getAllTasksTomorrow() {
 
 // *************************************************************************************************
 
-// 
+//
 // Count Tasks due tomorrow
 //
 
@@ -372,7 +373,7 @@ function getTaskCountTomorrow() {
 
 // *************************************************************************************************
 
-// 
+//
 // Get all Tasks that are overdue
 //
 
@@ -417,7 +418,7 @@ function getAllTasksOverdue() {
 
 // *************************************************************************************************
 
-// 
+//
 // Count Tasks that are overdue
 //
 
@@ -444,9 +445,9 @@ function getTaskCountOverdue() {
 
 // *************************************************************************************************
 
-// 
+//
 // Get all High priority Tasks
-// 
+//
 
 // function getHighPriority() {
 //     var resultElement = document.getElementById('getHighPriorityResult');
