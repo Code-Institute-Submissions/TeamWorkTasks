@@ -10,11 +10,15 @@ function completeTask(task_id) {
 
     axios({
             method: 'PUT',
-            url: 'https://' + SiteName + '.teamwork.com/tasks/' + task_id + '/complete.json',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/singletask/' + task_id + '/complete.json',
+            headers: {
+                'Authorization': "Bearer " + APIKey
             },
+            // data: {
+            //     "todo_items":{
+            //         "completed": false
+            //     }
+            // }
         })
         .then(
             function (response) {
@@ -50,20 +54,17 @@ function editTask(e) {
     console.log("Set vars, task id is: " + ThisTaskID.task_id);
     axios({
             method: 'PUT',
-            url: 'https://' + SiteName + '.teamwork.com/todo_items/' + ThisTaskID.task_id + '.json',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/updatetask/' + ThisTaskID.task_id + '.json',
+            headers: {
+                'Authorization': "Bearer " + APIKey
             },
-            data: {
-                "todo-item": {
-                    "content": content,
-                    "due-date": date_picker,
-                    "description": taskDescription
-                }
-            },
-            processData: false,
-            contentType: "application/json; charset=UTF-8"
+            // data: {
+            //     "todo-item": {
+            //         "content": content,
+            //         "due-date": date_picker,
+            //         "description": taskDescription
+            //     }
+            // },
         })
         .then(function (response) {
             //resultElement.innerHTML = generateSuccessHTMLOutput(response);
