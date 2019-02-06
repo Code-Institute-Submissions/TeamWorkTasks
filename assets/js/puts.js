@@ -65,6 +65,7 @@ function editTask(e) {
                     "description": taskDescription
                 }
             },
+            contentType: "application/json; charset=UTF-8",
         })
         .then(function (response) {
             //resultElement.innerHTML = generateSuccessHTMLOutput(response);
