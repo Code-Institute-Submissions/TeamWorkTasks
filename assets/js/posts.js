@@ -28,11 +28,10 @@ function postTask(e) {
     console.log("Task listid is: " + tasklist_id);
 
     axios({
-            method: 'POST',
-            url: 'https://' + SiteName + '.teamwork.com/tasklists/' + tasklist_id + '/tasks.json',
-            auth: {
-                username: APIKey,
-                password: ':xxx'
+            type: "POST",
+            url: "https://hi-21ca23a1-eval-prod.apigee.net/addtask/" + '1236265' + "/todo_items.json",
+            headers: {
+                'Authorization': "Bearer " + APIKey
             },
             data: {
                 "todo-item": {
@@ -41,15 +40,16 @@ function postTask(e) {
                     "description": taskDescription
                 }
             },
+
             processData: false,
-            contentType: "application/json; charset=UTF-8"
+            // contentType: "application/json; charset=UTF-8"
         })
-        .then(function(response) {
+        .then(function (response) {
             //resultElement.innerHTML = generateSuccessHTMLOutput(response);
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay! Your new task was added!</div>');
             //<div class="alert alert-success" role="alert">...</div>
             $('.task-success').show();
-            location.reload();
+            // location.reload();
             refreshAllTasks();
             setTimeout(() => {
                 $('#todoInputForm')[0].reset();
@@ -58,7 +58,7 @@ function postTask(e) {
                 }, 5000);
             }, 50);
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         })
     e.preventDefault();
@@ -95,7 +95,7 @@ function postTaskMobile(e) {
             processData: false,
             contentType: "application/json; charset=UTF-8"
         })
-        .then(function(response) {
+        .then(function (response) {
             //resultElement.innerHTML = generateSuccessHTMLOutput(response);
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
             //<div class="alert alert-success" role="alert">...</div>
@@ -108,7 +108,7 @@ function postTaskMobile(e) {
                 }, 5000);
             }, 50);
         })
-        .catch(function(error) {
+        .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         })
     e.preventDefault();
@@ -124,5 +124,3 @@ function refreshAllTasks() {
     getTaskCount();
 }
 // *************************************************************************************************
-
-
