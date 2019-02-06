@@ -54,17 +54,17 @@ function editTask(e) {
     console.log("Set vars, task id is: " + ThisTaskID.task_id);
     axios({
             method: 'PUT',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/updatetask/' + ThisTaskID.task_id + '.json',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/singletask/' + ThisTaskID.task_id + '.json',
             headers: {
                 'Authorization': "Bearer " + APIKey
             },
-            // data: {
-            //     "todo-item": {
-            //         "content": content,
-            //         "due-date": date_picker,
-            //         "description": taskDescription
-            //     }
-            // },
+            data: {
+                "todo-item": {
+                    "content": content,
+                    "due-date": date_picker,
+                    "description": taskDescription
+                }
+            },
         })
         .then(function (response) {
             //resultElement.innerHTML = generateSuccessHTMLOutput(response);
