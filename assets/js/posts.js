@@ -114,6 +114,36 @@ function postTaskMobile(e) {
     e.preventDefault();
 }
 
+function postAuthCode() {
+    let code = {
+        code: window.location.search.substr(6)
+    };
+    console.log("Auth code is: ", code);
+
+    axios({
+            method: 'POST',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/teamworktoken',
+            data: code,
+            processData: false,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(function (response) {
+            var authToken = response.data['access_token'];
+            localStorage.setItem('authToken', authToken);
+
+            console.log("Local storage token: ", localStorage.getItem('auth token'));
+            console.log("Response is: ", authToken);
+            console.log(response);
+
+            window.location.href = "/home.html";
+        })
+        .catch(function (error) {
+            console.log("Error: ", error);
+        })
+}
+
 
 function refreshAllTasks() {
     getAllTasks();

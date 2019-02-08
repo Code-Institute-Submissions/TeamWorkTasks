@@ -103,6 +103,7 @@ function logOut() {
     localStorage.removeItem("siteName");
     localStorage.removeItem("currentProjectID");
     localStorage.removeItem("selectedTaskListID");
+    localStorage.removeItem("authToken");
     // localStorage.removeItem("currentProjectName");
 
 
@@ -117,8 +118,8 @@ function logOut() {
 
 // Check whether user is logged in and route accordingly
 function checkIfLoggedIn() {
-    if (localStorage.autToken) {
-        window.location.href = "/projects.html";
+    if (localStorage.authToken) {
+        window.location.href = "/home.html";
     }
 }
 
