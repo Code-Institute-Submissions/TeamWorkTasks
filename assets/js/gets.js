@@ -7,7 +7,7 @@ function getSelectListID() {
         $("#taskListRadio").click(function () {
             var selectedTaskListID = $("input[type='radio'][name='taskListRadioButtons']:checked + label span").text();
             localStorage.setItem("selectedTaskListID", selectedTaskListID);
-            console.log('Task list selected is: ' + localStorage.getItem(selectedTaskListID));
+            //console.log('Task list selected is: ' + localStorage.getItem(selectedTaskListID));
         });
     });
 }
@@ -37,7 +37,7 @@ function getTaskListDetails() {
                     '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" checked="checked">' +
                     '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
                 )
-                return console.log('TaskList ID:' + taskListId);
+                return //console.log('TaskList ID:' + taskListId);
             });
         })
         .catch(function (error) {
@@ -67,12 +67,12 @@ function getAccount() {
             var companyName = response.data.account['siteOwnerName'];
             $(resultElement).append("Hi, " + companyName + ' !');
             dateToday();
-            console.log("Company name is: " + companyName);
+            //console.log("Company name is: " + companyName);
 
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
-            console.log(error);
+            //console.log(error);
         });
 }
 
@@ -127,7 +127,7 @@ function getTaskCount() {
                 var taskCount = response.data['todo-items'].length;
                 var task = $(resultElement).append(
                     taskCount);
-                console.log("Task count is: " + taskCount);
+                //console.log("Task count is: " + taskCount);
             }
         })
         .catch(function (error) {
@@ -154,7 +154,7 @@ function getAllTasks() {
             }
         })
         .then(function (response) {
-            console.log("Current project ID is: " + PROJECTID)
+            //console.log("Current project ID is: " + PROJECTID)
             $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
@@ -183,7 +183,7 @@ function getAllTasks() {
 
 
 function showEditMenu(task_id) {
-    console.log(task_id);
+    //console.log(task_id);
 }
 
 // *************************************************************************************************
@@ -223,7 +223,7 @@ function getAllTasksCompleted() {
                     '</div>');
                 triggerTooltips();
             });
-            console.log('Response is: ' + response)
+            //console.log('Response is: ' + response)
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -485,7 +485,7 @@ function getTaskCountOverdue() {
 function getTaskForEdit(task_id) {
     var var1 = task_id;
 
-    console.log("Task selected: " + task_id);
+    //console.log("Task selected: " + task_id);
 
     editTaskForm(var1);
 
@@ -518,7 +518,7 @@ function editTaskForm(val) {
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
                 var taskDescription = this.description;
-                console.log(response.statusText);
+                //console.log(response.statusText);
                 $(resultElement).append(
                     '<form class="form-inline" id="todoInputFormEdit">' +
                     '<div>' +
@@ -550,7 +550,7 @@ function editTaskForm(val) {
             });
         })
         .catch(function (error) {
-            console.log(error.statusText);
+            //console.log(error.statusText);
         })
 }
 

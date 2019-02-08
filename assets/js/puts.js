@@ -6,7 +6,7 @@ var ThisTaskID = {};
 
 function completeTask(task_id) {
 
-    console.log(task_id);
+    //console.log(task_id);
 
     axios({
             method: 'PUT',
@@ -29,10 +29,10 @@ function completeTask(task_id) {
                     getAllTasksOverdue();
                     getAllTasksCompleted();
                 }, 100);
-                console.log(response.statusText);
+                //console.log(response.statusText);
             })
         .catch(function (error) {
-            console.log(error.statusText);
+            //console.log(error.statusText);
         })
 
 }
@@ -43,7 +43,7 @@ function editTask(e) {
     var resultElement = document.getElementById('editTaskResult');
     resultElement.innerHTML = '';
 
-    console.log("Task to be edited, ID: " + ThisTaskID.task_id);
+    //console.log("Task to be edited, ID: " + ThisTaskID.task_id);
 
     var taskDescription = document.getElementById('taskDescriptionEdit').value;
     var content = document.getElementById("taskTitleEdit").value;
@@ -51,7 +51,7 @@ function editTask(e) {
 
 
 
-    console.log("Set vars, task id is: " + ThisTaskID.task_id);
+    //console.log("Set vars, task id is: " + ThisTaskID.task_id);
     axios({
             method: 'PUT',
             url: 'https://hi-21ca23a1-eval-prod.apigee.net/singletask/' + ThisTaskID.task_id + '.json',

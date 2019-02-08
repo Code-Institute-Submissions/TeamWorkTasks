@@ -77,7 +77,7 @@ function getProjects() {
                     '</div>' +
                     '</div>'
                 )
-                console.log("Project name: " + projectName)
+                //console.log("Project name: " + projectName)
             })
         })
         .catch(function (error) {
@@ -86,8 +86,8 @@ function getProjects() {
 }
 
 function setProjectID(projectID) {
-    console.log("Project ID:" + projectID);
-    // console.log("Project ID:" + projectName);
+    //console.log("Project ID:" + projectID);
+    // //console.log("Project ID:" + projectName);
 
     localStorage.setItem("currentProjectID", projectID);
     // localStorage.setItem("currentProjectName", projectName);
@@ -111,7 +111,7 @@ function logOut() {
     setTimeout(() => {
         window.location.href = "/index.html";
     }, 100);
-    console.log("Logged out!");
+    //console.log("Logged out!");
 
 }
 // *************************************************************************************************

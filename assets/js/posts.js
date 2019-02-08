@@ -19,13 +19,13 @@ function postTask(e) {
     var content = document.getElementById("taskTitle").value;
     var date_picker = document.getElementById('datePicker').value;
     var due_date = date_picker.split('/').reverse().join('')
-    console.log("Split date is: " + due_date)
+    //console.log("Split date is: " + due_date)
     // var due_date = date_picker.replace(/\//ig, '')
-    console.log("Passed date is: " + due_date)
+    //console.log("Passed date is: " + due_date)
 
 
 
-    console.log("Task listid is: " + tasklist_id);
+    //console.log("Task listid is: " + tasklist_id);
 
     axios({
             method: 'POST',
@@ -118,7 +118,7 @@ function postAuthCode() {
     let code = {
         code: window.location.search.substr(6)
     };
-    console.log("Auth code is: ", code);
+    //console.log("Auth code is: ", code);
 
     axios({
             method: 'POST',
@@ -133,14 +133,14 @@ function postAuthCode() {
             var authToken = response.data['access_token'];
             localStorage.setItem('authToken', authToken);
 
-            console.log("Local storage token: ", localStorage.getItem('auth token'));
-            console.log("Response is: ", authToken);
-            console.log(response);
+            //console.log("Local storage token: ", localStorage.getItem('auth token'));
+            //console.log("Response is: ", authToken);
+            //console.log(response);
 
             window.location.href = "/home.html";
         })
         .catch(function (error) {
-            console.log("Error: ", error);
+            //console.log("Error: ", error);
         })
 }
 

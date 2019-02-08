@@ -13,10 +13,10 @@ function deleteTask(task_id) {
                 getAllTasks();
                 getAllTasksCompleted();
             }, 100);
-            console.log(response.statusText);
-            console.log("Task DELETED: " + task_id);
+            //console.log(response.statusText);
+            //console.log("Task DELETED: " + task_id);
         })
         .catch(function (error) {
-            console.log(error.statusText);
+            //console.log(error.statusText);
         })
 }
