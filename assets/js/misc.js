@@ -1,8 +1,10 @@
-// Create todays's date bject
+// Create todays's date object
 function dateToday() {
     var today = new Date();
     var today = today.toDateString();
-    document.getElementById("todaysDate").innerHTML = today;
+    var resultElement = document.getElementById('todaysDate');
+    // document.getElementById("todaysDate").innerHTML = today;
+    $(resultElement).append("<br>" + today);
 }
 
 // *************************************************************************************************
@@ -30,5 +32,16 @@ function generateErrorHTMLOutput(error) {
         '<h5>Data:</h5>' +
         '<pre>' + JSON.stringify(error.response.data, null, '\t') + '</pre>';
 }
+
+$(function () {
+    var token = localStorage.getItem("authToken").length;
+    if (token > 0) {
+        logOutButton.innerHTML = "<i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> Log out";
+        logOutButton2.innerHTML = "<i class=\"fa fa-sign-out fa-lg\" aria-hidden=\"true\"></i> Log out";
+    } else {
+        logOutButton.innerHTML = "Log In";
+        logOutButton2.innerHTML = "Log In";
+    }
+});
 
 // *************************************************************************************************

@@ -53,7 +53,7 @@ function getTaskListDetails() {
 //
 
 function getAccount() {
-    var resultElement = document.getElementById('getAccountResult');
+    var resultElement = document.getElementById('todaysDate');
     resultElement.innerHTML = '';
 
     axios({
@@ -66,6 +66,7 @@ function getAccount() {
         .then(function (response) {
             var companyName = response.data.account['siteOwnerName'];
             $(resultElement).append("Hi, " + companyName + ' !');
+            dateToday();
             console.log("Company name is: " + companyName);
 
         })

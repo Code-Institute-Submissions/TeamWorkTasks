@@ -10,3 +10,19 @@ const SELECTEDTASKLISTID = localStorage.getItem("selectedTaskListID");
 
 // *************************************************************************************************
 
+function loadScripts() {
+    checkIfLoggedOut();
+    showCountTasks();
+    getAllTasks();
+    getAllTasksTomorrow();
+    getAllTasksToday();
+    getAllTasksOverdue();
+    getTaskCount();
+    getTaskCountToday();
+    getTaskCountTomorrow();
+    getTaskCountOverdue();
+    getAllTasksCompleted();
+    getTaskListDetails();
+    getAccount();
+    getSelectListID();
+}
