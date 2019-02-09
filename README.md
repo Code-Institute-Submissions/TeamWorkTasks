@@ -26,9 +26,10 @@ A development(subject to current dev changes) demo of this app can be viewed [he
 - jQuery
 - [Axios](https://github.com/axios/axios), a Promise-based HTTP client for JS.
 - [Jasmine](https://jasmine.github.io/), a behavior-driven development framework for testing JS.
+- [Netlify](https://netlify.com), build, deploy, and manage modern web projects
 
 # UX:
-- The user is first asked to authenticate with their Teamwork Projects sitename and API key.
+- The user is first asked to authenticate with their Teamwork Projects credentials.
 - Once authenticated, the user is shown a list of their Teamwork projects gathered from a call to the API - they choose one.
 - Task overview displayed with counters.
 - Side menu to navigate to relevant task due date ranges i.e Today, Tomorrow, Overdue and Completed.
