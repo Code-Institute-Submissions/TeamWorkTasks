@@ -25,4 +25,5 @@ function loadScripts() {
     getTaskListDetails();
     getAccount();
     getSelectListID();
+    addEventListeners();
 }

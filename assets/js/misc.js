@@ -3,12 +3,24 @@ function dateToday() {
     var today = new Date();
     var today = today.toDateString();
     var resultElement = document.getElementById('todaysDate');
-    // document.getElementById("todaysDate").innerHTML = today;
     $(resultElement).append("<br>" + today);
 }
 
 // *************************************************************************************************
 
+// Datepicker
+$(document).ready(function () {
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    date_input.datepicker({
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+    })
+})
+
+// *************************************************************************************************
 
 // Template API call response/errors
 function generateSuccessHTMLOutput(response) {

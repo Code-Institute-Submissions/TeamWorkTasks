@@ -1,9 +1,10 @@
 // 
 // Add event listener for form submit button
 //
-
-document.getElementById('todoInputForm').addEventListener('submit', postTask);
-document.getElementById('todoInputFormMobile').addEventListener('submit', postTaskMobile);
+function addEventListeners() {
+    document.getElementById('todoInputForm').addEventListener('submit', postTask);
+    document.getElementById('todoInputFormMobile').addEventListener('submit', postTaskMobile);
+}
 
 
 // 
@@ -14,18 +15,10 @@ function postTask(e) {
     var resultElement = document.getElementById('postTaskResult');
     resultElement.innerHTML = '';
 
-    var tasklist_id = SELECTEDTASKLISTID;
     var taskDescription = document.getElementById('taskDescription').value;
     var content = document.getElementById("taskTitle").value;
     var date_picker = document.getElementById('datePicker').value;
     var due_date = date_picker.split('/').reverse().join('')
-    //console.log("Split date is: " + due_date)
-    // var due_date = date_picker.replace(/\//ig, '')
-    //console.log("Passed date is: " + due_date)
-
-
-
-    //console.log("Task listid is: " + tasklist_id);
 
     axios({
             method: 'POST',
@@ -45,11 +38,8 @@ function postTask(e) {
             contentType: "application/json; charset=UTF-8"
         })
         .then(function (response) {
-            //resultElement.innerHTML = generateSuccessHTMLOutput(response);
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay! Your new task was added!</div>');
-            //<div class="alert alert-success" role="alert">...</div>
             $('.task-success').show();
-            // location.reload();
             refreshAllTasks();
             setTimeout(() => {
                 $('#todoInputForm')[0].reset();
@@ -69,10 +59,8 @@ function postTask(e) {
 //
 function postTaskMobile(e) {
     var resultElement = document.getElementById('postTaskResultMobile');
-    // var taskTitle = document.getElementById("taskTitle").value;
     resultElement.innerHTML = '';
 
-    var tasklist_id = SELECTEDTASKLISTID;
     var content = document.getElementById("taskTitleMobile").value;
     var taskDescription = document.getElementById('taskDescriptionMobile').value;
     var date_picker = document.getElementById('datePickerMobile').value;
@@ -96,9 +84,7 @@ function postTaskMobile(e) {
             contentType: "application/json; charset=UTF-8"
         })
         .then(function (response) {
-            //resultElement.innerHTML = generateSuccessHTMLOutput(response);
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
-            //<div class="alert alert-success" role="alert">...</div>
             $('.task-success').show();
             refreshAllTasks();
             setTimeout(() => {
@@ -118,7 +104,6 @@ function postAuthCode() {
     let code = {
         code: window.location.search.substr(6)
     };
-    //console.log("Auth code is: ", code);
 
     axios({
             method: 'POST',
@@ -132,15 +117,10 @@ function postAuthCode() {
         .then(function (response) {
             var authToken = response.data['access_token'];
             localStorage.setItem('authToken', authToken);
-
-            //console.log("Local storage token: ", localStorage.getItem('auth token'));
-            //console.log("Response is: ", authToken);
-            //console.log(response);
-
             window.location.href = "/home.html";
         })
         .catch(function (error) {
-            //console.log("Error: ", error);
+            console.log("Error: ", error);
         })
 }
 

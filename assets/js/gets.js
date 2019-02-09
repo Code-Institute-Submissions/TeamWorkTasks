@@ -7,7 +7,6 @@ function getSelectListID() {
         $("#taskListRadio").click(function () {
             var selectedTaskListID = $("input[type='radio'][name='taskListRadioButtons']:checked + label span").text();
             localStorage.setItem("selectedTaskListID", selectedTaskListID);
-            //console.log('Task list selected is: ' + localStorage.getItem(selectedTaskListID));
         });
     });
 }
@@ -37,7 +36,7 @@ function getTaskListDetails() {
                     '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" checked="checked">' +
                     '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
                 )
-                return //console.log('TaskList ID:' + taskListId);
+                return
             });
         })
         .catch(function (error) {
@@ -67,12 +66,9 @@ function getAccount() {
             var companyName = response.data.account['siteOwnerName'];
             $(resultElement).append("Hi, " + companyName + ' !');
             dateToday();
-            //console.log("Company name is: " + companyName);
-
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
-            //console.log(error);
         });
 }
 
@@ -127,7 +123,6 @@ function getTaskCount() {
                 var taskCount = response.data['todo-items'].length;
                 var task = $(resultElement).append(
                     taskCount);
-                //console.log("Task count is: " + taskCount);
             }
         })
         .catch(function (error) {
@@ -154,7 +149,6 @@ function getAllTasks() {
             }
         })
         .then(function (response) {
-            //console.log("Current project ID is: " + PROJECTID)
             $(response.data['todo-items']).each(function () {
                 var taskID = this.id;
                 var taskTitle = this.content;
@@ -181,10 +175,6 @@ function getAllTasks() {
         });
 }
 
-
-function showEditMenu(task_id) {
-    //console.log(task_id);
-}
 
 // *************************************************************************************************
 
@@ -223,7 +213,6 @@ function getAllTasksCompleted() {
                     '</div>');
                 triggerTooltips();
             });
-            //console.log('Response is: ' + response)
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -447,46 +436,11 @@ function getTaskCountOverdue() {
 // *************************************************************************************************
 
 //
-// Get all High priority Tasks
+// Obtain the id of the task to be edited
 //
-
-// function getHighPriority() {
-//     var resultElement = document.getElementById('getHighPriorityResult');
-//     resultElement.innerHTML = '';
-
-//     axios({
-//             method: 'GET',
-//             auth: {
-//                 username: APIKey,
-//                 password: ':xxx'
-//             },
-//             url: 'https://' + SiteName + '.teamwork.com/tasks.json?priority=high',
-//         })
-//         .then(function (response) {
-//             '<h4>Tasks: </h4>' +
-//             $(response.data['todo-items']).each(function () {
-//                 var taskTitle = this.content;
-//                 var dueDate = this['due-date'];
-//                 var priority = this.priority;
-//                 var task = $(resultElement).append(
-//                     '<b>' + taskTitle + '</b>' + '<br>' +
-//                     'Due date: ' + dueDate + '<br>' +
-//                     'Priority: ' + priority + '<hr>');
-//             });
-//         })
-//         .catch(function (error) {
-//             resultElement.innerHTML = getAllTasksOutputError(error);
-//         });
-// }
-
-// *************************************************************************************************
-
 
 function getTaskForEdit(task_id) {
     var var1 = task_id;
-
-    //console.log("Task selected: " + task_id);
-
     editTaskForm(var1);
 
     $(".taskEdit").show();
@@ -518,7 +472,6 @@ function editTaskForm(val) {
                 var dueDate = this['due-date'];
                 var project = this['project-name'];
                 var taskDescription = this.description;
-                //console.log(response.statusText);
                 $(resultElement).append(
                     '<form class="form-inline" id="todoInputFormEdit">' +
                     '<div>' +
@@ -538,7 +491,7 @@ function editTaskForm(val) {
                     '<div class = "panel-body" id ="editTaskResult">' +
                     '</div>' +
                     '</form>');
-                var date_input = $('input[name="date"]'); //our date input has the name "date"
+                var date_input = $('input[name="date"]'); 
                 var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
                 date_input.datepicker({
                     format: 'yyyymmdd',
@@ -550,11 +503,9 @@ function editTaskForm(val) {
             });
         })
         .catch(function (error) {
-            //console.log(error.statusText);
+            console.log(error.statusText);
         })
 }
-
-
 
 
 function triggerTooltips() {
