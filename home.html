@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -19,7 +19,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap Date-Picker Plugin -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 </head>
 
 <body>
@@ -280,7 +280,7 @@
                                             <!-- Tasklists radio buttons -->
                                         </div>
                                         <br><br>
-                                        <button type="submit" class="btn btn-primary" align="center">Send</button>
+                                        <button type="submit" class="btn btn-primary">Send</button>
                                     </div>
                                 </form>
                             </div>
@@ -302,12 +302,12 @@
     <script src="assets/js/showHides.js"></script>
     <script src="assets/js/loginLogic.js"></script>
     <script src="assets/js/misc.js"></script>
+    <script>
+        $(document).ready(function () {
+            loadScripts();
+        })
+    </script>
 </body>
 
-<script>
-    $(document).ready(function () {
-        loadScripts();
-    })
-</script>
 
 </html>
