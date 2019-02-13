@@ -1,20 +1,12 @@
-# Project Goal:
-Create a Single-Page Application (SPA).
-Incorporate links or buttons to allow your user to navigate the site and reset/control the site functionality.
-Whenever possible, strive to use semantic HTML5 elements to structure your HTML code better.
+# TeamWorkTasks
+This repository contains the code for an API driven, client-side application.
 
-Make sure your site is as responsive as possible. You can test this by checking the site on different screen sizes and browsers. Please note that if you are building a data dashboard, only your chart containers are expected to be responsive. Charts using D3.js are not responsive as they are designed for desktop or large-screen viewing.
-
-We advise that you write down user stories and create wireframes/mockups before embarking on full-blown development.
-The site can also make use of CSS frameworks such as Bootstrap, just make sure you maintain a clear separation between the library code and your code.
-You should conduct and document tests to ensure that all of your website’s functionality works well.
-
-Use Git & GitHub for version control. Each new piece of functionality should be in a separate commit.
-
-Deploy the final version of your code to a hosting platform such as GitHub Pages.
+# UX
+#### The application makes use of jQuery and DOM manipulation in order to provide a "single-page" experience to the user as they use the app.
+- 
 
 # Project idea: 
-"TeamworkToDo" - a one-page task manager application. It utilizes the TeamWork.com API (https://developer.teamwork.com).
+"TeamWorkTasks" - a one-page task manager application. It utilizes the TeamWork.com API (https://developer.teamwork.com).
 
 # Demo:
 A development(subject to current dev changes) demo of this app can be viewed [here](https://agitated-noether-613123.netlify.com).
