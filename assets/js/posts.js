@@ -18,6 +18,7 @@ function postTask(e) {
     var taskDescription = document.getElementById('taskDescription').value;
     var content = document.getElementById("taskTitle").value;
     var date_picker = document.getElementById('datePicker').value;
+    
     var due_date = date_picker.split('/').reverse().join('')
 
     axios({
