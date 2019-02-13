@@ -238,8 +238,11 @@
                                     <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text" />
                                     <br>
                                     <br>
-                                    <select class="form-control input-no-border select-width" id="getAllTaskListSelectListMobile">
-                                    </select>
+                                    Tasks
+                                    <!-- <p>Task list: </p> -->
+                                    <div class="custom-control custom-radio custom-control-inline" id="taskListRadioMobile">
+                                        <!-- Tasklists radio buttons -->
+                                    </div>
                                     <br><br>
                                     <button type="submit" class="btn btn-primary">Send</button>
                                 </div>
@@ -279,7 +282,6 @@
                                         <div class="custom-control custom-radio custom-control-inline" id="taskListRadio">
                                             <!-- Tasklists radio buttons -->
                                         </div>
-                                        </select>
                                         <br><br>
                                         <button type="submit" class="btn btn-primary" align="center">Send</button>
                                     </div>
@@ -306,7 +308,7 @@
 </body>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         loadScripts();
     })
 </script>

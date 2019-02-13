@@ -8,6 +8,10 @@ function getSelectListID() {
             var selectedTaskListID = $("input[type='radio'][name='taskListRadioButtons']:checked + label span").text();
             localStorage.setItem("selectedTaskListID", selectedTaskListID);
         });
+        $("#taskListRadioMobile").click(function () {
+            var selectedTaskListID = $("input[type='radio'][name='taskListRadioButtons']:checked + label span").text();
+            localStorage.setItem("selectedTaskListID", selectedTaskListID);
+        });
     });
 }
 
@@ -19,7 +23,7 @@ function getSelectListID() {
 //
 function getTaskListDetails() {
     var resultElement = document.getElementById('taskListRadio');
-    var resultElementMobile = document.getElementById('getAllTaskListSelectListMobile');
+    var resultElementMobile = document.getElementById('taskListRadioMobile');
 
     axios({
             method: 'GET',
@@ -33,6 +37,10 @@ function getTaskListDetails() {
                 var taskListName = this.name;
                 var taskListId = this.id;
                 $(resultElement).append(
+                    '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" required>' +
+                    '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
+                )
+                $(resultElementMobile).append(
                     '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" required>' +
                     '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
                 )
