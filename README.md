@@ -1,7 +1,7 @@
 # TeamWorkTasks
 This repository contains the code for an API driven, client-side application. It utilizes the [TeamWork.com Projects API](https://developer.teamwork.com).
 
-# UX
+## UX
 #### The application makes use of jQuery and DOM manipulation in order to provide a "single-page" experience to the user.
 - On larger screen sizes, the page is divided in 3 vertical divs.
     - The SideMenu div: contains the main navigation links for different task sets.
@@ -58,6 +58,26 @@ This repository contains the code for an API driven, client-side application. It
 
 - Alter due date.
 
+
+## Challenges
+###  - API user authentication.
+Initially, I had the Teamwork credentials from  a login form being stored in browser local-storage. This was not ideal as it posed a security risk for Cross-site scripting (XSS) vulnerabilities. 
+- Solution: Implemented Teamwork's [app login flow](https://developer.teamwork.com/projects/authentication-questions/how-to-authenticate-via-app-login-flow) .
+    - The user is asked to authenticate with their TeamWork credentials by directing the user to their auth page, with callback URI for this application.
+    - Once user has authenticated there is a code query parameter that is appended to the URI containing the temporary authentication token.
+    - I then had to take this code and make an HTTP POST request to their API and the resulting payload contained a permanent access token.
+    - I stored this token and then passed it as a Header in API calls made by the user to authenticate the user.
+
+### - CORS (Cross-origin resource sharing).
+As this is a client-side app, all requests made to the TeamWork Projects API are originating from a domain different to that of the API server. 
+
+If [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) support is not enabled on the user's account with TeamWork.com - which is not by default then there will be no `Access-Control-Allow-Origin` header set, therefore, the browser will allow requests made from the application.
+- Solution - Proxy server:
+    - I built a reverse proxy with the [Apigee](https://apigee.com/api-management/#/homepage) platform to process requests from the app.
+    - CORS issues do not arise from server-to-server communication. Therefore, as the proxy is built as a nodejs webserver, it accepts calls from the application and then communicates with the TeamWork API, adding CORS headers to the response on the way back to the user's browser. 
+
+
+
 ## Technologies
 - [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -98,39 +118,6 @@ To ensure the website responded and loaded quickly for the user, audits were car
 #### Media:
 TeamWork.com logos were obtained from their [press kit site](https://www.teamwork.com/press-media-kit) .
 
-**************************************************************
-
-# Project idea: 
-"TeamWorkTasks" - a one-page task manager application. It utilizes the TeamWork.com API (https://developer.teamwork.com).
-
-# Demo:
-A development(subject to current dev changes) demo of this app can be viewed [here](https://agitated-noether-613123.netlify.com).
-
-
-# UX:
-- The user is first asked to authenticate with their Teamwork Projects credentials.
-- Once authenticated, the user is shown a list of their Teamwork projects gathered from a call to the API - they choose one.
-- Task overview displayed with counters.
-- Side menu to navigate to relevant task due date ranges i.e Today, Tomorrow, Overdue and Completed.
-- An add task form comprising of title, description, due-date and task list to which it should be added displayed on the right most div.
-- Each task may be marked as complete.
-- Each task may also be edited to update any of the form fields.
-
-# Version control
-- Git and GitHub were utilized for version control. As additions and edits were being made, files were committed to branches and merged to the master branch.
-
-# Deploy
-- Production app is deployed on the [Netlify](https://netlify.com) platform.
-- This enabled deployments to be triggered from GitHub commits to a selected branch.
-
-# Current issues:
-- Teamwork credentials from login form are currently being stored in browser local-storage. This is not ideal as poses security risk for Cross-site scripting (XSS) vulnerabilities. Need to implement [Teamwork's app login flow](https://developer.teamwork.com/projects/authentication-questions/how-to-authenticate-via-app-login-flow) or similar.
-
-# Further features:
-
-
-# Credits:
-- [Horizontal scrolling nav](https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu) - Used for mobile view.
 
 
 
