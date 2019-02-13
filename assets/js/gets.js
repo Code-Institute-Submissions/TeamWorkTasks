@@ -33,7 +33,7 @@ function getTaskListDetails() {
                 var taskListName = this.name;
                 var taskListId = this.id;
                 $(resultElement).append(
-                    '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" checked="checked">' +
+                    '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" required>' +
                     '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
                 )
                 return
@@ -491,7 +491,7 @@ function editTaskForm(val) {
                     '<div class = "panel-body" id ="editTaskResult">' +
                     '</div>' +
                     '</form>');
-                var date_input = $('input[name="date"]'); 
+                var date_input = $('input[name="date"]');
                 var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
                 date_input.datepicker({
                     format: 'yyyymmdd',
