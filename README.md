@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d5bba725-bc6c-4ece-901c-69ce850698fc/deploy-status)](https://app.netlify.com/sites/agitated-noether-613123/deploys)
 # TeamWorkTasks
 This repository contains the code for an API driven, client-side application. It utilizes the [TeamWork.com Projects API](https://developer.teamwork.com).
 
