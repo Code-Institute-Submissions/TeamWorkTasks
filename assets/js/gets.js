@@ -151,7 +151,7 @@ function getAllTasks() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?sort=dateadded',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
