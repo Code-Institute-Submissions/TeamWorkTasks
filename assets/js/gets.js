@@ -44,14 +44,14 @@ St project ID
 function setProjectID(projectID) {
     console.log("Project ID:" + projectID);
     // console.log("Project ID:" + projectName);
-    
+
     localStorage.setItem("currentProjectID", projectID);
     // localStorage.setItem("currentProjectName", projectName);
 
     setTimeout(() => {
         window.location.href = "/home.html";
-    }, 500);    
-    
+    }, 500);
+
 }
 
 
@@ -216,26 +216,37 @@ function getAllTasks() {
             }
         })
         .then(function (response) {
-            $(response.data['todo-items']).each(function () {
-                var taskID = this.id;
-                var taskTitle = this.content;
-                var taskDescription = this.description;
+            if (response.data['todo-items'].length) {
+                $(response.data['todo-items']).each(function () {
+                    var taskID = this.id;
+                    var taskTitle = this.content;
+                    var taskDescription = this.description;
+                    var taskList = this['todo-list-name'];
+                    $(resultElement).append(
+                        '<div class="taskDiv panel panel-default">' +
+                        '<li style="list-style-type: none">' +
+                        '<div class="panel-body">' +
+                        '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
+                        '<div class="editMenuBtn alignright">' +
+                        '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
+                        '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
+                        '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
+                        '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
+                        '<br />' +
+                        '<span class="label label-warning">' + taskList + '</span>' +
+                        '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
+                        '</li>' +
+                        '</div>' +
+                        '</div>');
+                    triggerTooltips();
+                });
+            } else {
                 $(resultElement).append(
-                    '<div class="taskDiv panel panel-default">' +
-                    '<li style="list-style-type: none">' +
-                    '<div class="panel-body">' +
-                    '<p class="alignleft"><b>' + taskTitle + '</b>' + '<br><br>' + taskDescription + '</p >' +
-                    '<div class="editMenuBtn alignright">' +
-                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">' +
-                    '<i class="fa fa-check-square-o fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="completeTask(' + taskID + ')" id="completeBtn"></i>' + '</a>' +
-                    '<a href="#" data-toggle="tooltip" data-placement="bottom" title="Edit">' +
-                    '<i class="fa fa-pencil-square-o fa-fw fa-lg  edit-menu-icons" aria-hidden="true" onclick="getTaskForEdit(' + taskID + ')"></i>' + '</a>' +
-                    '<div class="editMenuDiv" style="display: none"><a href="#" onclick="completeTask(' + taskID + ')" id="completeBtn">Complete | </a></div>' +
-                    '</li>' +
-                    '</div>' +
+                    '<div class="center">' +
+                    '<button type="button" class="btn btn-primary center" onclick="showAddTaskList();" id="createTaskButton">Create a task</button>' +
                     '</div>');
                 triggerTooltips();
-            });
+            }
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);

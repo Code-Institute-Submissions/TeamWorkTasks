@@ -4,6 +4,7 @@
 function addEventListeners() {
     document.getElementById('todoInputForm').addEventListener('submit', postTask);
     document.getElementById('todoInputFormMobile').addEventListener('submit', postTaskMobile);
+    document.getElementById('addtaskListForm').addEventListener('submit', postTaskListProj);
 }
 
 
@@ -100,6 +101,38 @@ function postTaskMobile(e) {
         })
     e.preventDefault();
 }
+
+/* 
+Create a tasklist
+*/
+
+function postTaskListProj() {
+    var resultElement = document.getElementById('taskListRadio');
+    var resultElementMobile = document.getElementById('taskListRadioMobile');
+
+    var name = document.getElementById("taskListTitle").value;
+
+    axios({
+            method: 'POST',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/tasklists/' + localStorage.getItem("currentProjectID") + '/tasklists.json',
+            headers: {
+                'Authorization': "Bearer " + APIKey,
+            },
+            data: {
+                "todo-item": {
+                    "name": name,
+                }
+            },
+        })
+        .then(function (response) {
+            $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
+            $('.task-success').show();
+        })
+        .catch(function (error) {
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
+        });
+}
+
 
 function postAuthCode() {
     let code = {

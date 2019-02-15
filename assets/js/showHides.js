@@ -2,6 +2,12 @@
 // ***************************** Show/Hide content ********************************************
 //
 
+function showAddTaskList() {
+    $('#createTaskButton').hide();
+    $('.addTaskRight').hide();
+    $('#addTaskListRight').show();
+}
+
 function showCountTasks() {
     $(".countTasks").show();
     $(".taskEdit").hide();

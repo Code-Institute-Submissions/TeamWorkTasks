@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right nav-bar-padded" >
+                <ul class="nav navbar-nav navbar-right nav-bar-padded">
                     <li><button type="button" class="btn btn-link"><a href="projects.html" class="navbar-buttons" style="text-decoration: none;">Projects</a></button></li>
                     <li><button type="button" class="btn btn-link"><a href="#" class="navbar-buttons" style="text-decoration: none;" onclick="logOut()" id="logOutButton"></a></button></li>
                     <!-- <li><button type="button" class="btn btn-link navbar-buttons" onclick="logOut()" id="logOutButton">Log out</button></li> -->
@@ -175,6 +175,30 @@
                             </h4>
                             <div class="panel-body" id="getAllTasksResult">
                             </div>
+                            <!-- Add a task list -->
+                            <div id="addTaskListRight" class="center" style="display: none;">
+                                <div class="visible-lg visible-md">
+                                    <div>
+                                        <h4 class="h4-well-title">
+                                            <i class="fa fa-fw fa-plus"></i> First, please create a list
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div>
+                                    <form class="form-inline" id="addtaskListForm">
+                                        <div>
+                                            <input type="text" class="form-control input-no-border" id="taskListTitle" size="30" placeholder="Title:    20 chars max." maxlength="20" required>
+                                            <br>
+                                            <br><br>
+                                            <button type="submit" class="btn btn-primary">Send</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <br />
+                                <div class="panel-body" id='postTaskListResult'>
+                                </div>
+                            </div>
+
                         </div>
                         <!-- Today's Tasks -->
                         <div class="todaysTasks">
@@ -254,6 +278,7 @@
                     </div>
                     <!-- ***************************************************** Right div ***************************************************** -->
                     <div class="visible-lg visible-md col-lg-3 col-md-3" style="background-color: #fff; min-height: 100vh">
+                        <!-- Add a task -->
                         <div class="addTaskRight">
                             <div class="visible-lg visible-md">
                                 <div>
