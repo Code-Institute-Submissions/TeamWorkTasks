@@ -1,5 +1,6 @@
 function logOut() {
     localStorage.removeItem("selectedTaskListID");
+    localStorage.removeItem("currentProjectID");
     localStorage.removeItem("authToken");
 
     setTimeout(() => {
@@ -12,7 +13,7 @@ function logOut() {
 // Check whether user is logged in and route accordingly
 function checkIfLoggedIn() {
     if (localStorage.authToken) {
-        window.location.href = "/home.html";
+        window.location.href = "/projects.html";
     }
 }
 
