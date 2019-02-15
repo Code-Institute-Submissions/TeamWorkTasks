@@ -180,7 +180,7 @@ function getTaskCount() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks/' + localStorage.getItem("currentProjectID") + '/tasks.json?sort=dateadded',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -210,7 +210,7 @@ function getAllTasks() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?sort=dateadded',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks/' + localStorage.getItem("currentProjectID") + '/tasks.json?sort=dateadded',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -298,7 +298,7 @@ function getAllTasksToday() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=today',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks/' + localStorage.getItem("currentProjectID") + '/tasks.json?filter=today',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -343,7 +343,7 @@ function getTaskCountToday() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=today',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks/' + localStorage.getItem("currentProjectID") + '/tasks.json?filter=today',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -369,7 +369,7 @@ function getAllTasksTomorrow() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=tomorrow',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks/' + localStorage.getItem("currentProjectID") + '/tasks.json?filter=tomorrow',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -414,7 +414,7 @@ function getTaskCountTomorrow() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=tomorrow',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks/' + localStorage.getItem("currentProjectID") + '/tasks.json?filter=tomorrow',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -440,7 +440,7 @@ function getAllTasksOverdue() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=overdue',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks/' + localStorage.getItem("currentProjectID") + '/tasks.json?filter=overdue',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
@@ -486,7 +486,7 @@ function getTaskCountOverdue() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks?filter=overdue',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks/' + localStorage.getItem("currentProjectID") + '/tasks.json?filter=overdue',
             headers: {
                 'Authorization': "Bearer " + APIKey
             }
