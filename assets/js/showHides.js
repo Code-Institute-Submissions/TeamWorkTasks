@@ -2,30 +2,16 @@
 // ***************************** Show/Hide content ********************************************
 //
 
-// ** TODO: Tidy by removing repetitions **
-
 function showCountTasks() {
     $(".countTasks").show();
     $(".taskEdit").hide();
-    $(".addTaskRight").show();
+    $(".addTaskMobile").hide();
     $(".todaysTasks").hide();
     $(".tomorrowsTasks").hide();
     $(".allTasks").show();
     $(".overdueTasks").hide();
     $(".completeTasks").hide();
 }
-
-// function showEditTask() {
-//     $(".taskEdit").show();
-//     $(".countTasks").hide();
-//     $(".addTask").hide();
-//     $(".addTaskMobile").hide();
-//     $(".todaysTasks").hide();
-//     $(".tomorrowsTasks").hide();
-//     $(".allTasks").hide();
-//     $(".overdueTasks").hide();
-//     $(".completeTasks").hide();
-// }
 
 function showAllTasks() {
     $(".allTasks").show();

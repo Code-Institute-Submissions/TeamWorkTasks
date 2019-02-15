@@ -118,7 +118,7 @@ function postAuthCode() {
         .then(function (response) {
             var authToken = response.data['access_token'];
             localStorage.setItem('authToken', authToken);
-            window.location.href = "/home.html";
+            window.location.href = "/projects.html";
         })
         .catch(function (error) {
             console.log("Error: ", error);

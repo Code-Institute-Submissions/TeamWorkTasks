@@ -1,3 +1,62 @@
+/* 
+Get projects
+*/
+function getProjects() {
+    var resultElement = document.getElementById('getProjectsResult');
+    resultElement.innerHTML = '';
+
+    axios({
+            method: 'GET',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/getprojects',
+            headers: {
+                'Authorization': "Bearer " + APIKey,
+            }
+        })
+        .then(function (response) {
+            $(response.data['projects']).each(function () {
+                var projectName = this.name;
+                var projectID = this.id;
+
+                $(resultElement).append(
+                    '<div class="col-lg-12">' +
+                    '<div class="panel panel-default">' +
+                    '<div class="panel-heading">' + projectName +
+                    '<hr>' +
+                    '<i class="fa fa-arrow-right fa-fw fa-lg edit-menu-icons" aria-hidden="true" onclick="setProjectID(' + projectID + ')" id="completeBtn" align="center"></i>' + '</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>'
+                )
+                $('#myModal').modal('show');
+                $('#loader').hide();
+                console.log("Project name: " + projectName)
+            })
+        })
+        .catch(function (error) {
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
+        })
+}
+
+/* 
+St project ID
+*/
+function setProjectID(projectID) {
+    console.log("Project ID:" + projectID);
+    // console.log("Project ID:" + projectName);
+    
+    localStorage.setItem("currentProjectID", projectID);
+    // localStorage.setItem("currentProjectName", projectName);
+
+    setTimeout(() => {
+        window.location.href = "/home.html";
+    }, 500);    
+    
+}
+
+
+
+
 //
 // Set TaskList ID from radio button
 //
@@ -27,7 +86,7 @@ function getTaskListDetails() {
 
     axios({
             method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/tasklists',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/tasklists/' + localStorage.getItem("currentProjectID") + '/tasklists.json',
             headers: {
                 'Authorization': "Bearer " + APIKey,
             }

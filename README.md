@@ -17,9 +17,7 @@ This repository contains the code for an API driven, client-side application. It
 
 - As an authenticated user, I should be able redirected to overview page.
 
--  As a user who provides incorrect authentication information, I should  an appropriate alert to the problem.
-
-- As an authenticated user, I want to be able to select a project for which view tasks for.
+- As a user who provides incorrect authentication information, I should  an appropriate alert to the problem.
 
 - As an authenticated user I want to be able to view All Tasks as available across all Task Lists.
 
@@ -28,8 +26,8 @@ This repository contains the code for an API driven, client-side application. It
 - As an authenticated user, if I wish to add a task, I will need to fill out a form which will allow me enter task details such as:
     - title,
     - description,
-    - task list, 
-    - due date
+    - due date,
+    - task list
 
 
 - As an authenticated user, if I add a task that is successfully submitted, I should see a confirmation message.
