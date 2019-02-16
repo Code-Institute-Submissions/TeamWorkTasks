@@ -93,6 +93,17 @@ function showAddTaskMobile(){
     $(".addTaskRight").hide();
     $(".tomorrowsTasks").hide();
     $(".completeTasks").hide();
+    $("#addTaskListRightMobile").hide();
+}
+
+function showTaskListOrAddTask() {
+    if (localStorage.getItem("taskListCount")  > 0) {
+        showAddTaskMobile();
+        $('#createTaskButton').hide();
+    } else {
+        $(".addTaskMobile").hide();
+        $("#addTaskListRightMobile").show();
+    }
 }
 
 function hideEditForm(){
