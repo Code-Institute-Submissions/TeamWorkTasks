@@ -106,9 +106,8 @@ function postTaskMobile(e) {
 Create a tasklist
 */
 
-function postTaskListProj() {
-    var resultElement = document.getElementById('taskListRadio');
-    var resultElementMobile = document.getElementById('taskListRadioMobile');
+function postTaskListProj(e) {
+    var resultElement = document.getElementById('postTaskListResult');
 
     var name = document.getElementById("taskListTitle").value;
 
@@ -119,10 +118,10 @@ function postTaskListProj() {
                 'Authorization': "Bearer " + APIKey,
             },
             data: {
-                "todo-item": {
+                "todo-list": {
                     "name": name,
                 }
-            },
+            }
         })
         .then(function (response) {
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
@@ -130,7 +129,8 @@ function postTaskListProj() {
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
-        });
+        })
+        e.preventDefault();
 }
 
 
