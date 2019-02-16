@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TeamWorkTasks | Task App</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/scrollNav.css">
@@ -36,7 +37,8 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right nav-bar-padded">
                     <li><button type="button" class="btn btn-link"><a href="projects.html" class="navbar-buttons" style="text-decoration: none;">Projects</a></button></li>
-                    <li><button type="button" class="btn btn-link"><a href="#" class="navbar-buttons" style="text-decoration: none;" onclick="logOut()" id="logOutButton"></a></button></li>
+                    <li><button type="button" class="btn btn-link"><a href="#" class="navbar-buttons" style="text-decoration: none;"
+                                onclick="logOut()" id="logOutButton"></a></button></li>
                     <!-- <li><button type="button" class="btn btn-link navbar-buttons" onclick="logOut()" id="logOutButton">Log out</button></li> -->
                 </ul>
             </div>
@@ -51,7 +53,7 @@
     <div class="icon-bar visible-sm visible-xs navbar-fixed-bottom">
         <header class="example-two-header">
             <span class="logo">
-                <i class="fa fa-plus fa-fw fa-lg" onclick="showAddTaskMobile()"></i>
+                <i class="fa fa-plus fa-fw fa-lg" onclick="showTaskListOrAddTask()"></i>
             </span>
             <nav class="vertical-align-middle scroll">
                 <span class="nav-item tasksCount" onclick="showCountTasks()">Overview</span>
@@ -223,6 +225,28 @@
                             </h4>
                             <div class="panel-body" id="getTaskForEditResult"></div>
                         </div>
+                        <!-- Add a task list Mobile -->
+                        <div id="addTaskListRightMobile" class="center" style="display: none;">
+                            <div>
+                                <h4 class="h4-well-title">
+                                    <i class="fa fa-fw fa-plus"></i> First, please create a list
+                                </h4>
+                            </div>
+                            <div>
+                                <form class="form-inline" id="addtaskListFormMobile">
+                                    <div>
+                                        <input type="text" class="form-control input-no-border" id="taskListTitleMobile"
+                                            size="30" placeholder="Title:    20 chars max." maxlength="20" required>
+                                        <br>
+                                        <br><br>
+                                        <button type="submit" class="btn btn-primary">Send</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <br />
+                            <div class="panel-body" id='postTaskListResultMobile'>
+                            </div>
+                        </div>
                         <!-- Add task Mobile-->
                         <div class="addTaskMobile" style="padding-top: 25px; display: none;">
                             <h4 class="h4-well-title">
@@ -230,17 +254,19 @@
                             </h4>
                             <form class="form-inline" id="todoInputFormMobile">
                                 <div>
-                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30" placeholder="Title:    20 chars max." maxlength="20" required>
+                                    <input type="text" class="form-control input-no-border" id="taskTitleMobile" size="30"
+                                        placeholder="Title:    20 chars max." maxlength="20" required>
                                     <br>
                                     <br>
-                                    <textarea name="message" class="form-control input-no-border" id="taskDescriptionMobile" rows="5" cols="28" placeholder="Add a task description"></textarea>
+                                    <textarea name="message" class="form-control input-no-border" id="taskDescriptionMobile"
+                                        rows="5" cols="28" placeholder="Add a task description"></textarea>
                                     <br>
                                     <br>
                                     <!-- Date input -->
-                                    <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text" />
+                                    <input class="form-control input-no-border" id="datePickerMobile" name="date" size="30"
+                                        placeholder="Due date: DD/MM/YYY" type="text" />
                                     <br>
                                     <br>
-                                    Tasks
                                     <!-- <p>Task list: </p> -->
                                     <div class="custom-control custom-radio custom-control-inline" id="taskListRadioMobile">
                                         <!-- Tasklists radio buttons -->
@@ -268,7 +294,8 @@
                             <div>
                                 <form class="form-inline" id="addtaskListForm">
                                     <div>
-                                        <input type="text" class="form-control input-no-border" id="taskListTitle" size="30" placeholder="Title:    20 chars max." maxlength="20" required>
+                                        <input type="text" class="form-control input-no-border" id="taskListTitle" size="30"
+                                            placeholder="Title:    20 chars max." maxlength="20" required>
                                         <br>
                                         <br><br>
                                         <button type="submit" class="btn btn-primary">Send</button>
@@ -291,14 +318,17 @@
                             <div>
                                 <form class="form-inline" id="todoInputForm">
                                     <div>
-                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30" placeholder="Title:    20 chars max." maxlength="20" required>
+                                        <input type="text" class="form-control input-no-border" id="taskTitle" size="30"
+                                            placeholder="Title:    20 chars max." maxlength="20" required>
                                         <br>
                                         <br>
-                                        <textarea name="message" class="form-control input-no-border" id="taskDescription" rows="5" cols="28" placeholder="Add a task description"></textarea>
+                                        <textarea name="message" class="form-control input-no-border" id="taskDescription"
+                                            rows="5" cols="28" placeholder="Add a task description"></textarea>
                                         <br>
                                         <br>
                                         <!-- Date input -->
-                                        <input class="form-control input-no-border" id="datePicker" name="date" size="30" placeholder="Due date: DD/MM/YYY" type="text" />
+                                        <input class="form-control input-no-border" id="datePicker" name="date" size="30"
+                                            placeholder="Due date: DD/MM/YYY" type="text" />
                                         <br>
                                         <br>
                                         <!-- <p>Task list: </p> -->
