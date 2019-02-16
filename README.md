@@ -108,7 +108,7 @@ python -m SimpleHTTPServer
 ## Performance
 To ensure the website responded and loaded quickly for the user, audits were carried out in CHrome dev tools:
 
-![performance](/assets/img/readme-assets/perform1.png)
+![performance](assets\img\readme-assets\perform1.PNG)
 
 ## Credits
 ### Third-party:
