@@ -5,6 +5,7 @@ function addEventListeners() {
     document.getElementById('todoInputForm').addEventListener('submit', postTask);
     document.getElementById('todoInputFormMobile').addEventListener('submit', postTaskMobile);
     document.getElementById('addtaskListForm').addEventListener('submit', postTaskListProj);
+    document.getElementById('addtaskListFormMobile').addEventListener('submit', postTaskListProjMobile);
 }
 
 
@@ -93,7 +94,8 @@ function postTaskMobile(e) {
                 $('#todoInputFormMobile')[0].reset();
                 setTimeout(() => {
                     $('.task-success').hide();
-                }, 5000);
+                    showAllTasks();
+                }, 3000);
             }, 50);
         })
         .catch(function (error) {
@@ -136,6 +138,43 @@ function postTaskListProj(e) {
         e.preventDefault();
 }
 
+/* 
+Create a tasklist mobile
+*/
+
+function postTaskListProjMobile(e) {
+    var resultElement = document.getElementById('postTaskListResultMobile');
+
+    var name = document.getElementById("taskListTitleMobile").value;
+
+    axios({
+            method: 'POST',
+            url: 'https://hi-21ca23a1-eval-prod.apigee.net/tasklists/' + localStorage.getItem("currentProjectID") + '/tasklists.json',
+            headers: {
+                'Authorization': "Bearer " + APIKey,
+            },
+            data: {
+                "todo-list": {
+                    "name": name,
+                }
+            }
+        })
+        .then(function (response) {
+            $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
+            $('.task-success').show();
+             setTimeout(() => {
+                window.location.href = "/home.html";
+            }, 1000);
+        })
+        .catch(function (error) {
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
+        })
+        e.preventDefault();
+}
+
+/* 
+Post auth code received fronm TeamWork API
+*/
 
 function postAuthCode() {
     let code = {
