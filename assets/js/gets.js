@@ -92,6 +92,8 @@ function getTaskListDetails() {
             }
         })
         .then(function (response) {
+            var taskListCount = response.data['tasklists'].length;
+            localStorage.setItem("taskListCount", taskListCount);
             if (response.data['tasklists'].length) {
                 $('#addTaskRight').show();
                 $(response.data['tasklists']).each(function () {
@@ -196,6 +198,7 @@ function getTaskCount() {
         .then(function (response) {
             if (response.statusText == 'OK') {
                 var taskCount = response.data['todo-items'].length;
+                localStorage.setItem("taskCount", taskCount);
                 var task = $(resultElement).append(
                     taskCount);
             }
@@ -250,8 +253,11 @@ function getAllTasks() {
                 });
             } else {
                 $(resultElement).append(
-                    '<div class="center">' +
+                    '<div class="center visible-lg visible-md">' +
                     '<button type="button" class="btn btn-primary center" onclick="focusTaskForm();" id="createTaskButton">Use the form to create your first task or list!</button>' +
+                    '</div>' +
+                    '<div class="center">' +
+                    '<button type="button" class="btn btn-primary center" onclick="showTaskListOrAddTask();" id="createTaskButton">Create your first task or list!</button>' +
                     '</div>'
                 );
                 triggerTooltips();
