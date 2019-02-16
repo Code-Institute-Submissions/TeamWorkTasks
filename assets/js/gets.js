@@ -251,7 +251,7 @@ function getAllTasks() {
             } else {
                 $(resultElement).append(
                     '<div class="center">' +
-                    '<button type="button" class="btn btn-primary center" onclick="focusTaskForm();" id="createTaskButton">Use the form to create your first task!</button>' +
+                    '<button type="button" class="btn btn-primary center" onclick="focusTaskForm();" id="createTaskButton">Use the form to create your first task/list!</button>' +
                     '</div>'
                 );
                 triggerTooltips();
@@ -267,7 +267,10 @@ Focus on the task form
 */
 
 function focusTaskForm() {
+    $('#taskListTitle').focus();
+    $('#taskListTitle').addClass("animated shake");
     $('#taskTitle').focus();
+    $('#taskTitle').addClass("animated shake");
 }
 
 
