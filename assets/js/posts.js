@@ -126,6 +126,9 @@ function postTaskListProj(e) {
         .then(function (response) {
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
             $('.task-success').show();
+            setTimeout(() => {
+                window.location.href = "/home.html";
+            }, 1000);
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
