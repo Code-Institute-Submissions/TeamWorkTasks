@@ -254,10 +254,10 @@ function getAllTasks() {
             } else {
                 $(resultElement).append(
                     '<div class="center visible-lg visible-md">' +
-                    '<button type="button" class="btn btn-primary center" onclick="focusTaskForm();" id="createTaskButton">Use the form to create your first task or list!</button>' +
+                    '<button type="button" class="btn btn-warning center" onclick="focusTaskForm();" id="createTaskButton">Use the form to create your first task or list!</button>' +
                     '</div>' +
-                    '<div class="center">' +
-                    '<button type="button" class="btn btn-primary center" onclick="showTaskListOrAddTask();" id="createTaskButton">Create your first task or list!</button>' +
+                    '<div class="center visible-sm visible-xs">' +
+                    '<button type="button" class="btn btn-warning center" onclick="showTaskListOrAddTask();" id="createTaskButton">Create your first task or list!</button>' +
                     '</div>'
                 );
                 triggerTooltips();
