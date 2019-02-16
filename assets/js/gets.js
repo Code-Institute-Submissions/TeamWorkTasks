@@ -92,19 +92,27 @@ function getTaskListDetails() {
             }
         })
         .then(function (response) {
-            $(response.data['tasklists']).each(function () {
-                var taskListName = this.name;
-                var taskListId = this.id;
-                $(resultElement).append(
-                    '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" required>' +
-                    '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
-                )
-                $(resultElementMobile).append(
-                    '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" required>' +
-                    '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
-                )
-                return
-            });
+            if (response.data['tasklists'].length) {
+                $('#addTaskRight').show();
+                $(response.data['tasklists']).each(function () {
+                    var taskListName = this.name;
+                    var taskListId = this.id;
+                    $(resultElement).append(
+                        '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" required>' +
+                        '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
+                    )
+                    $(resultElementMobile).append(
+                        '<input type="radio" id="customRadio1" name="taskListRadioButtons" class="custom-control-input" required>' +
+                        '<label class="custom-control-label" for="customRadio1">' + taskListName + '<span id="taskListId" style="display: none;">' + taskListId + '</span>' + '</label>' + '<br>'
+                    )
+                    return
+                });
+            } else {
+                console.log('Add Task for start!');
+                $('#addTaskRight').hide();
+                $('#addTaskListRight').show();
+                console.log('Add Task for hidden!');
+            }
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
@@ -243,14 +251,23 @@ function getAllTasks() {
             } else {
                 $(resultElement).append(
                     '<div class="center">' +
-                    '<button type="button" class="btn btn-primary center" onclick="showAddTaskList();" id="createTaskButton">Create a task</button>' +
-                    '</div>');
+                    '<button type="button" class="btn btn-primary center" onclick="focusTaskForm();" id="createTaskButton">Use the form to create your first task!</button>' +
+                    '</div>'
+                );
                 triggerTooltips();
             }
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
+}
+
+/* 
+Focus on the task form
+*/
+
+function focusTaskForm() {
+    $('#taskTitle').focus();
 }
 
 
