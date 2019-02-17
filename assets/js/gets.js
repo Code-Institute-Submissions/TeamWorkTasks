@@ -30,7 +30,6 @@ function getProjects() {
                 )
                 $('#myModal').modal('show');
                 $('#loader').hide();
-                console.log("Project name: " + projectName)
             })
         })
         .catch(function (error) {
@@ -42,11 +41,7 @@ function getProjects() {
 St project ID
 */
 function setProjectID(projectID) {
-    console.log("Project ID:" + projectID);
-    // console.log("Project ID:" + projectName);
-
     localStorage.setItem("currentProjectID", projectID);
-    // localStorage.setItem("currentProjectName", projectName);
 
     setTimeout(() => {
         window.location.href = "/home.html";
@@ -110,10 +105,8 @@ function getTaskListDetails() {
                     return
                 });
             } else {
-                console.log('Add Task for start!');
                 $('#addTaskRight').hide();
                 $('#addTaskListRight').show();
-                console.log('Add Task for hidden!');
             }
         })
         .catch(function (error) {
@@ -607,7 +600,7 @@ function editTaskForm(val) {
             });
         })
         .catch(function (error) {
-            console.log(error.statusText);
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
         })
 }
 

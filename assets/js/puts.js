@@ -19,7 +19,7 @@ function completeTask(task_id) {
                 }, 100);
             })
         .catch(function (error) {
-            console.log(error.statusText);
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
         })
 
 }

@@ -196,7 +196,7 @@ function postAuthCode() {
             window.location.href = "/projects.html";
         })
         .catch(function (error) {
-            console.log("Error: ", error);
+            resultElement.innerHTML = generateErrorHTMLOutput(error);
         })
 }
 
