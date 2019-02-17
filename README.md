@@ -133,7 +133,7 @@ To ensure the website responded and loaded quickly for the user, audits were car
 
 ## Credits
 ### Third-party:
-- [Horizontal scrolling nav](https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu) - Used for mobile view.
+- [Horizontal scrolling nav](https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu) - Inspired my bottom nav for mobile view.
 
 - [Animate CSS](https://github.com/daneden/animate.css) - A cross-browser library of CSS animations.
 
