@@ -20,7 +20,7 @@ function postTask(e) {
     var taskDescription = document.getElementById('taskDescription').value;
     var content = document.getElementById("taskTitle").value;
     var date_picker = document.getElementById('datePicker').value;
-    
+
     var due_date = date_picker.split('/').reverse().join('')
 
     axios({
@@ -60,6 +60,7 @@ function postTask(e) {
 // 
 // Post task with form fields taken from 'todoInputForm'
 //
+
 function postTaskMobile(e) {
     var resultElement = document.getElementById('postTaskResultMobile');
     resultElement.innerHTML = '';
@@ -128,14 +129,14 @@ function postTaskListProj(e) {
         .then(function (response) {
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
             $('.task-success').show();
-             setTimeout(() => {
+            setTimeout(() => {
                 window.location.href = "/home.html";
             }, 1000);
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         })
-        e.preventDefault();
+    e.preventDefault();
 }
 
 /* 
@@ -162,14 +163,14 @@ function postTaskListProjMobile(e) {
         .then(function (response) {
             $(resultElement).append('<div class = "alert alert-success task-success" role = "alert" style = "display: none" > Yay!Your new task was added!</div>');
             $('.task-success').show();
-             setTimeout(() => {
+            setTimeout(() => {
                 window.location.href = "/home.html";
             }, 1000);
         })
         .catch(function (error) {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         })
-        e.preventDefault();
+    e.preventDefault();
 }
 
 /* 
@@ -200,7 +201,7 @@ function postAuthCode() {
         })
 }
 
-
+// Refresh all API calls
 function refreshAllTasks() {
     getAllTasks();
     getAllTasksCompleted();
