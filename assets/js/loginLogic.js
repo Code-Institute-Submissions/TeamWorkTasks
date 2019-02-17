@@ -2,6 +2,8 @@ function logOut() {
     localStorage.removeItem("selectedTaskListID");
     localStorage.removeItem("currentProjectID");
     localStorage.removeItem("authToken");
+    localStorage.removeItem("taskCount");
+    localStorage.removeItem("taskListCount");
 
     setTimeout(() => {
         window.location.href = "/index.html";
