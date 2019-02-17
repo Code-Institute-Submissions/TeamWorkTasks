@@ -1,6 +1,10 @@
-//
-// ***************************** Show/Hide content ********************************************
-//
+/* 
+Show/Hide content:
+- This is the main way in which I controlled which aspects of the app the user could see.
+- As different nav items are selected, divs are hidden or shown respectively.
+
+*/
+
 
 function showAddTaskList() {
     $('#createTaskButton').hide();
@@ -84,7 +88,7 @@ function showTasksCompleted() {
     $(".todaysTasks").hide();
 }
 
-function showAddTaskMobile(){
+function showAddTaskMobile() {
     $(".addTaskMobile").show();
     $(".overdueTasks").hide();
     $(".countTasks").hide();
@@ -96,17 +100,8 @@ function showAddTaskMobile(){
     $("#addTaskListRightMobile").hide();
 }
 
-function showTaskListOrAddTask() {
-    if (localStorage.getItem("taskListCount")  > 0) {
-        showAddTaskMobile();
-        $('#createTaskButton').hide();
-    } else {
-        $(".addTaskMobile").hide();
-        $("#addTaskListRightMobile").show();
-    }
-}
 
-function hideEditForm(){
+function hideEditForm() {
     $(".allTasks").show();
     $(".countTasks").show();
     $(".addTaskRight").show();
@@ -116,5 +111,15 @@ function hideEditForm(){
     $(".todaysTasks").hide();
     $(".tomorrowsTasks").hide();
     $(".completeTasks").hide();
+}
+
+function showTaskListOrAddTask() {
+    if (localStorage.getItem("taskListCount") > 0) {
+        showAddTaskMobile();
+        $('#createTaskButton').hide();
+    } else {
+        $(".addTaskMobile").hide();
+        $("#addTaskListRightMobile").show();
+    }
 }
 // *************************************************************************************************
