@@ -65,7 +65,7 @@ This repository contains the code for an API driven, client-side application. It
 
 
 ## Challenges
-###  - API user authentication.
+### API user authentication.
 Initially, I had the Teamwork credentials from  a login form being stored in browser local-storage. This was not ideal as it posed a security risk for Cross-site scripting (XSS) vulnerabilities. 
 - Solution: Implemented Teamwork's [app login flow](https://developer.teamwork.com/projects/authentication-questions/how-to-authenticate-via-app-login-flow) .
     - The user is asked to authenticate with their TeamWork credentials by directing the user to their auth page, with callback URI for this application.
@@ -73,7 +73,7 @@ Initially, I had the Teamwork credentials from  a login form being stored in bro
     - I then had to take this code and make an HTTP POST request to their API and the resulting payload contained a permanent access token.
     - I stored this token and then passed it as a Header in API calls made by the user to authenticate the user.
 
-### - CORS (Cross-origin resource sharing).
+### CORS (Cross-origin resource sharing).
 As this is a client-side app, all requests made to the TeamWork Projects API are originating from a domain different to that of the API server. 
 
 If [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) support is not enabled on the user's account with TeamWork.com - which is not by default then there will be no `Access-Control-Allow-Origin` header set, therefore, the browser will allow requests made from the application.
