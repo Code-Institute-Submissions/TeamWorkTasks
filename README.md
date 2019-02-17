@@ -112,6 +112,7 @@ The above variables are then accessed during the execution of certain functions 
 - Git and GitHub were utilized for version control. As additions and edits were being made to the code, these changes would be staged in git, commited and pushed to remote repository.
 
 ## Deployment
+- A live version os this app is available [here](https://agitated-noether-613123.netlify.com).
 - The project is deployed on the [Netlify](https://netlify.com) platform.
 - This enabled deployments to be triggered from pushes to a dev branch of the repository on GitHub.
 - Once changes to dev were tested and approved, theses were merged to the master branch and made publicly available on a subdomain of my personal site - [here](https://todo.daveodea.com) .
