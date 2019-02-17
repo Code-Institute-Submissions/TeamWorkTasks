@@ -1,5 +1,5 @@
 /* 
-Get projects
+Get all projects for the user
 */
 function getProjects() {
     var resultElement = document.getElementById('getProjectsResult');
@@ -38,7 +38,7 @@ function getProjects() {
 }
 
 /* 
-St project ID
+Set project ID
 */
 function setProjectID(projectID) {
     localStorage.setItem("currentProjectID", projectID);
@@ -49,13 +49,9 @@ function setProjectID(projectID) {
 
 }
 
-
-
-
-//
-// Set TaskList ID from radio button
-//
-
+/* 
+Set TaskList ID from radio button
+*/
 function getSelectListID() {
     $(document).ready(function () {
         $("#taskListRadio").click(function () {
@@ -72,9 +68,9 @@ function getSelectListID() {
 // *************************************************************************************************
 
 
-//
-// Get Task List details
-//
+/* 
+Get task lists or the set project
+*/
 function getTaskListDetails() {
     var resultElement = document.getElementById('taskListRadio');
     var resultElementMobile = document.getElementById('taskListRadioMobile');
@@ -117,10 +113,9 @@ function getTaskListDetails() {
 // *************************************************************************************************
 
 
-//
-// Get Account details
-//
-
+/* 
+Get account details of the auth user
+*/
 function getAccount() {
     var resultElement = document.getElementById('todaysDate');
     resultElement.innerHTML = '';
@@ -141,37 +136,6 @@ function getAccount() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
-
-// *************************************************************************************************
-
-//
-// Get overview
-//
-
-function getOverview() {
-    var resultElement = document.getElementById('getOverviewResult');
-    resultElement.innerHTML = '';
-
-    axios({
-            method: 'GET',
-            url: 'https://hi-21ca23a1-eval-prod.apigee.net/alltasks',
-            headers: {
-                'Authorization': "Bearer " + APIKey
-            }
-        })
-        .then(function (response) {
-            $(response.data['todo-items']).each(function () {
-                var taskTitle = this.content;
-                var task = $(resultElement).append(
-                    '<b>' + taskTitle + '</b>' + '<br>' + '<hr>');
-            });
-        })
-        .catch(function (error) {
-            resultElement.innerHTML = generateErrorHTMLOutput(error);
-        });
-}
-
-// *************************************************************************************************
 
 //
 // Count all Tasks
@@ -200,8 +164,6 @@ function getTaskCount() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
-
-// *************************************************************************************************
 
 //
 // Get all Tasks and display
@@ -261,20 +223,6 @@ function getAllTasks() {
         });
 }
 
-/* 
-Focus on the task form
-*/
-
-function focusTaskForm() {
-    $('#taskListTitle').focus();
-    $('#taskListTitle').addClass("animated shake");
-    $('#taskTitle').focus();
-    $('#taskTitle').addClass("animated shake");
-}
-
-
-// *************************************************************************************************
-
 //
 // Get all Tasks which have been marked complete
 //
@@ -315,8 +263,6 @@ function getAllTasksCompleted() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
-
-// *************************************************************************************************
 
 //
 // Get all Tasks due Today
@@ -361,8 +307,6 @@ function getAllTasksToday() {
         });
 }
 
-// *************************************************************************************************
-
 //
 // Count Tasks due today
 //
@@ -386,8 +330,6 @@ function getTaskCountToday() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
-
-// *************************************************************************************************
 
 //
 // Get all Tasks due Tomorrow
@@ -432,8 +374,6 @@ function getAllTasksTomorrow() {
         });
 }
 
-// *************************************************************************************************
-
 //
 // Count Tasks due tomorrow
 //
@@ -457,8 +397,6 @@ function getTaskCountTomorrow() {
             resultElement.innerHTML = generateErrorHTMLOutput(error);
         });
 }
-
-// *************************************************************************************************
 
 //
 // Get all Tasks that are overdue
@@ -503,8 +441,6 @@ function getAllTasksOverdue() {
         })
 }
 
-// *************************************************************************************************
-
 //
 // Count Tasks that are overdue
 //
@@ -530,23 +466,11 @@ function getTaskCountOverdue() {
         });
 }
 
-// *************************************************************************************************
 
-//
-// Obtain the id of the task to be edited
-//
 
-function getTaskForEdit(task_id) {
-    var var1 = task_id;
-    editTaskForm(var1);
-
-    $(".taskEdit").show();
-    $(".addTaskRight").hide();
-    $(".addTaskMobile").hide();
-    $(".allTasks").hide();
-    $(".countTasks").hide();
-}
-
+/* 
+Get the task and render the edit form
+*/
 function editTaskForm(val) {
     var resultElement = document.getElementById('getTaskForEditResult');
     resultElement.innerHTML = '';
@@ -605,6 +529,9 @@ function editTaskForm(val) {
 }
 
 
+/* 
+Trigger bootstrapp tooltips
+*/
 function triggerTooltips() {
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
