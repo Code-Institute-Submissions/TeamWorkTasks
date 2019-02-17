@@ -24,8 +24,8 @@ function completeTask(task_id) {
 
 }
 
-// *************************************************************************************************
 
+// Edit the given task, make a put call update the task
 function editTask(e) {
     var resultElement = document.getElementById('editTaskResult');
     resultElement.innerHTML = '';
