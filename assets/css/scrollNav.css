@@ -26,15 +26,6 @@ header {
     background: #D24D57;
 }
 
-.example-one-header,
-.example-two-header {
-    /* border-radius: 3px; */
-}
-/* 
-.example-two-header-top{
-    margin-bottom: 100px;
-} */
-
 .example-three-header {
     border-radius: 3px 3px 0 0;
 }
@@ -61,14 +52,12 @@ header {
 }
 
 .nav-item:not(:last-child) {
-     border-right: 1px solid #D24D57;
+    border-right: 1px solid #D24D57;
 }
 
 * {
     box-sizing: border-box;
 }
-
-/*  */
 
 header,
 nav {
