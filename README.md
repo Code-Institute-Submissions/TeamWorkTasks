@@ -15,19 +15,24 @@ This repository contains the code for an API driven, client-side application. It
 #### User stories
 - As a first-time user I want to be able to authenticate via my my Teamwork.com credentials.
 
-- As an authenticated user, I should be able redirected to overview page.
 
 - As a user who provides incorrect authentication information, I should  an appropriate alert to the problem.
 
-- As an authenticated user I want to be able to view All Tasks as available across all Task Lists.
+- As an authenticated user, I should be directed to choose a project with which to work from.
+
+- As an authenticated user I want to be able to view All Tasks available on the selected project list.
+
+- As an authenticated user, I should be able see an overview section summarising the task sections i.e. Today, Tomorrow, Overdue etc.
+
+- As an authenticated user I want to asked to create a task list if none exists already.
 
 - As an authenticated user I want to be able to view a dashboard displaying an overview of my tasks.
 
-- As an authenticated user, if I wish to add a task, I will need to fill out a form which will allow me enter task details such as:
+- As an authenticated user, if I wish to add a task, I will fill out a form which will allow me enter task details such as:
     - title,
     - description,
     - due date,
-    - task list
+    - task list.
 
 
 - As an authenticated user, if I add a task that is successfully submitted, I should see a confirmation message.
@@ -36,26 +41,27 @@ This repository contains the code for an API driven, client-side application. It
 
 - As an authenticated user, if there are no tasks present in my account, I should be alerted to this and prompted to add a task.
 
-- As authenticated user I want to be able to view Today’s Tasks available across all Task Lists.
+- As authenticated user I want to be able to view Today’s Tasks.
 
-- As authenticated user I want to be able to view Today’s Tasks, if there are none, then I should see a message alerting me of this.
+- As authenticated user I want to be able to view Today’s Tasks.
 
-- As authenticated user I want to be able to view Tomorrow’s Tasks, if there are none, then I should see a message alerting me of this.
+- As authenticated user I want to be able to view Tomorrow’s Tasks.
 
-- As authenticated user I want to be able to view Tomorrow’s Tasks, if there are none, then I should see a message alerting me of this.
+- As authenticated user I want to be able to view Tomorrow’s Tasks.
 
-- As authenticated user I want to be able to view Overdue Tasks, if there are none, then I should see a message alerting me of this.
+- As authenticated user I want to be able to view Overdue Tasks.
 
-- As authenticated user I want to be able to view Overdue Tasks, if there are none, then I should see a message alerting me of this.
+- As authenticated user I want to be able to view Overdue Tasks.
 
-- As an authenticated user, I should be able to see a list of all task lists available.
+- As an authenticated user I want to be able to mark tasks as complete.
 
-#### Task options
-- Edit task title.
+- As an authenticated user I want to be able to delete completed tasks.
 
-- Delete task.
+- As an authenticated user I want to be able to edit each task as follows:
 
-- Alter due date.
+    - Edit task title,
+    - Delete task,
+    - Alter due date.
 
 
 ## Challenges
@@ -74,6 +80,20 @@ If [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) support i
 - Solution - Proxy server:
     - I built a reverse proxy with the [Apigee](https://apigee.com/api-management/#/homepage) platform to process requests from the app.
     - CORS issues do not arise from server-to-server communication. Therefore, as the proxy is built as a nodejs webserver, it accepts calls from the application and then communicates with the TeamWork API, adding CORS headers to the response on the way back to the user's browser. 
+
+### Tracking user activity.
+As the user makes use of the app, it is neccessary to track certain decisions taken by the user. For example, the app needs to be aware of which project the user is working on, which task list etc.
+With this in mind, I decdided to store certai variables in the browser's local storage, for example:
+`authToken` - stores the token rceived from app login flow
+
+`currentProjectID` - stores which project the user is currently working with so that they only see tasks, lists etc. for that project.
+
+`selectedTaskListID` - stores the tasklist for which new tasks will be added to, This value is obtained from click events on the list of task lists.
+
+`taskCount` - stores how many tasks are tasks exist for the set project.
+
+`taskListCount` - stores how many task lists exists for the set project.
+
 
 
 
