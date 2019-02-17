@@ -94,7 +94,7 @@ With this in mind, I decdided to store certai variables in the browser's local s
 
 `taskListCount` - stores how many task lists exists for the set project.
 
-
+The above variables are then accessed during the execution of certain functions in order to make logical decisions based on the actions or needs of the user.
 
 
 ## Technologies
@@ -108,7 +108,7 @@ With this in mind, I decdided to store certai variables in the browser's local s
 
 
 ## Version control
-- Git and GitHub were utilized for **version control.** As additions and edits were being made, files were committed to branches and merged to the master branch.
+- Git and GitHub were utilized for version control. As additions and edits were being made to the code, these changes would be staged in git, commited and pushed to remote repository.
 
 ## Deployment
 - The project is deployed on the [Netlify](https://netlify.com) platform.
@@ -116,9 +116,9 @@ With this in mind, I decdided to store certai variables in the browser's local s
 - Once changes to dev were tested and approved, theses were merged to the master branch and made publicly available on a subdomain of my personal site - [here](https://todo.daveodea.com) .
 
 ## Local deployment
-This project can run locally using Python webserver:
+This project can run locally using Python 3 webserver:
 ```python
-python -m SimpleHTTPServer
+python -m http.server
 ```
 
 ## Testing
@@ -133,6 +133,8 @@ To ensure the website responded and loaded quickly for the user, audits were car
 ## Credits
 ### Third-party:
 - [Horizontal scrolling nav](https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu) - Used for mobile view.
+
+- [Animate CSS](https://github.com/daneden/animate.css) - A cross-browser library of CSS animations.
 
 #### Media:
 TeamWork.com logos were obtained from their [press kit site](https://www.teamwork.com/press-media-kit) .
