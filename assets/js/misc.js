@@ -20,24 +20,6 @@ $(document).ready(function () {
     })
 })
 
-// Check if Popover shown
-function checkPopover() {
-    if (!localStorage.getItem('popShown')) {
-        $('#popover').popover({
-            'placement': 'top',
-            'content': 'To navigate - just scroll left and right!',
-        }).popover('show');
-
-        setTimeout(function () {
-            $('#popover').popover('hide');
-            localStorage.setItem('popShown', 1);
-            console.log('pop triggered');
-        }, 5000);
-    } else {
-        $('#popover').popover('hide');
-        console.log('pop hidden');
-    }
-}
 
 
 // *************************************************************************************************

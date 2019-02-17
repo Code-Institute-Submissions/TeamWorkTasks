@@ -26,5 +26,4 @@ function loadScripts() {
     getAccount();
     getSelectListID();
     addEventListeners();
-    checkPopover();
 }
