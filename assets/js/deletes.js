@@ -1,3 +1,6 @@
+/* 
+Delete the task associated with a given ID
+*/
 function deleteTask(task_id) {
     axios({
             method: 'DELETE',
