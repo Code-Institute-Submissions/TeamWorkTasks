@@ -6,8 +6,6 @@ function dateToday() {
     $(resultElement).append("<br>" + today);
 }
 
-// *************************************************************************************************
-
 // Datepicker
 $(document).ready(function () {
     var date_input = $('input[name="date"]'); //our date input has the name "date"
@@ -20,11 +18,33 @@ $(document).ready(function () {
     })
 })
 
+//
+// Obtain the id of the task to be edited
+//
 
+function getTaskForEdit(task_id) {
+    var var1 = task_id;
+    editTaskForm(var1);
 
-// *************************************************************************************************
+    $(".taskEdit").show();
+    $(".addTaskRight").hide();
+    $(".addTaskMobile").hide();
+    $(".allTasks").hide();
+    $(".countTasks").hide();
+}
 
-// Template API call response/errors
+/* 
+Focus on the task form
+*/
+
+function focusTaskForm() {
+    $('#taskListTitle').focus();
+    $('#taskListTitle').addClass("animated shake");
+    $('#taskTitle').focus();
+    $('#taskTitle').addClass("animated shake");
+}
+
+// Template API call response
 function generateSuccessHTMLOutput(response) {
     return '<h4>Result:</h4>' +
         '<h5>Status:</h5>' +
@@ -35,6 +55,7 @@ function generateSuccessHTMLOutput(response) {
         '<pre>' + JSON.stringify(response.data, null, '\t') + '</pre>';
 }
 
+// Template API call error
 function generateErrorHTMLOutput(error) {
     return '<h4>Result:</h4>' +
         '<h5>Message:</h5>' +
@@ -47,6 +68,9 @@ function generateErrorHTMLOutput(error) {
         '<pre>' + JSON.stringify(error.response.data, null, '\t') + '</pre>';
 }
 
+/* 
+Change login/out buttons dynamincally for user
+*/
 $(function () {
     var token = localStorage.getItem("authToken").length;
     if (token > 0) {
